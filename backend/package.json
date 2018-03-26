@@ -1,0 +1,26 @@
+{
+  "name": "info30005",
+  "version": "1.0.0",
+  "description": "food stuff",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/naufik/web-info-project.git"
+  },
+  "keywords": [
+    "info30005"
+  ],
+  "author": "naufik, fdarma, maniarora",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/naufik/web-info-project/issues"
+  },
+  "homepage": "https://github.com/naufik/web-info-project#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.3"
+  }
+}
