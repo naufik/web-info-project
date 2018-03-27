@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
+interface UserData { 
+	name: string,
+	github?: string 
+};
+
 @Component({
 	selector: 'soon',
 	templateUrl: './soon.component.html',
@@ -12,14 +17,13 @@ export class SoonComponent {
  	/** 
 		@todo add your own data here, WebStorm will complain if the data is in the wrong format thank for TypeScript type-checking. 
 	*/
-	public members: { name: string, github?: string }[] = [
+	public members: UserData[] = [
 	{
 		name: "Naufal Fikri Setiawan",
 		github: "naufik"
 	}];
 
-	public getGithubLink(username: string) {
+	public getGithubLink (username: string): string {
 		return "http://github.com/" + username;
 	}
-
 }
