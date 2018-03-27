@@ -37,8 +37,8 @@ export class App {
 	}
 
 	/**
-		Sets up all the routes.
-		@todo imports the route and fill this with actual configuration.
+		Sets up all the routes to the express application.
+		@todo import the routes and fill this with actual configuration.
 	*/
 	public routes() {
 		
@@ -46,4 +46,3 @@ export class App {
 }
 
 export default new App().app;
-
