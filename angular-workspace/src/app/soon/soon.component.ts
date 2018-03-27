@@ -11,19 +11,24 @@ interface UserData {
 	styleUrls: ['./soon.component.css']
 })
 export class SoonComponent {
-
+	
 	constructor() { }
 
  	/** 
-		@todo add your own data here, WebStorm will complain if the data is in the wrong format thank for TypeScript type-checking. 
+		@todo add your own data here, WebStorm will complain if the data is in the wrong format thank to TypeScript type-checking. 
 	*/
 	public members: UserData[] = [
 	{
 		name: "Naufal Fikri Setiawan",
 		github: "naufik"
 	}];
+	
+	/**
+		Method to obtain the github link of a given username.
 
-	public getGithubLink (username: string): string {
+		@param username the username of the user.
+	*/	
+ 	public getGithubLink (username: string): string {
 		return "http://github.com/" + username;
 	}
 }
