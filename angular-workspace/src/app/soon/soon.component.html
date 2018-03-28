@@ -6,24 +6,27 @@
     <div class="col-6 page-content">
       <div class="page-header">
         <h1>DueDate</h1>
-        <p>{{ taglines[taglineIndex] }}</p>
+        <div class="page-tagline">
+          <p>{{ taglines[taglineIndex] }}</p>
+        </div>
       </div>
       <div class="row">
       </div>
       <div class="row">
         <div class="col-md-12">
           <div>
-            <p>What we do:</p>
-
+            <div class="section-header">What we do:</div>
+            <p>We're trying to revolutionize the way you do your groceries, and
+            reduce problematic food waste. Did you know that </p>
           </div>
         </div>
       </div>
       <div class="row">
         <div class="col-md-12">
           <div>
-            <p>Meet the Team: </p>
+            <div class="section-header">Meet the Team: </div>
             <ul *ngFor="let m of members">
-              <li>{{ m.name }}</li>
+              <li><a [href]="getGithubLink(m.github)">{{ m.name }}</a></li>
             </ul>
           </div>
         </div>

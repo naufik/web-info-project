@@ -1,16 +1,13 @@
-
-
 .page-header {
   text-align: center;
   font-family: 'Basic', sans-serif;
 }
 
 .page-header > h1 {
-  font-size: 350%;
+  font-size: 280%;
 }
 
 .page-content {
-  margin-top: 10px;
   background: rgba(255,255,255,0.85);
   font-family: 'Merriweather', serif;
 }
@@ -18,4 +15,29 @@
 .page-content > .row {
   margin-left: 3px;
   margin-right: 3px;
+}
+
+.page-tagline {
+  height: 3em;
+  font-size: 1.4em;
+}
+
+.page-tagline > p {
+  vertical-align: center;
+  display: inline;
+}
+
+.section-header {
+  font-size: 1.6em;
+  margin-bottom: 10px;
+}
+
+a {
+  font-weight: 600;
+  color: black;
+}
+
+a:hover {
+  text-decoration: none;
+  border-bottom: 3px solid #00448f;
 }

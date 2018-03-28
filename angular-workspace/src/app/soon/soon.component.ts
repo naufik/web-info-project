@@ -22,14 +22,21 @@ export class SoonComponent implements OnInit {
 	displayMembers = false;
 
 	taglineIndex = 0;
-	taglines: string[] = [
-	  "Revolutionizing the grocery shopping experience",
-    "The future of groceries... coming soon",
-    "Groceries, made easy. Soon!",
-    "We're still cooking, please wait.",
-    "Helping your grocery experience, later tho.",
-    "Your local grocery helper. Coming to your neighborhood soon!"
+	// taglines: string[] = [
+	//   "Revolutionizing the grocery shopping experience.",
+  //   "The future of groceries... coming soon.",
+  //   "Groceries, made easy. Soon.",
+  //   "We're still cooking, please wait.",
+  //   "Helping your grocery experience, later tho.",
+  //   "Your local grocery helper. Coming to your neighborhood soon."
+  // ]
+
+  taglines: string[] = [
+    "Still cooking, please wait.",
+    "Hold on there! We're not done yet.",
+    "Broken fridges used to be cool!"
   ]
+
 	color = "blue";
 
  	/**
