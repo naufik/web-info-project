@@ -117,11 +117,11 @@ export class SoonComponent implements OnInit {
 	}
 
 	randomize() {
- 	  let rand = () => { return Math.floor(Math.random() * (this.taglines.length - 0.01))))};
+ 	  let rand = () => { return Math.floor(Math.random() * (this.taglines.length - 0.01)) };
     let r = rand();
     while (r === this.taglineIndex) {
       r = rand();
     }
-    this.taglineIndex = r === this.taglineIndex ? r : r - 1;
+    this.taglineIndex = r;
   }
 }
