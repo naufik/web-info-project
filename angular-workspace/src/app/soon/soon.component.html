@@ -7,24 +7,27 @@
       <div class="page-header">
         <h1>DueDate</h1>
         <div class="page-tagline">
-          <p>{{ taglines[taglineIndex] }}</p>
+          <div>{{ taglines[taglineIndex] }}{{ dots }}</div>
         </div>
       </div>
       <div class="row">
       </div>
       <div class="row">
         <div class="col-md-12">
-          <div>
-            <div class="section-header">What we do:</div>
+          <div class="section">
+            <div class="section-header" (click)="randomize()"><i class="fas fa-briefcase section-icon"></i>What's Going On?</div>
             <p>We're trying to revolutionize the way you do your groceries, and
-            reduce problematic food waste. Did you know that </p>
+            reduce problematic food waste. </p>
+            <p>Think about a world where there are less food wasted, and more food eaten. Think about a world
+            where you can save money because you remember to cook everything on your fridge.</p>
           </div>
         </div>
       </div>
       <div class="row">
         <div class="col-md-12">
-          <div>
-            <div class="section-header">Meet the Team: </div>
+          <div class="section">
+            <div class="section-header"><i class="fas fa-users section-icon"></i>The Team</div>
+            <p>Brought to you with <i class="fas fa-heartbeat"></i> by team Titanic Overflow</p>
             <ul *ngFor="let m of members">
               <li><a [href]="getGithubLink(m.github)">{{ m.name }}</a></li>
             </ul>

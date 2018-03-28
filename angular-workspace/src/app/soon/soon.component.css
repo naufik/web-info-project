@@ -1,10 +1,17 @@
 .page-header {
   text-align: center;
   font-family: 'Basic', sans-serif;
+  margin-bottom: 15px;
+  margin-top: 15px;
 }
 
 .page-header > h1 {
   font-size: 280%;
+  font-weight: 600;
+}
+
+.section-header:hover {
+  border-bottom: 2px solid #00448f;
 }
 
 .page-content {
@@ -18,18 +25,24 @@
 }
 
 .page-tagline {
-  height: 3em;
-  font-size: 1.4em;
+
 }
 
-.page-tagline > p {
-  vertical-align: center;
-  display: inline;
+.page-tagline > div {
+  font-size: 1.2em;
+  height: 2.4em;
 }
 
 .section-header {
   font-size: 1.6em;
   margin-bottom: 10px;
+  border-bottom: 1px solid #cccccc;
+  font-family: 'Basic', sans-serif;
+  cursor: pointer;
+}
+
+.section-icon {
+  margin-right: 10px;
 }
 
 a {
@@ -40,4 +53,12 @@ a {
 a:hover {
   text-decoration: none;
   border-bottom: 3px solid #00448f;
+}
+
+.section {
+  margin-top: 2px;
+}
+
+.section > p {
+  margin-top: 10px;
 }
