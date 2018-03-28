@@ -1,12 +1,36 @@
-<h1 [style.color]="color">
-	Coming Soon!
-</h1>
-<h2 (click)="displayMembers = !displayMembers">
-  Show the team!
-</h2>
-<div *ngIf="displayMembers">
-  <ul *ngFor="let i of members">
-    <li><a [href]="getGithubLink(i.github)">{{ i.name }}</a></li>
-  </ul>
+<div class="container-fluid top-level">
+  <div class="row">
+    <div class="col-3">
+
+    </div>
+    <div class="col-6 page-content">
+      <div class="page-header">
+        <h1>DueDate</h1>
+        <p>{{ taglines[taglineIndex] }}</p>
+      </div>
+      <div class="row">
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div>
+            <p>What we do:</p>
+
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div>
+            <p>Meet the Team: </p>
+            <ul *ngFor="let m of members">
+              <li>{{ m.name }}</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-3">
+
+    </div>
+  </div>
 </div>
-<button type="button" class="btn btn-primary">TEST</button>
