@@ -5,6 +5,9 @@ import * as CORS from 'cors';
 import * as Mongoose from 'mongoose';
 import * as Bluebird from 'bluebird';
 
+/** Import Routers */
+import HomeRouter from './routes/home.router';
+
 /**
 	Is a class really necessary? 
 	I'm thinking we could just write this straight out as a script file :/
@@ -28,7 +31,6 @@ export class App {
 		// Required by Express
 		this.app.use(BodyParser.json());
 		this.app.use(BodyParser.urlencoded({extended: true}));
-		this.app.use("/", Express.static(__dirname + '/views/'));
 
 		// For easier front-end testing, browsers often reject responses created by servers hosted in another domain.
 		// If we have a backend in Heroku and testing our frontend in localhost, most responses by the server will be rejected.
@@ -43,9 +45,8 @@ export class App {
 		@todo import the routes and fill this with actual configuration.
 	*/
 	public routes() {
-		this.app.get("/", (req: Express.Request, res: Express.Response) => {
-			res.sendFile(__dirname + "/views/index.html");
-		})
+		// this.app.use("/", Express.static(__dirname + "/views/"));
+		this.app.use("/", HomeRouter);
 	}
 }
 
