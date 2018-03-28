@@ -21,7 +21,7 @@ export class App {
 
 		this.configure();
 		this.routes();
-		this.app.listen(3000);
+		this.app.listen(process.env.PORT || 3000);
 	}
 
 	/**
