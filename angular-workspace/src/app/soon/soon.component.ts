@@ -14,6 +14,9 @@ export class SoonComponent {
 
 	constructor() { }
 
+	displayMembers = false;
+	color = "blue";
+
  	/**
 		@todo add your own data here, WebStorm will complain if the data is in the wrong format thank to TypeScript type-checking.
 	*/
@@ -29,7 +32,11 @@ export class SoonComponent {
   {
     name: "Manindra Arora",
     github: "maniarora"
-  }
+  },
+    {
+     name: "Nicola Halim",
+     github: "staticDDQ"
+    }
   ];
 
 	/**

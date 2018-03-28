@@ -1,3 +1,11 @@
-<h1 [style.font-family]="'sans serif'">
+<h1 [style.color]="color">
 	Coming Soon!
 </h1>
+<h2 (click)="displayMembers = !displayMembers">
+  Show the team!
+</h2>
+<div *ngIf="displayMembers">
+  <ul *ngFor="let i of members">
+    <li><a [href]="getGithubLink(i.github)">{{ i.name }}</a></li>
+  </ul>
+</div>
