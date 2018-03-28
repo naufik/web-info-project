@@ -32,11 +32,7 @@ export class SoonComponent {
   {
     name: "Manindra Arora",
     github: "maniarora"
-  },
-    {
-     name: "Nicola Halim",
-     github: "staticDDQ"
-    }
+  }
   ];
 
 	/**
