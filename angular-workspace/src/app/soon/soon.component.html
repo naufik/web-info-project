@@ -15,22 +15,26 @@
       <div class="row">
         <div class="col-md-12">
           <div class="section">
-            <div class="section-header" (click)="randomize()"><i class="fas fa-briefcase section-icon"></i>What's Going On?</div>
-            <p>We're trying to revolutionize the way you do your groceries, and
-            reduce problematic food waste. </p>
-            <p>Think about a world where there are less food wasted, and more food eaten. Think about a world
-            where you can save money because you remember to cook everything on your fridge.</p>
+            <div class="section-header" (click)="collapse(0)"><i class="fas fa-briefcase section-icon"></i>What's Going On?</div>
+              <div *ngIf="!collapsearr[0]">
+                <p>We're trying to revolutionize the way you do your groceries, and
+                 reduce problematic food waste. </p>
+                <p>Think about a world where there are less food wasted, and more food eaten. Think about a world
+                where you can save money because you remember to cook everything on your fridge.</p>
+              </div>
           </div>
         </div>
       </div>
       <div class="row">
         <div class="col-md-12">
           <div class="section">
-            <div class="section-header"><i class="fas fa-users section-icon"></i>The Team</div>
-            <p>Brought to you with <i class="fas fa-heartbeat"></i> by team Titanic Overflow</p>
-            <ul *ngFor="let m of members">
-              <li><a [href]="getGithubLink(m.github)">{{ m.name }}</a></li>
-            </ul>
+            <div class="section-header" (click)="collapse(1)"><i class="fas fa-users section-icon"></i>The Team</div>
+              <div *ngIf="!collapsearr[1]">
+                <p>Brought to you with <i class="fas fa-heartbeat"></i> by team Titanic Overflow</p>
+                <ul *ngFor="let m of members">
+                  <li><a [href]="getGithubLink(m.github)">{{ m.name }}</a></li>
+                </ul>
+              </div>
           </div>
         </div>
       </div>
