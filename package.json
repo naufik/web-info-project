@@ -4,8 +4,7 @@
   "description": "food stuff",
   "main": "app.js",
   "scripts": {
-    "start": "node dist/app.js",
-    "postinstall": "npm run compile",
+    "start": "ts-node src/app",
     "compile": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -28,6 +27,7 @@
     "cors": "^2.8.4",
     "express": "^4.16.3",
     "mongoose": "^5.0.11",
+    "ts-node": "^5.0.1",
     "typescript": "^2.7.2"
   },
   "devDependencies": {
