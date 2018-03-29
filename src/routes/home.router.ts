@@ -5,7 +5,7 @@ const router = Router();
 /** write your router configuration here */
 
 router.get("/", (req: Request, res: Response) =>{
-    res.send("Hello");
+    res.send("Hello People");
 });
 
 /** exports the router */
