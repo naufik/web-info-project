@@ -30,8 +30,6 @@ export class SoonComponent implements OnInit {
 
   dots = "";
 
-	displayMembers = false;
-
 	taglineIndex = 0;
 	// taglines: string[] = [
 	//   "Revolutionizing the grocery shopping experience.",
@@ -63,7 +61,7 @@ export class SoonComponent implements OnInit {
     "Standing in a line in STOP1",
     "Trying to think of a good commit message",
     "Thinking of a good Kahoot display name",
-    "Acummulating bonus points",
+    "Accumulating bonus points",
     "Reorganizing the fridge",
     "Extending 15-minute interviews to 1 hour",
     "Attending tutorials",
@@ -84,7 +82,10 @@ export class SoonComponent implements OnInit {
     "Trying to escape callback hell",
     "Learning JavaScript from W3Schools",
     "Submitting deliverables",
-    "Resolving merge conflicts in package-lock.json"
+    "Resolving merge conflicts in package-lock.json",
+    "We should be doing other assignments now",
+    "Is your refrigerator running?",
+    "Be right back, getting life unit"
   ]
 
 	color = "blue";
@@ -123,5 +124,11 @@ export class SoonComponent implements OnInit {
       r = rand();
     }
     this.taglineIndex = r;
+  }
+
+  collapsearr = [true, true];
+
+  collapse(menu: number){
+    this.collapsearr[menu] = !this.collapsearr[menu];
   }
 }
