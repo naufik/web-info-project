@@ -113,7 +113,7 @@ module.exports = ".page-header {\r\n  text-align: center;\r\n  font-family: 'Bas
 /***/ "./src/app/soon/soon.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container-fluid top-level\">\n  <div class=\"row\">\n    <div class=\"col-3\">\n\n    </div>\n    <div class=\"col-6 page-content\">\n      <div class=\"page-header\">\n        <h1>DueDate</h1>\n        <div class=\"page-tagline\">\n          <div>{{ taglines[taglineIndex] }}{{ dots }}</div>\n        </div>\n      </div>\n      <div class=\"row\">\n      </div>\n      <div class=\"row\">\n        <div class=\"col-md-12\">\n          <div class=\"section\">\n            <div class=\"section-header\" (click)=\"randomize()\"><i class=\"fas fa-briefcase section-icon\"></i>What's Going On?</div>\n            <p>We're trying to revolutionize the way you do your groceries, and\n            reduce problematic food waste. </p>\n            <p>Think about a world where there are less food wasted, and more food eaten. Think about a world\n            where you can save money because you remember to cook everything on your fridge.</p>\n          </div>\n        </div>\n      </div>\n      <div class=\"row\">\n        <div class=\"col-md-12\">\n          <div class=\"section\">\n            <div class=\"section-header\"><i class=\"fas fa-users section-icon\"></i>The Team</div>\n            <p>Brought to you with <i class=\"fas fa-heartbeat\"></i> by team Titanic Overflow</p>\n            <ul *ngFor=\"let m of members\">\n              <li><a [href]=\"getGithubLink(m.github)\">{{ m.name }}</a></li>\n            </ul>\n          </div>\n        </div>\n      </div>\n    </div>\n    <div class=\"col-3\">\n\n    </div>\n  </div>\n</div>\n"
+module.exports = "<div class=\"container-fluid top-level\">\n  <div class=\"row\">\n    <div class=\"col-3\">\n\n    </div>\n    <div class=\"col-6 page-content\">\n      <div class=\"page-header\">\n        <h1>DueDate</h1>\n        <div class=\"page-tagline\">\n          <div>{{ taglines[taglineIndex] }}{{ dots }}</div>\n        </div>\n      </div>\n      <div class=\"row\">\n      </div>\n      <div class=\"row\">\n        <div class=\"col-md-12\">\n          <div class=\"section\">\n            <div class=\"section-header\" (click)=\"collapse(0)\"><i class=\"fas fa-briefcase section-icon\"></i>What's Going On?</div>\n              <div *ngIf=\"!collapsearr[0]\">\n                <p>We're trying to revolutionize the way you do your groceries, and\n                 reduce problematic food waste. </p>\n                <p>Think about a world where there are less food wasted, and more food eaten. Think about a world\n                where you can save money because you remember to cook everything on your fridge.</p>\n              </div>\n          </div>\n        </div>\n      </div>\n      <div class=\"row\">\n        <div class=\"col-md-12\">\n          <div class=\"section\">\n            <div class=\"section-header\" (click)=\"collapse(1)\"><i class=\"fas fa-users section-icon\"></i>The Team</div>\n              <div *ngIf=\"!collapsearr[1]\">\n                <p>Brought to you with <i class=\"fas fa-heartbeat\"></i> by team Titanic Overflow</p>\n                <ul *ngFor=\"let m of members\">\n                  <li><a [href]=\"getGithubLink(m.github)\">{{ m.name }}</a></li>\n                </ul>\n              </div>\n          </div>\n        </div>\n      </div>\n    </div>\n    <div class=\"col-3\">\n\n    </div>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -136,7 +136,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var SoonComponent = /** @class */ (function () {
     function SoonComponent() {
         this.dots = "";
-        this.displayMembers = false;
         this.taglineIndex = 0;
         // taglines: string[] = [
         //   "Revolutionizing the grocery shopping experience.",
@@ -167,7 +166,7 @@ var SoonComponent = /** @class */ (function () {
             "Standing in a line in STOP1",
             "Trying to think of a good commit message",
             "Thinking of a good Kahoot display name",
-            "Acummulating bonus points",
+            "Accumulating bonus points",
             "Reorganizing the fridge",
             "Extending 15-minute interviews to 1 hour",
             "Attending tutorials",
@@ -188,7 +187,10 @@ var SoonComponent = /** @class */ (function () {
             "Trying to escape callback hell",
             "Learning JavaScript from W3Schools",
             "Submitting deliverables",
-            "Resolving merge conflicts in package-lock.json"
+            "Resolving merge conflicts in package-lock.json",
+            "We should be doing other assignments now",
+            "Is your refrigerator running?",
+            "Be right back, getting life unit"
         ];
         this.color = "blue";
         /**
@@ -208,6 +210,7 @@ var SoonComponent = /** @class */ (function () {
                 github: "maniarora"
             }
         ];
+        this.collapsearr = [true, true];
     }
     SoonComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -239,6 +242,9 @@ var SoonComponent = /** @class */ (function () {
             r = rand();
         }
         this.taglineIndex = r;
+    };
+    SoonComponent.prototype.collapse = function (menu) {
+        this.collapsearr[menu] = !this.collapsearr[menu];
     };
     SoonComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({

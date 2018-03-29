@@ -81,7 +81,7 @@ module.exports = "/*!\n * Bootstrap v4.0.0 (https://getbootstrap.com)\n * Copyri
 /***/ "./node_modules/raw-loader/index.js!./node_modules/postcss-loader/lib/index.js??embedded!./src/styles.css":
 /***/ (function(module, exports) {
 
-module.exports = "\r\n@import url(\"https://fonts.googleapis.com/css?family=Merriweather:300\");\r\n@import url('https://fonts.googleapis.com/css?family=Basic');\r\n/* You can add global styles to this file, and also import other style files */\r\nbody {\r\n  background: url(\"/assets/img1.jpg\");\r\n  background-size: cover;\r\n  background-position: center;\r\n}\r\n"
+module.exports = "\r\n@import url(\"https://fonts.googleapis.com/css?family=Merriweather:300\");\r\n@import url('https://fonts.googleapis.com/css?family=Basic');\r\n/* You can add global styles to this file, and also import other style files */\r\nbody {\r\n  background: url('img1.bf0d8bf95fb265a25506.jpg') no-repeat center center fixed;\r\n  background-size: cover;\r\n}\r\n"
 
 /***/ }),
 
