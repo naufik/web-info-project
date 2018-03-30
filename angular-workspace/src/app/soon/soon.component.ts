@@ -1,7 +1,15 @@
 import { Component, OnInit } from '@angular/core';
+import {
+  trigger,
+  state,
+  style,
+  animate,
+  transition
+} from '@angular/animations';
+
 
 interface UserData {
-	name: string,
+	name: string
 	github?: string
 }
 
@@ -10,6 +18,8 @@ interface UserData {
 	templateUrl: './soon.component.html',
 	styleUrls: ['./soon.component.css']
 })
+
+
 export class SoonComponent implements OnInit {
 
   ngOnInit(): void {
