@@ -10,7 +10,9 @@ import { LandingComponent } from './landing/landing.component';
 import { HeaderComponent } from './header/header.component';
 
 const routes: Routes = [
-  { path: 'soon', component: SoonComponent }
+  { path: '', component: SoonComponent }
+  { path: 'home', component: LandingComponent }
+}
 ]
 
 @NgModule({
