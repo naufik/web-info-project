@@ -13,10 +13,9 @@ import { LoginComponent } from './login/login.component';
   declarations: [
     AppComponent,
     SoonComponent,
-    LoginComponent,
-    SoonComponent,
     LandingComponent,
-    HeaderComponent
+    HeaderComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule
