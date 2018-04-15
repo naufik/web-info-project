@@ -4,12 +4,16 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { SoonComponent } from './soon/soon.component';
+import { LandingComponent } from './landing/landing.component';
+import { HeaderComponent } from './header/header.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    SoonComponent
+    SoonComponent,
+    LandingComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule
