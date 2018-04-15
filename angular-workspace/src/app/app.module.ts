@@ -13,6 +13,9 @@ import { LoginComponent } from './login/login.component';
   declarations: [
     AppComponent,
     SoonComponent,
+<<<<<<< Temporary merge branch 1
+    LoginComponent
+=======
     LandingComponent,
     HeaderComponent,
     LoginComponent
