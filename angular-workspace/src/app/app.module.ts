@@ -13,7 +13,8 @@ import { MainpageComponent } from './mainpage/mainpage.component';
 
 const routes: Routes = [
   { path: '', component: SoonComponent },
-  { path: 'home', component: LandingComponent }
+  { path: 'home', component: LandingComponent },
+  { path: 'main', component: MainpageComponent }
 ]
 
 @NgModule({
