@@ -4,6 +4,8 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { SoonComponent } from './soon/soon.component';
+import { LandingComponent } from './landing/landing.component';
+import { HeaderComponent } from './header/header.component';
 import { LoginComponent } from './login/login.component';
 
 
@@ -12,6 +14,9 @@ import { LoginComponent } from './login/login.component';
     AppComponent,
     SoonComponent,
     LoginComponent
+    SoonComponent,
+    LandingComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule
