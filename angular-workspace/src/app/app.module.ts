@@ -12,7 +12,6 @@ import { HeaderComponent } from './header/header.component';
 const routes: Routes = [
   { path: '', component: SoonComponent },
   { path: 'home', component: LandingComponent }
-}
 ]
 
 @NgModule({
