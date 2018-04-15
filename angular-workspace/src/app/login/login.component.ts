@@ -10,8 +10,12 @@ export class LoginComponent implements OnInit {
   @Output()
   submit: EventEmitter<any>;
 
+  @Output()
+  signup: EventEmitter<any>;
+
   constructor() {
     this.submit = new EventEmitter<any>();
+    this.signup = new EventEmitter<any>();
   }
 
   ngOnInit() {
@@ -19,6 +23,10 @@ export class LoginComponent implements OnInit {
 
   login(username: string) {
     this.submit.emit(username);
+  }
+
+  gosignup() {
+    this.signup.emit(null);
   }
 
 }
