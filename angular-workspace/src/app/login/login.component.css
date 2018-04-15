@@ -1,0 +1,13 @@
+.body{
+  display: grid;
+  grid-template-columns: 29% 42% 29%;
+  grid-template-rows: 2fr% 8fr%;
+}
+
+.login{
+  background-color: #fbf8f4;
+  grid-column: 2/3;
+  grid-row: 2/3;
+  border: 1px solid ;
+  padding: 10%;
+}
