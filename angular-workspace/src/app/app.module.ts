@@ -1,3 +1,4 @@
+import {RouterModule, Routes} from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -8,6 +9,9 @@ import { LoginComponent } from './login/login.component';
 import { LandingComponent } from './landing/landing.component';
 import { HeaderComponent } from './header/header.component';
 
+const routes: Routes = [
+  { path: 'soon', component: SoonComponent }
+]
 
 @NgModule({
   declarations: [
@@ -18,7 +22,8 @@ import { HeaderComponent } from './header/header.component';
     HeaderComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    RouterModule.forRoot(routes)
   ],
   providers: [],
   bootstrap: [AppComponent]
