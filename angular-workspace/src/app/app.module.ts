@@ -5,9 +5,9 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { SoonComponent } from './soon/soon.component';
-import { LoginComponent } from './login/login.component';
 import { LandingComponent } from './landing/landing.component';
 import { HeaderComponent } from './header/header.component';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   { path: '', component: SoonComponent },
@@ -18,9 +18,9 @@ const routes: Routes = [
   declarations: [
     AppComponent,
     SoonComponent,
-    LoginComponent,
     LandingComponent,
-    HeaderComponent
+    HeaderComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

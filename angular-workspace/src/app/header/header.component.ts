@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'main-header',
@@ -7,9 +7,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  @Output()
+  switchTo: EventEmitter<string>;
+
+  constructor() {
+    this.switchTo = new EventEmitter<string>();
+  }
+
+  switchPage(content: string) {
+    this.switchTo.emit(content);
+  }
 
   ngOnInit() {
+    
   }
 
 }
