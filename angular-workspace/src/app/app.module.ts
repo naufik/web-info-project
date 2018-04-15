@@ -8,6 +8,7 @@ import { SoonComponent } from './soon/soon.component';
 import { LandingComponent } from './landing/landing.component';
 import { HeaderComponent } from './header/header.component';
 import { LoginComponent } from './login/login.component';
+import { ListitemComponent } from './listitem/listitem.component';
 
 const routes: Routes = [
   { path: '', component: SoonComponent },
@@ -20,7 +21,8 @@ const routes: Routes = [
     SoonComponent,
     LandingComponent,
     HeaderComponent,
-    LoginComponent
+    LoginComponent,
+    ListitemComponent
   ],
   imports: [
     BrowserModule,
