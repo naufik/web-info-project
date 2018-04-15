@@ -9,10 +9,13 @@ import { LandingComponent } from './landing/landing.component';
 import { HeaderComponent } from './header/header.component';
 import { LoginComponent } from './login/login.component';
 import { FooditemComponent } from './fooditem/fooditem.component';
+import { LoggedHeaderComponent } from './logged-header/logged-header.component';
+import { MainpageComponent } from './mainpage/mainpage.component';
 
 const routes: Routes = [
   { path: '', component: SoonComponent },
-  { path: 'home', component: LandingComponent }
+  { path: 'home', component: LandingComponent },
+  { path: 'main', component: MainpageComponent }
 ]
 
 @NgModule({
@@ -22,7 +25,9 @@ const routes: Routes = [
     LandingComponent,
     HeaderComponent,
     LoginComponent,
-    FooditemComponent
+    FooditemComponent,
+    LoggedHeaderComponent,
+    MainpageComponent
   ],
   imports: [
     BrowserModule,
