@@ -22,7 +22,8 @@ const routes: Routes = [
   { path: 'main', component: MainpageComponent },
   { path: 'fridge', component: FridgeComponent},
   { path: 'settings', component: SettingsComponent},
-  { path: 'groceries', component: GroceryListComponent}
+  { path: 'groceries', component: GroceryListComponent},
+  { path: 'lists', component: AllListsComponent}
 ]
 
 @NgModule({
