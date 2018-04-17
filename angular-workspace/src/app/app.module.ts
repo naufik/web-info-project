@@ -17,6 +17,8 @@ import { GroceryListComponent } from './grocery-list/grocery-list.component';
 import { ItemListComponent } from './item-list/item-list.component';
 import { ListcontainerComponent } from './listcontainer/listcontainer.component';
 import { FridgeitemComponent } from './fridgeitem/fridgeitem.component';
+import { AllListsComponent } from './all-lists/all-lists.component';
+import { RecipeComponent } from './recipe/recipe.component';
 
 const routes: Routes = [
   { path: '', component: SoonComponent },
@@ -24,7 +26,8 @@ const routes: Routes = [
   { path: 'main', component: MainpageComponent },
   { path: 'fridge', component: FridgeComponent},
   { path: 'settings', component: SettingsComponent},
-  { path: 'groceries', component: GroceryListComponent}
+  { path: 'groceries', component: GroceryListComponent},
+  { path: 'lists', component: AllListsComponent}
 ]
 
 @NgModule({
@@ -43,7 +46,9 @@ const routes: Routes = [
     GroceryListComponent,
     ItemListComponent,
     ListcontainerComponent,
-    FridgeitemComponent
+    FridgeitemComponent,
+    AllListsComponent,
+    RecipeComponent
   ],
   
   imports: [
