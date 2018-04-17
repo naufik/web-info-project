@@ -1,0 +1,14 @@
+.main{
+  display: grid;
+  grid-template-columns: 29% 42% 29%;
+}
+
+.todd-header {
+  color: white;
+  background-color: green;
+  grid-column: 2/3;
+}
+
+.header-link {
+  cursor: pointer;
+}

@@ -1,0 +1,28 @@
+<div class="section-header" (click)="collapse(0)"><ul><li>Chicken</li></ul></div>
+<div class="main">
+  <div class="contents" *ngIf="!collapsearr[0]">
+    <form class="needs-validation" novalidate>
+      <div class="form-row">
+        <div class="col" >
+          <label for="DaysLeft" class="col-form-label-sm">Days Left</label>
+          <input class="form-control form-control-sm" id="DaysLeft" value="6" required>
+        </div>
+
+        <div class="col">
+          <label for="ExpiryDate" class="col-form-label-sm">Expiry Date</label>
+          <input class="form-control form-control-sm" id="ExpiryDate" value="09/09/09" required>
+        </div>
+
+        <div class="col">
+          <label for="AmountLeft" class="col-form-label-sm">Amount Left</label>
+          <input class="form-control form-control-sm" id="AmountLeft" value="2 Wings" required>
+        </div>
+      </div>
+      <br>
+      <select class="custom-select custom-select-sm">
+        <option selected>Food</option>
+        <option value="1">Drink</option>
+      </select>
+    </form>
+  </div>
+</div>
