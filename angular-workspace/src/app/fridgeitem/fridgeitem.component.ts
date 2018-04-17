@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FridgeitemComponent implements OnInit {
 
+
   constructor() {
     (function() {
     'use strict';
@@ -25,7 +26,6 @@ export class FridgeitemComponent implements OnInit {
       });
     }, false);
   })();
-  
   }
 
   ngOnInit() {
@@ -36,6 +36,4 @@ export class FridgeitemComponent implements OnInit {
   collapse(menu: number){
     this.collapsearr[menu] = !this.collapsearr[menu];
   }
-
-  
 }
