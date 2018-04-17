@@ -3,13 +3,29 @@
     <h2>Hello!</h2>
     <p>Sign back in into your account</p>
     <form>
+      <div class="form-group" *ngIf="signupmode">
+        <label for="exampleInputEmail1">First Name</label>
+        <input class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="" #firstnamebox>
+      </div>
+      <div class="form-group" *ngIf="signupmode">
+        <label for="exampleInputEmail1">Last Name</label>
+        <input class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="" #lastnamebox>
+      </div>
       <div class="form-group">
         <label for="exampleInputEmail1">Email address</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" #emailbox>
+        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="hello@example.com" #emailbox>
       </div>
       <div class="form-group">
         <label for="exampleInputPassword1">Password</label>
         <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" #passwdbox>
+      </div>
+      <div class="form-group" *ngIf="signupmode">
+        <label for="exampleInputPassword1">Confirm Password</label>
+        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" #confirmpasswd>
+      </div>
+      <div class="form-group" *ngIf="signupmode">
+        <label for="exampleInputPassword1">Enter Location</label>
+        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" #location>
       </div>
       <div class="buttons">
         <button (click)="goLogin(emailbox.value, passwdbox.value)" class="btn btn-primary loginbutton">Log-In</button>
