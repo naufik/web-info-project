@@ -7,18 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FridgeitemComponent implements OnInit {
 
-  constructor() { }
-
-  ngOnInit() {
-  }
-
-  collapsearr = [true];
-
-  collapse(menu: number){
-    this.collapsearr[menu] = !this.collapsearr[menu];
-  }
-
-  (function() {
+  constructor() {
+    (function() {
     'use strict';
     window.addEventListener('load', function() {
       // Fetch all the forms we want to apply custom Bootstrap validation styles to
@@ -35,4 +25,17 @@ export class FridgeitemComponent implements OnInit {
       });
     }, false);
   })();
+  
+  }
+
+  ngOnInit() {
+  }
+
+  collapsearr = [true];
+
+  collapse(menu: number){
+    this.collapsearr[menu] = !this.collapsearr[menu];
+  }
+
+  
 }
