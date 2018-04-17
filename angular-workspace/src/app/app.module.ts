@@ -12,6 +12,7 @@ import { LoggedHeaderComponent } from './logged-header/logged-header.component';
 import { MainpageComponent } from './mainpage/mainpage.component';
 import { ListitemComponent } from './listitem/listitem.component';
 import { SettingsComponent } from './settings/settings.component';
+import { FridgeComponent } from './fridge/fridge.component';
 
 const routes: Routes = [
   { path: '', component: SoonComponent },
@@ -29,7 +30,8 @@ const routes: Routes = [
     LoggedHeaderComponent,
     MainpageComponent,
     ListitemComponent,
-    SettingsComponent
+    SettingsComponent,
+    FridgeComponent
   ],
   imports: [
     BrowserModule,
