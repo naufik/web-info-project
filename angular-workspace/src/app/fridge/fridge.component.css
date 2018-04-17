@@ -6,6 +6,16 @@
 .tit{
   grid-column: 2/3;
   font-family: 'Libre Franklin', sans-serif;
+  display: grid;
+  grid-template-columns: 40% auto 40%;
+}
+
+.dropdown{
+  grid-column: 3/4;
+}
+
+.titlename{
+  grid-column: 1/2;
 }
 
 .section-icon{

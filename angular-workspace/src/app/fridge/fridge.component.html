@@ -2,9 +2,27 @@
   @import url('https://fonts.googleapis.com/css?family=Libre+Baskerville|Libre+Franklin');
 </style>
 
+<app-logged-header></app-logged-header>
+<br>
 <div class="main">
   <div class="tit">
-    WHAT'S ON MY FRIDGE  <i class="fas fa-edit section-icon"></i>
+    <div class="titlename">
+      WHAT'S ON MY FRIDGE  <i class="fas fa-edit section-icon"></i>
+    </div>
+    <div class="dropdown">
+      <button type="button" class="btn btn-danger">Action</button>
+      <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <span class="sr-only">Toggle Dropdown</span>
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+        <li><a href="#"></a></li>
+        <li><a href="#">Add Groceries</a></li>
+        <li><a href="#">Settings</a></li>
+        <li role="separator" class="divider"></li>
+        <li><a href="#">Separated link</a></li>
+      </ul>
+    </div>
+
     <hr>
   </div>
 </div>
