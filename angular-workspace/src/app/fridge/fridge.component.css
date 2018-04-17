@@ -5,7 +5,14 @@
 
 .tit{
   grid-column: 2/3;
+  grid-row: 1/2;
   font-family: 'Libre Franklin', sans-serif;
+  display: grid;
+  grid-template-columns: 40% 35% 14% 13%;
+}
+
+.titlename{
+  grid-column: 1/2;
 }
 
 .section-icon{
@@ -13,5 +20,16 @@
 }
 
 hr{
-  margin: 0px;
+  margin: 2px;
+  grid-column: 2/3;
+}
+
+.btn-group{
+  grid-column: 3/4;
+  font-family: 'Libre Franklin', sans-serif;
+}
+
+
+.btn-group2{
+  grid-column: 4/5;
 }
