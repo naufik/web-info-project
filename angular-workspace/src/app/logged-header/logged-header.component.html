@@ -8,7 +8,7 @@
         <!-- INTENTIONALLY EMPTY -->
       </div>
       <div class="col-lg-2 user">
-        <p>Welcome John Doe </p>
+        <p><i class="fas fa-user-circle usericon"></i>  Welcome John Doe </p>
       </div>
 
       <!--<p class="header-link" (click)="switchPage('team')">The Team</p>-->
@@ -17,12 +17,12 @@
           Options
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a class="dropdown-item" href="#">What's in my fridge?</a>
+          <a class="dropdown-item" [routerLink]="['/fridge']">What's in my fridge?</a>
           <a class="dropdown-item" href="#">Add Groceries</a>
-          <a class="dropdown-item" href="#">Settings</a>
+          <a class="dropdown-item" [routerLink]="['/settings']">Settings</a>
 
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Log Out</a>
+          <a class="dropdown-item" [routerLink]="['/home']">Log Out</a>
 
         </div>
       </div>
