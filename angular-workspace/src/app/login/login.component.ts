@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
 
   goLogin(email: string, password: string) {
     if (this.signupmode) {
-      this.signupmode = false
+      this.signupmode = false;
     } else {      
       this.login.emit({
         email: email,
