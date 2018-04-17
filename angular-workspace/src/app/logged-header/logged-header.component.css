@@ -9,6 +9,15 @@
   grid-column: 2/3;
 }
 
+.user{
+  margin-top: 10px;
+  font-size: 100%;
+}
+.dropdown{
+  margin-top: 5px;
+  background-color: green;
+}
+
 .header-link {
   cursor: pointer;
 }
