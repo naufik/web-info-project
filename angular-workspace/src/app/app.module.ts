@@ -2,17 +2,18 @@ import {RouterModule, Routes} from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-
 import { AppComponent } from './app.component';
 import { SoonComponent } from './soon/soon.component';
 import { LandingComponent } from './landing/landing.component';
 import { HeaderComponent } from './header/header.component';
 import { LoginComponent } from './login/login.component';
+import { FooditemComponent } from './fooditem/fooditem.component';
 import { LoggedHeaderComponent } from './logged-header/logged-header.component';
 import { MainpageComponent } from './mainpage/mainpage.component';
 import { ListitemComponent } from './listitem/listitem.component';
 import { SettingsComponent } from './settings/settings.component';
 import { FridgeComponent } from './fridge/fridge.component';
+import { ItemListComponent } from './item-list/item-list.component';
 
 const routes: Routes = [
   { path: '', component: SoonComponent },
@@ -29,11 +30,13 @@ const routes: Routes = [
     LandingComponent,
     HeaderComponent,
     LoginComponent,
+    FooditemComponent,
     LoggedHeaderComponent,
     MainpageComponent,
     ListitemComponent,
     SettingsComponent,
-    FridgeComponent
+    FridgeComponent,
+    ItemListComponent
   ],
   imports: [
     BrowserModule,
