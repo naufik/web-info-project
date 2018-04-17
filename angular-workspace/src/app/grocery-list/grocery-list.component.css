@@ -5,7 +5,14 @@
 .add{
   text-align: center;
 }
+.usuals{
+  text-align: center;
+}
 
 .addhead{
   margin-top: 2%;
+}
+
+.checks{
+  align-self: right;
 }
