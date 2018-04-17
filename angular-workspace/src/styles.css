@@ -3,6 +3,7 @@
 @import url('https://fonts.googleapis.com/css?family=Basic');
 
 body {
-  background: url("assets/img1.jpg") no-repeat center center fixed;
+  /*background: url("assets/img1.jpg") no-repeat center center fixed;*/
   background-size: cover;
+  background-color: #fbf8f4;
 }

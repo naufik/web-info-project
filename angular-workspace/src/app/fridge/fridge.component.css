@@ -1,0 +1,8 @@
+.main{
+  display: grid;
+  grid-template-columns: 29% 42% 29%;
+}
+
+h1{
+  grid-column: 2/3;
+}
