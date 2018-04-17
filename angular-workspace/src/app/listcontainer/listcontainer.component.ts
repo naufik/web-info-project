@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input} from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-listcontainer',
@@ -7,8 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListcontainerComponent implements OnInit {
 
-  title = ""
+  private router: Router;
 
+  @Input()
+  title = "";
+
+  @Input()
+  destination = "";
+  
   lists = [
     "My Groceries",
     "Hangover Cure",
@@ -16,9 +23,14 @@ export class ListcontainerComponent implements OnInit {
     "Wine"
   ]
 
-  constructor() { }
+  constructor(router: Router) {
+    this.router = router;
+  }
 
   ngOnInit() {
   }
 
+  navigate() {
+    this.router.navigate(["/" + this.destination]);
+  }
 }
