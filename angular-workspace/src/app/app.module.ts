@@ -14,6 +14,7 @@ import { ListitemComponent } from './listitem/listitem.component';
 import { SettingsComponent } from './settings/settings.component';
 import { FridgeComponent } from './fridge/fridge.component';
 import { GroceryListComponent } from './grocery-list/grocery-list.component';
+import { AllListsComponent } from './all-lists/all-lists.component';
 
 const routes: Routes = [
   { path: '', component: SoonComponent },
@@ -36,7 +37,8 @@ const routes: Routes = [
     ListitemComponent,
     SettingsComponent,
     FridgeComponent,
-    GroceryListComponent
+    GroceryListComponent,
+    AllListsComponent
   ],
   imports: [
     BrowserModule,
