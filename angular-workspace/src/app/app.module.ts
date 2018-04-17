@@ -10,14 +10,15 @@ import { HeaderComponent } from './header/header.component';
 import { LoginComponent } from './login/login.component';
 import { LoggedHeaderComponent } from './logged-header/logged-header.component';
 import { MainpageComponent } from './mainpage/mainpage.component';
-import { FridgeComponent } from './fridge/fridge.component';
 import { ListitemComponent } from './listitem/listitem.component';
 import { SettingsComponent } from './settings/settings.component';
+import { FridgeComponent } from './fridge/fridge.component';
 
 const routes: Routes = [
   { path: '', component: SoonComponent },
   { path: 'home', component: LandingComponent },
-  { path: 'main', component: MainpageComponent }
+  { path: 'main', component: MainpageComponent },
+  { path: 'main/fridge', component: FridgeComponent}
 ]
 
 @NgModule({
@@ -29,9 +30,9 @@ const routes: Routes = [
     LoginComponent,
     LoggedHeaderComponent,
     MainpageComponent,
-    FridgeComponent,
     ListitemComponent,
-    SettingsComponent
+    SettingsComponent,
+    FridgeComponent
   ],
   imports: [
     BrowserModule,
