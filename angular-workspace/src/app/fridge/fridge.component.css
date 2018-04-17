@@ -1,0 +1,17 @@
+.main{
+  display: grid;
+  grid-template-columns: 29% 42% 29%;
+}
+
+.tit{
+  grid-column: 2/3;
+  font-family: 'Libre Franklin', sans-serif;
+}
+
+.section-icon{
+  margin-bottom: 1px;
+}
+
+hr{
+  margin: 0px;
+}
