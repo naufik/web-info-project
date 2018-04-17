@@ -23,7 +23,7 @@ export class FooditemComponent implements OnInit {
   click: EventEmitter<FoodItem>;
 
   constructor() {
-    this.click = new EventEmitter<FoodItem>;
+    this.click = new EventEmitter<FoodItem>();
   }
 
   onClick() {

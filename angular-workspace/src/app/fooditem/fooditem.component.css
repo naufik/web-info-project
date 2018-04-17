@@ -1,3 +1,14 @@
 .fooditem {
   display: block;
+  float: left;
+  background-color: white;
+  margin: 2px;
+}
+
+.todd-item-img {
+  
+}
+
+.todd-item-caption > p {
+  float: none;
 }
