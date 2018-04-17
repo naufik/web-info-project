@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-listitem',
@@ -6,6 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./listitem.component.css']
 })
 export class ListitemComponent implements OnInit {
+
+  @Input()
+  listname: string;
 
   constructor() { }
 

@@ -1,0 +1,22 @@
+<style>
+  @import url('https://fonts.googleapis.com/css?family=Libre+Baskerville|Libre+Franklin');
+</style>
+
+<div class="main">
+  <div class="list">
+    <div class="listnames">
+      <div class="listheader">
+        <a href="">{{ title }}</a>
+      </div>
+      <div class="viewall">
+        <div id="child"><a href="">VIEW ALL</a></div>
+      </div>
+    </div>
+    <hr>
+    <div class="listitems">
+      <div *ngFor="let item of lists">
+        <app-listitem [listname]="item"></app-listitem>
+      </div>
+    </div>
+  </div>
+</div>
