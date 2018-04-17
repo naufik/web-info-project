@@ -11,6 +11,16 @@
   grid-template-columns: 40% 35% 14% 13%;
 }
 
+app-fridgeitem{
+  grid-column: 2/3;
+}
+
+.main2{
+  display: grid;
+  grid-template-columns: 29% 42% 29%;
+  margin: 0px;
+}
+
 .titlename{
   grid-column: 1/2;
 }

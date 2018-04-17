@@ -1,0 +1,23 @@
+li:hover {
+  text-decoration: none;
+  border-bottom: 3px solid #00448f;
+}
+
+.section-header{
+  margin: 0px;
+}
+
+ul{
+  padding-left:20px;
+}
+
+.main{
+  margin: 0px;
+  display: grid;
+  grid-template-columns: 4% auto;
+}
+
+
+.contents{
+  grid-column: 2/3;
+}
