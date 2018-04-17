@@ -13,13 +13,15 @@ import { MainpageComponent } from './mainpage/mainpage.component';
 import { ListitemComponent } from './listitem/listitem.component';
 import { SettingsComponent } from './settings/settings.component';
 import { FridgeComponent } from './fridge/fridge.component';
+import { GroceryListComponent } from './grocery-list/grocery-list.component';
 
 const routes: Routes = [
   { path: '', component: SoonComponent },
   { path: 'home', component: LandingComponent },
   { path: 'main', component: MainpageComponent },
   { path: 'fridge', component: FridgeComponent},
-  { path: 'settings', component: SettingsComponent}
+  { path: 'settings', component: SettingsComponent},
+  { path: 'groceries', component: GroceryListComponent}
 ]
 
 @NgModule({
@@ -33,7 +35,8 @@ const routes: Routes = [
     MainpageComponent,
     ListitemComponent,
     SettingsComponent,
-    FridgeComponent
+    FridgeComponent,
+    GroceryListComponent
   ],
   imports: [
     BrowserModule,
