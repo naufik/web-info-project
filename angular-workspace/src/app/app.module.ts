@@ -10,6 +10,7 @@ import { HeaderComponent } from './header/header.component';
 import { LoginComponent } from './login/login.component';
 import { LoggedHeaderComponent } from './logged-header/logged-header.component';
 import { MainpageComponent } from './mainpage/mainpage.component';
+import { ListitemComponent } from './listitem/listitem.component';
 import { SettingsComponent } from './settings/settings.component';
 
 const routes: Routes = [
@@ -27,6 +28,7 @@ const routes: Routes = [
     LoginComponent,
     LoggedHeaderComponent,
     MainpageComponent,
+    ListitemComponent,
     SettingsComponent
   ],
   imports: [
