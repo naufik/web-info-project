@@ -21,10 +21,12 @@
 }
 
 .listheader{
+  margin-top: 5px;
   grid-column: 1/2;
 }
 
 .viewall{
+  margin-top:11px;
   grid-column: 3/4;
   text-align: right;
   font-size: 10px;
