@@ -10,6 +10,7 @@ import { HeaderComponent } from './header/header.component';
 import { LoginComponent } from './login/login.component';
 import { LoggedHeaderComponent } from './logged-header/logged-header.component';
 import { MainpageComponent } from './mainpage/mainpage.component';
+import { FridgeComponent } from './fridge/fridge.component';
 
 const routes: Routes = [
   { path: '', component: SoonComponent },
@@ -25,7 +26,8 @@ const routes: Routes = [
     HeaderComponent,
     LoginComponent,
     LoggedHeaderComponent,
-    MainpageComponent
+    MainpageComponent,
+    FridgeComponent
   ],
   imports: [
     BrowserModule,
