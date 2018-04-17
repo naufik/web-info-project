@@ -11,3 +11,16 @@
   border: 1px solid;
   padding: 10%;
 }
+
+.buttons{
+  display: grid;
+  grid-template-columns: 25% 50% 25%;
+}
+
+.loginbutton{
+  grid-column: 0/1;
+}
+
+.signupbutton{
+  grid-column: 3/4;
+}
