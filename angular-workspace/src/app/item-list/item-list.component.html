@@ -1,0 +1,10 @@
+<div class="todd-list">
+  <div class="list-header">
+    <h2>Fridge</h2>
+  </div>
+  <div class="list-contents">
+    <div *ngFor="let fooditem of foodlist">
+      <food-item [height]="240" [width]="240" [food]="fooditem" ></food-item>
+    </div>
+  </div>
+</div>
