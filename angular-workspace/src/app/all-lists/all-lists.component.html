@@ -7,45 +7,40 @@
 <div class="main">
   <div class="tit">
     <div class="titlename">
-      WHAT'S ON MY FRIDGE  <i class="fas fa-edit section-icon"></i>
+      MY LISTS  <i class="fas fa-edit section-icon"></i>
     </div>
-  </div>
+    <div class="btn-group">
+      Sorting
+      <button type="button" class="btn btn-sm btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <span class="sr-only">Toggle Dropdown</span>
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+        <h6 class="dropdown-header">When Created</h6>
+        <a class="dropdown-item" href="#">Newest First</a>
+        <a class="dropdown-item" href="#">Oldest First</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="#">Alphabetic</a>
+      </ul>
+    </div>
 
-  <div class="btn-group">
-    Sorting
-    <button type="button" class="btn btn-sm btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      <span class="sr-only">Toggle Dropdown</span>
-    </button>
-    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-      <h6 class="dropdown-header">When Added</h6>
-      <a class="dropdown-item" href="#">Newest First</a>
-      <a class="dropdown-item" href="#">Oldest First</a>
-      <div class="dropdown-divider"></div>
-      <h6 class="dropdown-header">Expiry</h6>
-      <a class="dropdown-item" href="#">Ascending</a>
-      <a class="dropdown-item" href="#">Descending</a>
-      <div class="dropdown-divider"></div>
-      <a class="dropdown-item" href="#">Alphabetic</a>
-    </ul>
-  </div>
-
-  <div class="btn-group2">
-    Show
-    <button type="button" class="btn btn-sm btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      <span class="sr-only">Toggle Dropdown</span>
-    </button>
-    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-      <h6 class="dropdown-header">Expired In</h6>
-      <a class="dropdown-item" href="#">Day</a>
-      <a class="dropdown-item" href="#">Week</a>
-      <div class="dropdown-divider"></div>
-      <a class="dropdown-item" href="#">Food</a>
-      <a class="dropdown-item" href="#">Drink</a>
-    </ul>
+    <div class="btn-group2">
+      Show
+      <button type="button" class="btn btn-sm btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <span class="sr-only">Toggle Dropdown</span>
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+        <a class="dropdown-item" href="#">My Groceries</a>
+        <a class="dropdown-item" href="#">Recipes</a>
+        <a class="dropdown-item" href="#">Lists</a>
+      </ul>
+    </div>
   </div>
 </div>
 
-
 <div class="main">
   <hr>
+</div>
+
+<div class="main2">
+  <app-recipe></app-recipe>
 </div>

@@ -15,6 +15,7 @@ import { SettingsComponent } from './settings/settings.component';
 import { FridgeComponent } from './fridge/fridge.component';
 import { GroceryListComponent } from './grocery-list/grocery-list.component';
 import { AllListsComponent } from './all-lists/all-lists.component';
+import { RecipeComponent } from './recipe/recipe.component';
 
 const routes: Routes = [
   { path: '', component: SoonComponent },
@@ -39,7 +40,8 @@ const routes: Routes = [
     SettingsComponent,
     FridgeComponent,
     GroceryListComponent,
-    AllListsComponent
+    AllListsComponent,
+    RecipeComponent
   ],
   imports: [
     BrowserModule,
