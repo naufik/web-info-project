@@ -1,0 +1,43 @@
+.main{
+  display: grid;
+  grid-template-columns: 29% 42% 29%;
+}
+
+.list{
+  grid-column: 2/3;
+  background-color: #fbf8f4;
+  padding: 10px;
+}
+
+.listnames{
+  display: grid;
+  grid-template-columns: 50% 32% 18%;
+  /*font-family: 'Work Sans', sans-serif;*/
+  font-family: 'Libre Franklin', sans-serif;
+}
+
+.addNewItem{
+  margin-top:11px;
+  grid-column: 2/3;
+  text-align: right;
+  font-size: 10px;
+  margin-right: 0px;
+  vertical-align: text-bottom;
+}
+
+.addToGroceries{
+  margin-top:11px;
+  grid-column: 3/4;
+  text-align: right;
+  font-size: 10px;
+  vertical-align: text-bottom;
+}
+
+.listheader{
+  margin-top: 5px;
+  grid-column: 1/2;
+}
+
+a{
+  color: #2e3038;
+}
