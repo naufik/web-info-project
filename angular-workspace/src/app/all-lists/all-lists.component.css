@@ -3,4 +3,11 @@
   grid-template-columns: 29% 42% 29%;
 }
 
+.tit{
+  grid-column: 2/3;
+  grid-row: 1/2;
+  font-family: 'Libre Franklin', sans-serif;
+  display: grid;
+  grid-template-columns: 40% 35% 14% 13%;
+}
 
