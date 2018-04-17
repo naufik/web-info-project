@@ -18,7 +18,8 @@ const routes: Routes = [
   { path: '', component: SoonComponent },
   { path: 'home', component: LandingComponent },
   { path: 'main', component: MainpageComponent },
-  { path: 'fridge', component: FridgeComponent}
+  { path: 'fridge', component: FridgeComponent},
+  { path: 'settings', component: SettingsComponent}
 ]
 
 @NgModule({
