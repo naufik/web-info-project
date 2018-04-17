@@ -13,6 +13,7 @@ import { MainpageComponent } from './mainpage/mainpage.component';
 import { ListitemComponent } from './listitem/listitem.component';
 import { SettingsComponent } from './settings/settings.component';
 import { FridgeComponent } from './fridge/fridge.component';
+import { FridgeitemComponent } from './fridgeitem/fridgeitem.component';
 
 const routes: Routes = [
   { path: '', component: SoonComponent },
@@ -33,7 +34,8 @@ const routes: Routes = [
     MainpageComponent,
     ListitemComponent,
     SettingsComponent,
-    FridgeComponent
+    FridgeComponent,
+    FridgeitemComponent
   ],
   imports: [
     BrowserModule,
