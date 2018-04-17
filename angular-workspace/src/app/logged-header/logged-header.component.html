@@ -8,25 +8,24 @@
         <!-- INTENTIONALLY EMPTY -->
       </div>
       <div class="col-lg-2 user">
-        <p>Welcome John Doe </p>
+        <p><i class="fas fa-user-circle usericon"></i>  Welcome John Doe </p>
       </div>
 
       <!--<p class="header-link" (click)="switchPage('team')">The Team</p>-->
       <div class="col-lg-2 dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Options
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" [routerLink]="['/fridge']">What's in my fridge?</a>
+          <a class="dropdown-item" href="#">Add Groceries</a>
+          <a class="dropdown-item" [routerLink]="['/settings']">Settings</a>
 
-          <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-            Dropdown
-            <span class="caret"></span>
-          </button>
-          <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-            <li><a href="#">What's in my fridge?</a></li>
-            <li><a href="#">Add Groceries</a></li>
-            <li><a href="#">Settings</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-          </ul>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" [routerLink]="['/home']">Log Out</a>
+
+        </div>
       </div>
-
 
 
       </div>

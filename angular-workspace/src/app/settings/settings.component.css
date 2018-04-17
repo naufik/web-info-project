@@ -1,0 +1,14 @@
+.set-head{
+  margin-top: 1%;
+
+  display: grid;
+  grid-template-columns: 29% 42% 29%;
+}
+.sett{
+  text-align: center;
+}
+
+.box{
+  background-color: #fbf8f4;
+  grid-column: 2/3;
+}

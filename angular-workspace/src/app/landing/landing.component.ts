@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, RouterModule, ActivatedRoute } from '@angular/router'
 
 @Component({
   selector: 'app-landing',
@@ -7,9 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LandingComponent implements OnInit {
 
-  constructor() { }
-  aa = "farhan";
+  private router: Router;
+  private route: ActivatedRoute;
+
+  constructor(router: Router, route: ActivatedRoute) {
+    this.router = router;
+    this.route = route;
+    this.testvar = "AAAA";
+  }
+  testvar: string;
   ngOnInit() {
+
+  }
+
+  navigateLogin() {
+    this.testvar += "A";
+    this.router.navigate(['/main']);
   }
 
 }
