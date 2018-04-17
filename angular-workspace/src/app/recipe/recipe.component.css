@@ -3,6 +3,12 @@
   grid-template-columns: 20% auto;
 }
 
+.module{
+  font-size: 1.6em;
+  margin-top: 10px;
+  font-family: 'Libre Franklin', sans-serif;
+}
+
 img{
   height: 150px;
   max-width: 100%;
