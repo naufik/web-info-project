@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Input, Component, OnInit } from '@angular/core';
+import { FridgeFood } from '../dataretriever.service';
 
 @Component({
   selector: 'app-fridgeitem',
@@ -7,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FridgeitemComponent implements OnInit {
 
+  @Input()
+  itemsrc: FridgeFood;
 
   constructor() {
     (function() {
@@ -33,7 +36,11 @@ export class FridgeitemComponent implements OnInit {
 
   collapsed = true;
 
-  collapseItem(){
+  collapseItem() {
     this.collapsed = !this.collapsed;
+  }
+
+  getDisplayQty() {
+    return this.itemsrc.qty.toString() + " " + this.itemsrc.unit;
   }
 }
