@@ -31,7 +31,7 @@ export class LandingComponent implements OnInit {
     this.router.navigate(['/main']);
   }
 
-  collapsearr = [true, true];
+  collapsearr = [false, false];
 
   collapse(menu: number){
     this.collapsearr[menu] = !this.collapsearr[menu];
