@@ -3,8 +3,11 @@
 </style>
 
 <div class="main">
-  <a href="">
+  <a [routerLink]="['/singlelist']">
     <img class="img" src="assets/list.jpg">
   </a>
-  <h1><a href="">{{ listdata.name }}</a></h1>
+  <div class="caption">
+    <h1><a [routerLink]="['/singlelist']">{{ data.name }}</a></h1>
+    <p>{{ getDisplayedContents() }}</p>
+  </div>
 </div>

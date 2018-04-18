@@ -50,7 +50,6 @@
   </div>
 </div>
 
-<div class="main">
-
-  <app-recipe></app-recipe>
+<div class="main" *ngFor="let recipe of allLists">
+  <app-recipe [data]="recipe"></app-recipe>
 </div>
