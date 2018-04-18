@@ -21,7 +21,16 @@ export class AllListsComponent implements OnInit {
     this.allLists = this.service.getLists();
   }
 
-  addToLists() {
-    
+  refresh() {
+    this.allLists = this.service.getLists(); 
+  }
+
+  addToLists(listName: string) {
+    this.service.addNewList({
+      name: listName,
+      url: listName.toLowerCase(),
+      contents: []
+    });
+    this.refresh();
   }
 }
