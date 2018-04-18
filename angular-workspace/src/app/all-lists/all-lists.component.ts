@@ -21,4 +21,7 @@ export class AllListsComponent implements OnInit {
     this.allLists = this.service.getLists();
   }
 
+  addToLists() {
+    
+  }
 }
