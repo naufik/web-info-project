@@ -1,10 +1,51 @@
 <main-header></main-header>
-<div class="row">
-  <div class="col-9 left-content">
-    <a>Revolutionizing {{ testvar }} grocery experience</a>
-   </div>
-  <div class="col-3 login-box">
-    <app-login (login)="navigateLogin()"></app-login>
+<!--<<<<<<< Updated upstream-->
+<!--<div class="row">-->
+  <!--<div class="col-2">-->
+  <!--</div>-->
+  <!--<div class="col-8">-->
+    <!--<div class="row">-->
+      <!--<div class="col-8 left-content">-->
+        <!--<h2>Experience new ways to shop groceries...</h2>-->
+        <!--<p>Insert food waste data here</p>-->
+        <!--<p>Lol don't you hate walls of text</p>-->
+       <!--</div>-->
+      <!--<div class="col-4 login-box">-->
+        <!--<app-login (login)="navigateLogin()"></app-login>-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
+  <!--<div class="col-2">-->
+<!--=======-->
+<div class="main">
+  <div class="info">
+    <div class="section">
+      <div class="section-header" (click)="collapse(0)"><i class="fas fa-briefcase section-icon"></i>About Us</div>
+      <div *ngIf="!collapsearr[0]">
+        <p>We're trying to revolutionize the way you do your groceries, and
+          reduce problematic food waste. </p>
+        <p>Think about a world where there are less food wasted, and more food eaten. Think about a world
+          where you can save money because you remember to cook everything on your fridge.</p>
+      </div>
+    </div>
+    <div class="section">
+      <div class="section-header" (click)="collapse(1)"><i class="fas fa-users section-icon"></i>The Team</div>
+      <div *ngIf="!collapsearr[1]">
+        <p>Brought to you with <i class="fas fa-heartbeat"></i> by team Titanic Overflow</p>
+        <ul *ngFor="let m of members">
+          <li><a [href]="getGithubLink(m.github)">{{ m.name }}</a></li>
+        </ul>
+      </div>
+    </div>
   </div>
-</div>
 
+
+  <div class="login">
+    <!--<a>Revolutionizing {{ testvar }} grocery experience</a>-->
+
+    <app-login (login)="navigateLogin()"></app-login>
+<!--&gt;>>>>>> Stashed changes-->
+  </div>
+
+
+</div>

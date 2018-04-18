@@ -3,8 +3,38 @@
   font-size: 100%;
   color: green;
 }
+
 .login-box{
   color: black;
   padding: 0px;
   background-color: rgba(255,255,255,0.5);
+}
+
+.main{
+  display: grid;
+  grid-template-columns: 5% 60% 5% 25% 5%;
+}
+
+.login{
+  grid-column: 4/5;
+  margin-top: 2px;
+}
+
+.info{
+  grid-column: 2/3;
+}
+
+.section-header {
+  font-size: 1.6em;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #cccccc;
+  font-family: 'Basic', sans-serif;
+  cursor: pointer;
+  text-align: center;
+}
+
+.section {
+  margin-top: 2px;
+  background-color: #fbf8f4;
+  border: 1px solid #2e3038;
 }

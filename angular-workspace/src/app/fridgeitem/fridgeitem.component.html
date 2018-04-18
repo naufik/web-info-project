@@ -1,6 +1,6 @@
-<div class="section-header" (click)="collapse(0)"><ul><li>Chicken</li></ul></div>
+<div class="section-header" (click)="collapseItem()"><ul><li>{{ itemsrc.name }}</li></ul></div>
 <div class="main">
-  <div class="contents" *ngIf="!collapsearr[0]">
+  <div class="contents" *ngIf="!collapsed">
     <form class="needs-validation" novalidate>
       <div class="form-row">
         <div class="col" >
@@ -15,7 +15,7 @@
 
         <div class="col">
           <label for="AmountLeft" class="col-form-label-sm">Amount Left</label>
-          <input class="form-control form-control-sm" id="AmountLeft" value="2 Wings" required>
+          <input class="form-control form-control-sm" id="AmountLeft" value="{{ getDisplayQty() }}" required>
         </div>
       </div>
       <br>
