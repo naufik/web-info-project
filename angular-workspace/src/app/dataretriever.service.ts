@@ -21,7 +21,7 @@ export interface FridgeFood {
 }
 
 @Injectable()
-export class DataretrieverService {
+export class DataRetrieverService {
 
   /** placeholder hardcoded data */
   public allLists: List[] = [
@@ -96,7 +96,7 @@ export class DataretrieverService {
     }
   ]
 
-  public onMyFridge: FridgeFood[] = [
+  public allFridge: FridgeFood[] = [
     {
       name: "Milk",
       qty: 3,
@@ -114,7 +114,7 @@ export class DataretrieverService {
       expiry: new Date(new Date().setDate((new Date().getDate()) + 7))
     },
     {
-      name: "eggs",
+      name: "Eggs",
       qty: 5,
       unit: "pc+s",
       expiry: new Date(new Date().setDate((new Date().getDate()) + 1))
@@ -129,7 +129,7 @@ export class DataretrieverService {
     return this.allLists;
   }
 
-  public allFridge() {
+  public getFridge() {
     return this.allFridge;
   }
 }

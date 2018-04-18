@@ -1,15 +1,15 @@
 import { TestBed, inject } from '@angular/core/testing';
 
-import { DataretrieverService } from './dataretriever.service';
+import { DataRetrieverService } from './dataretriever.service';
 
-describe('DataretrieverService', () => {
+describe('DataRetrieverService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [DataretrieverService]
+      providers: [DataRetrieverService]
     });
   });
 
-  it('should be created', inject([DataretrieverService], (service: DataretrieverService) => {
+  it('should be created', inject([DataRetrieverService], (service: DataRetrieverService) => {
     expect(service).toBeTruthy();
   }));
 });
