@@ -20,6 +20,7 @@ import { FridgeitemComponent } from './fridgeitem/fridgeitem.component';
 import { AllListsComponent } from './all-lists/all-lists.component';
 import { RecipeComponent } from './recipe/recipe.component';
 import { ListPageComponent } from './list-page/list-page.component';
+import { AddRecipesComponent } from './add-recipes/add-recipes.component';
 
 const routes: Routes = [
   { path: '', component: SoonComponent },
@@ -51,7 +52,8 @@ const routes: Routes = [
     FridgeitemComponent,
     AllListsComponent,
     RecipeComponent,
-    ListPageComponent
+    ListPageComponent,
+    AddRecipesComponent
   ],
   
   imports: [
