@@ -3,12 +3,42 @@
   font-size: 100%;
   color: green;
 }
+
 .login-box{
   color: black;
   padding: 0px;
   background-color: rgba(255,255,255,0.5);
 }
 
+<<<<<<< Updated upstream
 h2 {
   margin-top: 1em;
 }
+=======
+.main{
+  display: grid;
+  grid-template-columns: 70% 30%;
+}
+
+.login{
+  grid-column: 2/3;
+}
+
+.info{
+  grid-column: 1/2;
+}
+
+.section-header {
+
+  font-size: 1.6em;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #cccccc;
+  font-family: 'Basic', sans-serif;
+  cursor: pointer;
+  text-align: center;
+}
+
+.section {
+  margin-top: 2px;
+}
+>>>>>>> Stashed changes
