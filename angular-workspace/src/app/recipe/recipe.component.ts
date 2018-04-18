@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { DataRetrieverService, List } from '../dataretriever.service';
 
 @Component({
   selector: 'app-recipe',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RecipeComponent implements OnInit {
 
+  @Input()
+  listdata: List;
+
   constructor() { }
 
   ngOnInit() {
+  
   }
 
 }
