@@ -7,7 +7,7 @@
 <div class="main">
   <div class="tit">
     <div class="titlename">
-      MY LISTS  <i class="fas fa-edit section-icon"></i>
+      MY LISTS  <a [routerLink]="['/lists']" (click)="toggleAdd()"><i class="fas fa-edit section-icon"></i></a>
     </div>
     <div class="btn-group">
       Sorting
@@ -39,7 +39,7 @@
   </div>
 </div>
 
-<add-recipe class="main" (submit)="addToLists($event)"></add-recipe>
+<add-recipe class="main" (submit)="addToLists($event)" *ngIf="add"></add-recipe>
 <div class="main">
   <hr>
 </div>

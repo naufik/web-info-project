@@ -10,6 +10,7 @@ import { DataRetrieverService, List } from '../dataretriever.service';
 export class AllListsComponent implements OnInit {
 
   allLists: List[];
+  add = false;
 
   private service: DataRetrieverService;
 
@@ -32,5 +33,9 @@ export class AllListsComponent implements OnInit {
       contents: []
     });
     this.refresh();
+  }
+
+  toggleAdd() {
+    this.add = !this.add;
   }
 }
