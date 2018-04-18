@@ -2,7 +2,7 @@
 
 <div class="row">
   <div class="col-3 usuals">
-    <h1>Usual Lists</h1>
+    <h1>Saved Lists</h1>
     <ul class="list-group">
       <li class="list-group-item"><h5>Previously made list templates</h5></li>
 
@@ -23,18 +23,32 @@
       </li>
     </ul>
 
+    <a href="#" class="btn btn-primary btn- active addbutton" role="button" aria-pressed="true">Add to List</a>
 
   </div>
 
   <div class="col-6 large">
     <h1>Grocery List  <span><i class="fas fa-edit"></i></span></h1>
     <ul class="list-group">
-      <li class="list-group-item active">Raw Salmon</li>
-      <li class="list-group-item">Chicken Breast</li>
-      <li class="list-group-item">Full-Cream Milk</li>
-      <li class="list-group-item">Wholegrain Bread</li>
-      <li class="list-group-item">Coffee Ground</li>
+      <li class="list-group-item active">Raw Salmon
+        <span><input type="checkbox" class="checks"></span>
+      </li>
+      <li class="list-group-item">Chicken Breast
+        <span><input type="checkbox" class="checks"></span>
+      </li>
+      <li class="list-group-item">Full-Cream Milk
+        <span><input type="checkbox" class="checks"></span>
+      </li>
+      <li class="list-group-item">Wholegrain Bread
+        <span><input type="checkbox" class="checks"></span>
+      </li>
+      <li class="list-group-item">Coffee Ground
+        <span><input type="checkbox" class="checks"></span>
+      </li>
     </ul>
+
+    <a href="#" class="btn btn-primary btn- active addbutton" role="button" aria-pressed="true">Confirm List</a>
+
   </div>
 
 
@@ -42,7 +56,8 @@
 
 
   <div class="col-3 add">
-    <h2 class="addhead"><i class="fas fa-plus fa-sm"></i>     Add to Fridge</h2>
+    <button type="button" class="btn btn-primary btn-lg addfridge"><i class="fas fa-plus fa-sm"></i>  Add to Fridge</button>
+
   </div>
 </div>
 

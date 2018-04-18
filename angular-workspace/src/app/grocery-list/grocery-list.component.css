@@ -14,5 +14,13 @@
 }
 
 .checks{
-  align-self: right;
+  float: right;
+}
+
+.addbutton{
+  margin-top: 2%;
+  float: right;
+}
+.addfridge{
+  margin-top: 10%;
 }
