@@ -25,6 +25,14 @@
   vertical-align: text-bottom;
 }
 
+li{
+  font-family: 'Libre Franklin', sans-serif;
+}
+
+hr{
+  margin: 0px;
+}
+
 .addToGroceries{
   margin-top:11px;
   grid-column: 3/4;
