@@ -138,4 +138,8 @@ export class DataRetrieverService {
   public addData(data: FridgeFood) {
     allFridge.push(data);
   }
+
+  public addNewList(data: List) {
+    allLists.push(data);
+  }
 }
