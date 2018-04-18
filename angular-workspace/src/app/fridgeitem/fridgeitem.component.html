@@ -1,6 +1,6 @@
-<div class="section-header" (click)="collapse(0)"><ul><li>Chicken</li></ul></div>
+<div class="section-header" (click)="collapseItem()"><ul><li>Chicken</li></ul></div>
 <div class="main">
-  <div class="contents" *ngIf="!collapsearr[0]">
+  <div class="contents" *ngIf="!collapsed">
     <form class="needs-validation" novalidate>
       <div class="form-row">
         <div class="col" >

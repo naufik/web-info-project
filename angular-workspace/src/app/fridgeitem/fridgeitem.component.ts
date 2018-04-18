@@ -31,9 +31,9 @@ export class FridgeitemComponent implements OnInit {
   ngOnInit() {
   }
 
-  collapsearr = [true];
+  collapsed = true;
 
-  collapse(menu: number){
-    this.collapsearr[menu] = !this.collapsearr[menu];
+  collapseItem(){
+    this.collapsed = !this.collapsed;
   }
 }
