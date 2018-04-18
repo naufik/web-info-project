@@ -1,6 +1,10 @@
 .main{
 }
 
+a {
+  cursor: pointer;
+}
+
 .list{
   grid-column: 2/3;
   background-color: #fbf8f4;
