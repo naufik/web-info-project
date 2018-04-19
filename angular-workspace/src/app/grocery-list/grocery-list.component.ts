@@ -32,7 +32,9 @@ export class GroceryListComponent implements OnInit {
     let tempLists = this.appendableLists.filter(i => this.checks[i.name]);
     for (let currentList of tempLists) {
       for (let shopItem of currentList.contents) {
-        this.shoppingList.push(shopItem.name);
+        if (!this.shoppingList.includes(shopItem.name)){
+          this.shoppingList.push(shopItem.name);
+        }
       }
     }
   }

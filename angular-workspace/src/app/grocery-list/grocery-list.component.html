@@ -18,7 +18,7 @@
       <li class="list-group-item list-group-item-danger">Exams coming, stress eat
         <span><input type="checkbox" class="checks"></span>
       </li> -->
-      <li class="list-group-item list-group-item-secondary">{{ item.name }}
+      <li class="list-group-item list-group-item-secondary"><a [routerLink]="['/singlelist']">{{ item.name }}</a>
         <span><input type="checkbox" class="checks" (click)="checks[item.name] = !checks[item.name]"></span>
       </li>
     </ul>
