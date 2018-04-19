@@ -10,6 +10,8 @@ import { DataRetrieverService, List, FridgeFood, ListFood } from '../dataretriev
 })
 export class GroceryListComponent implements OnInit {
 
+  checks = {};
+
   shoppingList = ["Raw Salmon", "Chicken Breast", "Full-Cream Milk", "Coffee Ground", "Wholegrain Bread"];
   appendableLists: List[] = [];
 
@@ -21,10 +23,18 @@ export class GroceryListComponent implements OnInit {
 
   ngOnInit() {
     this.appendableLists = this.service.getLists();
+    for (let item of this.appendableLists) {
+      this.checks[item.name] = false;
+    }
   }
 
-  appendList() {
-    
+  appendLists() {
+    let tempLists = this.appendableLists.filter(i => this.checks[i.name]);
+    for (let currentList of tempLists) {
+      for (let shopItem of currentList.contents) {
+        this.shoppingList.push(shopItem.name);
+      }
+    }
   }
 
 }

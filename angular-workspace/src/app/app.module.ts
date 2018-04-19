@@ -21,6 +21,7 @@ import { AllListsComponent } from './all-lists/all-lists.component';
 import { RecipeComponent } from './recipe/recipe.component';
 import { ListPageComponent } from './list-page/list-page.component';
 import { AddRecipesComponent } from './add-recipes/add-recipes.component';
+import { ListAppenderComponent } from './list-appender/list-appender.component';
 
 const routes: Routes = [
   { path: '', component: SoonComponent },
@@ -53,7 +54,8 @@ const routes: Routes = [
     AllListsComponent,
     RecipeComponent,
     ListPageComponent,
-    AddRecipesComponent
+    AddRecipesComponent,
+    ListAppenderComponent
   ],
   
   imports: [
