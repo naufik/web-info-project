@@ -27,4 +27,5 @@ button{
 
 .signupbutton{
   grid-column: 3/4;
+  padding-left: 7%;
 }
