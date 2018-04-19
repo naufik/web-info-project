@@ -17,6 +17,10 @@
   grid-template-columns: 25% 50% 25%;
 }
 
+button{
+  text-align: center;
+}
+
 .loginbutton{
   grid-column: 0/1;
 }
