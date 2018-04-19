@@ -3,6 +3,11 @@
   grid-template-columns: 29% 42% 29%;
 }
 
+.search{
+  grid-column: 2/3;
+  padding-top: 20px;
+}
+
 .main2{
   margin-top: 5px;
   grid-column: 2/3;
