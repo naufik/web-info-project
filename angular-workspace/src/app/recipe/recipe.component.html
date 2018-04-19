@@ -1,0 +1,13 @@
+<style>
+  @import url('https://fonts.googleapis.com/css?family=Libre+Baskerville|Libre+Franklin');
+</style>
+
+<div class="main">
+  <a [routerLink]="['/singlelist']">
+    <img class="img" src="assets/list.jpg">
+  </a>
+  <div class="caption">
+    <h1><a [routerLink]="['/singlelist']">{{ data.name }}</a></h1>
+    <p>{{ getDisplayedContents() }}</p>
+  </div>
+</div>

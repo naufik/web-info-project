@@ -4,8 +4,8 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-listcontainer',
   templateUrl: './listcontainer.component.html',
-  styleUrls: ['./listcontainer.component.css']
-})
+  styleUrls: ['./listcontainer.component.css'],
+  })
 export class ListcontainerComponent implements OnInit {
 
   private router: Router;
@@ -16,6 +16,9 @@ export class ListcontainerComponent implements OnInit {
   @Input()
   destination = "";
   
+  @Input()
+  datasource = [];
+
   lists = [
     "My Groceries",
     "Hangover Cure",
@@ -25,9 +28,14 @@ export class ListcontainerComponent implements OnInit {
 
   constructor(router: Router) {
     this.router = router;
-  }
+    }
 
   ngOnInit() {
+  if (this.datasource.length > 0) {
+    this.lists = this.datasource;
+
+  }
+  
   }
 
   navigate() {

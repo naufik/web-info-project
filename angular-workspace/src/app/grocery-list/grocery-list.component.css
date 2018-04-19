@@ -5,7 +5,22 @@
 .add{
   text-align: center;
 }
+.usuals{
+  text-align: center;
+}
 
 .addhead{
   margin-top: 2%;
+}
+
+.checks{
+  float: right;
+}
+
+.addbutton{
+  margin-top: 2%;
+  float: right;
+}
+.addfridge{
+  margin-top: 10%;
 }

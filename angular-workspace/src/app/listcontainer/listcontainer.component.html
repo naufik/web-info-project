@@ -9,13 +9,13 @@
         <a [href]="destination">{{ title }}</a>
       </div>
       <div class="viewall">
-        <div id="child"><a [href]="destination">VIEW ALL</a></div>
+        <div id="child"><a [routerLink]="['/' + destination]">VIEW ALL</a></div>
       </div>
     </div>
     <hr>
     <div class="listitems">
       <div *ngFor="let item of lists">
-        <app-listitem [listname]="item"></app-listitem>
+        <app-listitem [listname]="item.name"></app-listitem>
       </div>
     </div>
   </div>

@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-4">
-        <h2>DueDate</h2>
+        <h2><a [routerLink]="['/main']">DueDate</a></h2>
       </div>
       <div class="col-lg-4">
         <!-- INTENTIONALLY EMPTY -->
@@ -18,7 +18,7 @@
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
           <a class="dropdown-item" [routerLink]="['/fridge']">What's in my fridge?</a>
-          <a class="dropdown-item" href="#">Add Groceries</a>
+          <a class="dropdown-item" [routerLink]="['/groceries']">Add Groceries</a>
           <a class="dropdown-item" [routerLink]="['/settings']">Settings</a>
 
           <div class="dropdown-divider"></div>

@@ -1,29 +1,50 @@
 <app-logged-header></app-logged-header>
 
 <div class="row">
-  <div class="col-3">
-    <h1>Usual Lists</h1>
+  <div class="col-4 usuals">
+    <h1>Saved Lists</h1>
+    <li class="list-group-item"><h5>Previously made list templates</h5></li>
+    <ul class="list-group" *ngFor="let item of appendableLists">
 
-  </div>
-
-  <div class="col-6 large">
-    <h1>Grocery List  <span><i class="fas fa-edit"></i></span></h1>
-    <ul class="list-group">
-      <li class="list-group-item active">Raw Salmon</li>
-      <li class="list-group-item">Chicken Breast</li>
-      <li class="list-group-item">Full-Cream Milk</li>
-      <li class="list-group-item">Wholegrain Bread</li>
-      <li class="list-group-item">Coffee Ground</li>
+      <!-- <li class="list-group-item list-group-item-primary">Weekly Essentials
+        <span><input type="checkbox" class="checks"></span>
+      </li>
+      <li class="list-group-item list-group-item-secondary">Going on a Diet
+        <span><input type="checkbox" class="checks"></span>
+      </li>
+      <li class="list-group-item list-group-item-primary">Friends coming over
+        <span><input type="checkbox" class="checks"></span>
+      </li>
+      <li class="list-group-item list-group-item-danger">Exams coming, stress eat
+        <span><input type="checkbox" class="checks"></span>
+      </li> -->
+      <li class="list-group-item list-group-item-secondary"><a [routerLink]="['/singlelist']">{{ item.name }}</a>
+        <span><input type="checkbox" class="checks" (click)="checks[item.name] = !checks[item.name]"></span>
+      </li>
     </ul>
+
+    <a class="btn btn-primary btn- active addbutton" role="button" aria-pressed="true" (click)="appendLists()">Add to List</a>
+
+  </div>
+
+
+  <div class="col-7 large">
+    <h1>Grocery List  <span><i class="fas fa-edit"></i></span></h1>
+    <ul class="list-group" *ngFor="let item of shoppingList">
+      <li class="list-group-item">{{ item }}
+        <span><input type="checkbox" class="checks"></span>
+      </li>
+    </ul>
+
+
+    <button type="button" class="btn btn-primary btn-lg addfridge">Add to Fridge</button>
+
+    <div class="col-1"></div>
   </div>
 
 
 
 
-
-  <div class="col-3 add">
-    <h2 class="addhead"><i class="fas fa-plus fa-sm"></i>     Add to Fridge</h2>
-  </div>
 </div>
 
 <!--<div class="set-head">-->
