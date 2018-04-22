@@ -4,6 +4,8 @@ import * as BodyParser from 'body-parser';
 import * as CORS from 'cors';
 import * as Mongoose from 'mongoose';
 import * as Bluebird from 'bluebird';
+import * as Path from 'path';
+import * as ServeStatic from 'serve-static';
 
 /** Import Routers */
 import HomeRouter from './routes/home.router';
@@ -45,8 +47,22 @@ export class App {
 		@todo import the routes and fill this with actual configuration.
 	*/
 	public routes() {
-		// this.app.use("/", Express.static(__dirname + "/views/"));
-		this.app.use("/", HomeRouter);
+		// this.app.use(Express.static( Path.join(__dirname, '/views')));
+		// this.app.use(Express.static('/home/naufik/Documents/web-info-project/src/views/'));
+
+		this.app.use(Express.static(Path.join(__dirname, '/views')));
+		
+		this.app.get("/*", (req, res) => {
+			res.sendFile(Path.join(__dirname, 'views', 'index.html'));
+		});
+
+		// this.app.use('/', (req, res, next) => {
+		// 	console.log("URL: ", req.url);
+		// 	var expressStatic = Express.static(path);
+		// 	expressStatic(req, res, next);
+		// })
+		// this.app.use("/", HomeRouter);
+		// console.log(__dirname);
 	}
 }
 

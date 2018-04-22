@@ -7,7 +7,7 @@
 <div class="main">
   <div class="tit">
     <div class="titlename">
-      MY LISTS  <a [routerLink]="['/lists']" (click)="toggleAdd()"><i class="fas fa-edit section-icon"></i></a>
+      MY LISTS <a [routerLink]="['/lists']" (click)="toggleAdd()"><i class="fas fa-edit section-icon"></i></a>
     </div>
     <div class="btn-group">
       Sorting
@@ -23,8 +23,6 @@
       </ul>
     </div>
 
-
-
     <div class="btn-group2">
       Show
       <button type="button" class="btn btn-sm btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -39,10 +37,17 @@
   </div>
 </div>
 
-<add-recipe class="main" (submit)="addToLists($event)" *ngIf="add"></add-recipe>
 <div class="main">
   <hr>
 </div>
+
+<div class="main">
+  <div class="search">
+    <add-recipe (submit)="addToLists($event)" *ngIf="add"></add-recipe>
+  </div>
+</div>
+
+
 
 <div class="main">
   <div class="main2">

@@ -23,7 +23,7 @@ export class AllListsComponent implements OnInit {
   }
 
   refresh() {
-    this.allLists = this.service.getLists(); 
+    this.allLists = this.service.getLists();
   }
 
   addToLists(listName: string) {
@@ -33,6 +33,7 @@ export class AllListsComponent implements OnInit {
       contents: []
     });
     this.refresh();
+    this.toggleAdd();
   }
 
   toggleAdd() {
