@@ -6,6 +6,7 @@ const router = Router();
 
 /** write your router configuration here */
 
-router.use("/", Express.static(Path.join(__dirname,"../..", "views")));
+router.use("/", Express.static(Path.join(__dirname, "../..", "views")));
+console.log(__dirname);
 /** exports the router */
 export default router;
