@@ -3,7 +3,6 @@
 
 .list{
   grid-column: 2/3;
-  background-color: #fbf8f4;
   padding: 10px;
 }
 
@@ -42,10 +41,6 @@ p{
   margin: 0px;
 }
 
-
-
-
-
 .listitems{
   display: grid;
   grid-template-columns: 25% 25% 25% 25%;
@@ -73,6 +68,7 @@ img{
   border: 1px solid #2e3038;
   padding: 0px;
   border-radius: 10px;
-  background-color: #f6f0de;
+  font-family: 'Libre Baskerville', serif;
+  background-color: #fbf8f4;
   text-align: center;
 }
