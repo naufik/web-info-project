@@ -17,10 +17,15 @@
   grid-template-columns: 25% 50% 25%;
 }
 
+button{
+  text-align: center;
+}
+
 .loginbutton{
   grid-column: 0/1;
 }
 
 .signupbutton{
   grid-column: 3/4;
+  padding-left: 7%;
 }
