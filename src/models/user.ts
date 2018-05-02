@@ -1,4 +1,6 @@
 import * as mongoose from 'mongoose';
+import * as ListModel from './item'
+import * as ItemModel from './item'
 
 var userSchema = new mongoose.Schema(
     {
@@ -12,7 +14,8 @@ var userSchema = new mongoose.Schema(
             "country": String,
             "state": String
         },
-        // "lists": [ListIDs]
+        "lists": [ListModel],
+        "fridge": [ItemModel]
     }
 );
 
