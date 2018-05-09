@@ -1,7 +1,7 @@
 import User from '../models/user.model';
 import * as Crypto from 'crypto';
 
-interface UserData {
+export interface UserData {
     firstName: string,
     lastName: string,
     email: string,
