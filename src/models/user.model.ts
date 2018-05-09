@@ -1,12 +1,11 @@
 import * as mongoose from 'mongoose';
-import * as ListModel from './list.model'
 
 var userSchema = new mongoose.Schema(
     {
         "firstName": String,
         "lastName": String,
         "dateAdded": { type: Date, default: Date.now },
-        "email": { type:Number, unique: true},
+        "email": { type:String, unique: true},
         "password": String,
         "location": {
             "city": String,
