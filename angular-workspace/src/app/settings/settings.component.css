@@ -8,7 +8,14 @@
   text-align: center;
 }
 
+.settings{
+  grid-template-columns: auto 90% auto;
+}
+
+form{
+  grid-column: 2/3;
+}
+
 .box{
-  background-color: #fbf8f4;
   grid-column: 2/3;
 }

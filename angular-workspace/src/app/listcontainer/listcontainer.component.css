@@ -13,7 +13,7 @@ a {
 
 .listnames{
   display: grid;
-  grid-template-columns: 10% 70% 20%;
+  grid-template-columns: 20% 60% 20%;
   /*font-family: 'Work Sans', sans-serif;*/
   font-family: 'Libre Franklin', sans-serif;
 }

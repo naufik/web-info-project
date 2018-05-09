@@ -44,3 +44,7 @@ hr{
 }
 
 
+body{
+  background-size: cover;
+  background-color: #fbf8f4;
+}
