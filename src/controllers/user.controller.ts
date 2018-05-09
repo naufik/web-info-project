@@ -9,7 +9,7 @@ export interface UserData {
     locationId: string
 }
 
-export default class UserController {
+export class UserController {
 
     private static passHash(key: string) {
         return Crypto.createHash('sha256').update(key).digest('hex');
@@ -29,16 +29,18 @@ export default class UserController {
             groceries: []
         });
 
-        return user.save().catch((err: Error) => {
+        return user.save().then((userInDb) => {
+            return {
+                success: true,
+                data: userInDb
+            }
+        }).catch((err: Error) => {
             return {
                 success: false,
                 error: err.message
             };
-        }).then((userInDb) => {
-           return {
-               success: true,
-               data: userInDb
-           }
         });
     }
 }
+
+export default UserController;
