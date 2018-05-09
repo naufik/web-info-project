@@ -4,7 +4,7 @@ import * as BodyParser from 'body-parser';
 import * as CORS from 'cors';
 import * as Mongoose from 'mongoose';
 import * as Bluebird from 'bluebird';
-import * as DB from './database';
+import DB from './database';
 
 /** Import Routers */
 import HomeRouter from './routes/home.router';
@@ -38,7 +38,15 @@ export class App {
 		this.app.use(CORS());
 
 		// For mongoDB later on
-		(<any>Mongoose).Promise = Bluebird; 
+		(<any>Mongoose).Promise = Bluebird;
+
+        DB.once('open', () => {
+            console.log("Connection success");
+        });
+
+        DB.on('error', (err: Error) => {
+            console.log("error happened" + err.message);
+        });
 	}
 
 	/**
