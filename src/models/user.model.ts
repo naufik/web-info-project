@@ -12,7 +12,7 @@ var userSchema = new mongoose.Schema(
             "country": String,
             "state": String
         },
-        "lists": [Number],
+        "lists": [mongoose.Schema.Types.ObjectId],
         "fridge": [
             {
                 "name": String,

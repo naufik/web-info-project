@@ -6,7 +6,7 @@ var listSchema  = new mongoose.Schema(
         "contents": [
             {
                 "name": String,
-                "amount": {type: Number, unique: true},
+                "amount": Number,
                 "unit": String
             }
         ],
