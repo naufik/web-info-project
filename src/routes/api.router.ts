@@ -1,7 +1,7 @@
 import { Router, Request, Response } from 'express';
+import UserRouter from './user.route';
 
 const APIRouter = Router();
-const ListRouter = {};
 
 /** write your router configuration here */
 
@@ -35,6 +35,7 @@ APIRouter.post("/login", (req: Request, res: Response) => {
    });
 });
 
+APIRouter.use("/user", UserRouter);
 
 
 export default APIRouter;
