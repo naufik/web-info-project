@@ -4,6 +4,7 @@ import * as BodyParser from 'body-parser';
 import * as CORS from 'cors';
 import * as Mongoose from 'mongoose';
 import * as Bluebird from 'bluebird';
+import * as DB from './database';
 
 /** Import Routers */
 import HomeRouter from './routes/home.router';
