@@ -10,7 +10,8 @@ import {DataRetrieverService, ListFood} from "../dataretriever.service";
 
 export class ListPageComponent implements OnInit {
 
-  list;
+  list = [];
+  collapsed = true;
   add = false;
 
   constructor(private service: DataRetrieverService) {}
@@ -24,14 +25,19 @@ export class ListPageComponent implements OnInit {
   }
 
   refresh() {
+    this.list = this.list;
   }
 
   toggleAdd() {
     this.add = !this.add;
   }
 
-  addItem(item: ListFood) {
-    this.list.push(item);
+  addItem(item: string) {
+    this.list.contents.push({
+      name: item
+    });
     this.toggleAdd();
+    this.refresh();
   }
+
 }
