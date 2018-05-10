@@ -168,7 +168,12 @@ export class DataRetrieverService {
           reject(data.error);
         }
       });  
-    })
-    
+    })  
+  }
+
+  public saveUser(userData: any) {
+    return new Promise((resolve, reject) => {
+      this.http.post(API_URL)
+    });
   }
 }
