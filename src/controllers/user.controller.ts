@@ -92,6 +92,12 @@ export class UserController {
         });
     }
 
+    public static getUserData(userEmail: string) {
+        return User.findOne({
+            email: userEmail
+        });
+    }
+
 }
 
 export default UserController;
