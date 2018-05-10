@@ -4,20 +4,27 @@
   <div class="list">
     <div class="listnames">
       <div class="listheader">
-        <a href=""> TUNA SANDWHICH </a>
-      </div>
-      <div class="addNewItem">
-        <a href="">+ADD NEW ITEM</a>
+        TUNA SANDWHICH <a (click)="toggleAdd()" class="click"><i class="fas fa-edit section-icon"></i></a>
       </div>
       <div class="addToGroceries">
         <a href="">+ADD TO GROCERIES</a>
       </div>
     </div>
-    <hr>
-    <ul>
-      <li>Tuna</li>
-      <li>Bread</li>
-      <li>Cheese</li>
-    </ul>
   </div>
+</div>
+
+<div class="main">
+  <hr>
+</div>
+
+<div class="main">
+  <div class="search">
+    <add-recipe (submit)="addItem($event)" *ngIf="add"></add-recipe>
+  </div>
+</div>
+
+<div class="main">
+  <ul *ngFor="let item of list.contents">
+    <li>{{item.name}}</li>
+  </ul>
 </div>

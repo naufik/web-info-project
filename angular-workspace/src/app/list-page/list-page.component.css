@@ -5,8 +5,23 @@
 
 .list{
   grid-column: 2/3;
-  background-color: #fbf8f4;
   padding: 10px;
+}
+
+.search{
+  grid-column: 2/3;
+  padding-top: 20px;
+}
+
+hr{
+  margin: 2px;
+  grid-column: 2/3;
+}
+
+.main2{
+  display: grid;
+  grid-template-columns: 29% 42% 29%;
+  margin: 0px;
 }
 
 .listnames{
@@ -16,22 +31,18 @@
   font-family: 'Libre Franklin', sans-serif;
 }
 
-.addNewItem{
-  margin-top:11px;
-  grid-column: 2/3;
-  text-align: right;
-  font-size: 10px;
-  margin-right: 0px;
-  vertical-align: text-bottom;
-}
+/*.addNewItem{*/
+  /*margin-top:11px;*/
+  /*grid-column: 2/3;*/
+  /*text-align: right;*/
+  /*font-size: 10px;*/
+  /*margin-right: 0px;*/
+  /*vertical-align: text-bottom;*/
+/*}*/
 
-li{
-  font-family: 'Libre Franklin', sans-serif;
-}
-
-hr{
-  margin: 0px;
-}
+/*li{*/
+  /*font-family: 'Libre Franklin', sans-serif;*/
+/*}*/
 
 .addToGroceries{
   margin-top:11px;
@@ -48,5 +59,10 @@ hr{
 
 a{
   color: #2e3038;
+}
+
+app-recipe{
+  grid-column: 2/3;
+  margin-top: 5px;
 }
 

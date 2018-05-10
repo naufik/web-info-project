@@ -9,7 +9,7 @@
 <div class="main">
   <div class="tit">
     <div class="titlename">
-      WHAT'S ON MY FRIDGE  <a (click)="toggleAdd()" class="click"><i class="fas fa-edit section-icon"></i></a>
+      WHAT'S ON MY FRIDGE  <a (click)="toggleAdd()" class=""><i class="fas fa-edit section-icon"></i></a>
     </div>
 
     <div class="btn-group">
@@ -59,7 +59,7 @@
 </div>
 
 <div class="main2" *ngFor="let item of data">
-    <app-fridgeitem [itemsrc]="item"></app-fridgeitem>
+  <app-fridgeitem [itemsrc]="item"></app-fridgeitem>
 </div>
 
 </body>
