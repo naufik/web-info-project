@@ -50,7 +50,9 @@ export class ListController {
                 let l = user.lists;
 
                 return List.find({
-                    '_id': l
+                    '_id': { 
+                        $in: l
+                    }
                 });
             } else {
                 return Bluebird.reject(new Error("Cannot find the specified user"));
@@ -64,6 +66,15 @@ export class ListController {
             return {
                 success: false,
                 error: err.message
+            };
+        });
+    }
+
+    public static getList(listId: string) {
+        return List.findById(Mongoose.Types.ObjectId(listId)).then((data) => {
+            return {
+                success: true, 
+                data: data
             };
         });
     }
