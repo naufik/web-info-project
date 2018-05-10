@@ -149,6 +149,9 @@ export class DataRetrieverService {
 
   public getUserData(email: string) {
     return this.http.get(API_URL + "user/" + email);
+  }
 
+  public getListWithId(listId: string) {
+    return this.http.get(API_URL + "user/list/" + listId);
   }
 }
