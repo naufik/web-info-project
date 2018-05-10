@@ -10,7 +10,8 @@ import { FridgeFood, DataRetrieverService } from '../dataretriever.service';
 export class FridgeComponent implements OnInit {
 
   fridgeService: DataRetrieverService;
-  
+  add = false;
+
   constructor(service: DataRetrieverService) {
     this.fridgeService = service;
   }
@@ -25,15 +26,18 @@ export class FridgeComponent implements OnInit {
     this.data = this.fridgeService.getFridge();
   }
 
-  addNew() {
+  addNew(itemName: string) {
     this.fridgeService.addData({
-      name: "Mangos",
+      name: itemName,
       qty: 300,
       unit: "kg+s",
       expiry: new Date()
     });
-
     this.refresh();
+    this.toggleAdd();
   }
 
+  toggleAdd() {
+    this.add = !this.add;
+  }
 }

@@ -1,3 +1,4 @@
+
 .left-content{
   text-align: left;
   font-size: 100%;
@@ -7,7 +8,6 @@
 .login-box{
   color: black;
   padding: 0px;
-  background-color: rgba(255,255,255,0.5);
 }
 
 .main{
@@ -15,9 +15,11 @@
   grid-template-columns: 5% 60% 5% 25% 5%;
 }
 
+
 .login{
   grid-column: 4/5;
   margin-top: 2px;
+  background: rgba(255,255,255,0.75);
 }
 
 .info{
@@ -35,7 +37,7 @@
 
 .section {
   margin-top: 2px;
-  background-color: #fbf8f4;
+  background: rgba(255,255,255,0.75);
   border: 1px solid #2e3038;
   padding-left: 15px;
 }

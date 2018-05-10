@@ -1,5 +1,5 @@
-<div class="page">
-  <div class="section-header" (click)="collapseItem()"><ul><li>{{ itemsrc.name }}</li></ul></div>
+<div class="page" (click)="collapseItem()">
+  <div class="section-header"><a>{{ itemsrc.name }}</a></div>
   <div class="main">
     <div class="contents" *ngIf="!collapsed">
       <form class="needs-validation" novalidate>
