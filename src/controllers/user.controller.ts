@@ -1,5 +1,6 @@
 import User from '../models/user.model';
 import * as Crypto from 'crypto';
+import * as Bluebird from 'bluebird';
 
 export interface UserData {
     firstName: string,
@@ -34,11 +35,60 @@ export class UserController {
                 success: true,
                 data: userInDb
             }
-        }).catch((err: Error) => {
+        }, (err: Error) => {
             return {
                 success: false,
                 error: err.message
             };
+        });
+    }
+
+    public static addToGroceries(userEmail: string, items: any[]) {
+        User.findOne({
+            email: userEmail
+        }).then((userData: any) => {
+            if (userData){
+                items.forEach((item) => {
+                    userData.groceries.push(item);
+                });
+
+                return userData.save();
+            } else {
+                return Bluebird.reject(new Error("Cannot find user."));
+            }
+        }).then((user) => {
+            return {
+                success: true
+            }
+        }, (err: Error) => {
+            return {
+                success: false
+            }
+        });
+    }
+
+    public static addToFridge(userEmail: string, items: any[], expiryDate: Date) {
+        User.findOne({
+            email: userEmail
+        }).then((userData: any) => {
+            if (userData){
+                items.forEach((item) => {
+                    item.expiryDate = expiryDate;
+                    userData.fridge.push(item);
+                });
+
+                return userData.save();
+            } else {
+                return Bluebird.reject(new Error("Cannot find user."));
+            }
+        }).then((user) => {
+            return {
+                success: true
+            }
+        }, (err: Error) => {
+            return {
+                success: false
+            }
         });
     }
 }
