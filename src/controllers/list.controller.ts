@@ -6,13 +6,8 @@ import User from '../models/user.model';
 
 export class ListController {
 
-    public static newList(listUrl: string, listName: string, ownerEmail: string) {
-        let l = new List({
-            listId: 2323,
-            name: listName,
-            contents: [],
-            url: listUrl
-        });
+    public static newList(listData: any, ownerEmail: string) {
+        let l = new List(listData);
 
         return User.findOne({
             email: ownerEmail

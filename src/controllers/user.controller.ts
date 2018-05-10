@@ -92,12 +92,34 @@ export class UserController {
         });
     }
 
-    public static getUserData(userEmail: string, token?: string) {
+    public static getUserData(userEmail: string) {
         return User.findOne({
             email: userEmail
         });
     }
 
+    public static saveUser(userEmail: string, userData: any) {
+        if (userData.email === userEmail) {
+            return User.findOne({
+                email: userEmail
+            }).then((user) => {
+                if (user) {
+                    return new User(userData).save();
+                } else {
+                    return Bluebird.reject(new Error("Cannot find user"));
+                }
+            }).then((data) => {
+                return {
+                    success: true
+                };
+            }, (err: Error) => {
+                return {
+                    success: false,
+                    error: err.message
+                };
+            });
+        }
+    }
 }
 
 export default UserController;
