@@ -15,6 +15,7 @@
   grid-template-columns: 5% 60% 5% 25% 5%;
 }
 
+
 .login{
   grid-column: 4/5;
   margin-top: 2px;
