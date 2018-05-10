@@ -1,7 +1,4 @@
-li:hover {
-  text-decoration: none;
-  border-bottom: 3px solid #00448f;
-}
+
 
 .section-header{
   margin: 0px;
@@ -18,18 +15,19 @@ label{
   font-family: 'Libre Franklin', sans-serif;
 }
 
-ul{
-  padding-left:20px;
+a{
+  padding-top:5px;
+  padding-bottom:5px;
+  padding-left: 2px;
 }
 
 .main{
   margin: 0px;
-  display: grid;
-  grid-template-columns: 4% auto;
 }
 
 
 .contents{
-  grid-column: 2/3;
   margin-bottom: 10px;
+  padding-left: 2px;
+  padding-right: 2px;
 }
