@@ -24,3 +24,6 @@
 .addfridge{
   margin-top: 10%;
 }
+.translucent-list:hover{
+  opacity: 0.8;
+}
