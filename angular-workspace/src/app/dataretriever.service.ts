@@ -186,6 +186,21 @@ export class DataRetrieverService {
     });
   }
 
+  public newList(userEmail: string, name: string) {
+    return new Promise((resolve, reject) => {
+      this.http.post(API_URL + "user/add.list/", {
+        userEmail: userEmail,
+        listName: name
+      }).subscribe((data: any) => {
+        if (data.success) {
+          resolve(data.data);
+        } else {
+          reject(data.err);
+        }
+      });
+    })
+  }
+
   public saveList(listData: any, listId: string) {
     // stub;
   }
