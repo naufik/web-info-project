@@ -171,9 +171,22 @@ export class DataRetrieverService {
     })  
   }
 
-  public saveUser(userData: any) {
+  public saveUser(userData: any, userEmail: string) {
     return new Promise((resolve, reject) => {
-      this.http.post(API_URL)
+      this.http.post(API_URL, {
+        email: userEmail,
+        data: userData 
+      }).subscribe((data: any) => {
+        if (data.success) {
+          resolve(data.data);
+        } else {
+          reject(data.err);
+        }
+      });
     });
+  }
+
+  public saveList(listData: any, listId: string) {
+    // stub;
   }
 }
