@@ -92,7 +92,7 @@ export class UserController {
         });
     }
 
-    public static getUserData(userEmail: string) {
+    public static getUserData(userEmail: string, token?: string) {
         return User.findOne({
             email: userEmail
         });
