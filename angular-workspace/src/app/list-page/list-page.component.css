@@ -5,12 +5,31 @@
 
 .list{
   grid-column: 2/3;
-  padding: 10px;
+  background: rgba(255,255,255,0.75);
+  padding-left: 2px;
+  font-size: 85%;
+  font-family: 'Libre Franklin', sans-serif;
+  margin-top: 2px;
+  margin-bottom: 2px;
+  cursor: pointer;
+}
+
+a{
+  cursor: pointer;
+}
+
+.list:hover{
+  background: rgba(255,255,255,0.5);
+}
+
+.title{
+  grid-column: 2/3;
 }
 
 .search{
   grid-column: 2/3;
-  padding-top: 20px;
+  padding-top: 10px;
+  padding-right: 20px;
 }
 
 hr{
@@ -50,15 +69,13 @@ hr{
   text-align: right;
   font-size: 10px;
   vertical-align: text-bottom;
+  color: black;
+  cursor: pointer;
 }
 
 .listheader{
   margin-top: 5px;
   grid-column: 1/2;
-}
-
-a{
-  color: #2e3038;
 }
 
 ul{
