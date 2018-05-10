@@ -14,7 +14,7 @@ export class RecipeComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-  
+
   }
 
   getDisplayedContents() {
@@ -32,7 +32,7 @@ export class RecipeComponent implements OnInit {
       if (i > 0) {
         contents += ", ";
       }
-      contents += this.data.contents[i].name + (i === 2 ? "." : "");    
+      contents += this.data.contents[i].name + (i === 2 ? "." : "");
     }
     return contents;
 
