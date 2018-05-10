@@ -186,11 +186,11 @@ export class DataRetrieverService {
     });
   }
 
-  public newList(userEmail: string, name: string) {
+  public newList(userEmail: string, data: any) {
     return new Promise((resolve, reject) => {
       this.http.post(API_URL + "user/add.list/", {
         userEmail: userEmail,
-        listName: name
+        listData: data
       }).subscribe((data: any) => {
         if (data.success) {
           resolve(data.data);
