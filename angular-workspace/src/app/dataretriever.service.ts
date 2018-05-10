@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
+/** GET URL */
+const API_URL = "http://localhost:3000/api/"
 
 /** placeholder hardcoded data */
 const allLists: List[] = [
@@ -122,9 +125,10 @@ export interface FridgeFood {
 @Injectable()
 export class DataRetrieverService {
 
+  private http: HttpClient;
 
-  constructor() {
-
+  constructor(http: HttpClient) {
+    this.http = http;
   }
 
   public getLists() {
@@ -143,4 +147,8 @@ export class DataRetrieverService {
     allLists.push(data);
   }
 
+  public getUserData(email: string) {
+    return this.http.get(API_URL + "user/" + email);
+
+  }
 }
