@@ -19,7 +19,7 @@ UserRouter.post("/", (req: Request, res: Response) => {
 });
 
 UserRouter.post("/add.list", (req: Request, res: Response) => {
-    if (!req.body.listName || !req.body.userEmail) {
+    if (!req.body.listData || !req.body.userEmail) {
         res.status(400).send("Broken Request");
     } else {
         ListController.newList(req.body.listData,
