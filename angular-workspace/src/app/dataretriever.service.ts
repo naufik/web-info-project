@@ -148,10 +148,27 @@ export class DataRetrieverService {
   }
 
   public getUserData(email: string) {
-    return this.http.get(API_URL + "user/" + email);
+    return new Promise((resolve, reject) => {
+      this.http.get(API_URL + "user/" + email).subscribe((data: any) => {
+        if (data.success) {
+          resolve(data.data);
+        } else {
+          reject(data.error);
+        }
+      });  
+    });
   }
 
   public getListWithId(listId: string) {
-    return this.http.get(API_URL + "user/list/" + listId);
+    return new Promise((resolve, reject) => {
+      this.http.get(API_URL + "user/list/" + listId).subscribe((data: any) => {
+        if (data.success) {
+          resolve(data.data);
+        } else {
+          reject(data.error);
+        }
+      });  
+    })
+    
   }
 }
