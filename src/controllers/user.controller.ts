@@ -44,7 +44,7 @@ export class UserController {
     }
 
     public static addToGroceries(userEmail: string, items: any[]) {
-        User.findOne({
+        return User.findOne({
             email: userEmail
         }).then((userData: any) => {
             if (userData){
@@ -68,7 +68,7 @@ export class UserController {
     }
 
     public static addToFridge(userEmail: string, items: any[], expiryDate: Date) {
-        User.findOne({
+        return User.findOne({
             email: userEmail
         }).then((userData: any) => {
             if (userData){
@@ -91,6 +91,7 @@ export class UserController {
             }
         });
     }
+
 }
 
 export default UserController;
