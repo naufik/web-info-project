@@ -78,4 +78,15 @@ export class ListController {
             };
         });
     }
+
+    public static saveList(listData: any) {
+        let l = new List(listData);
+
+        l.save().then((list) => {
+            return {
+                success: true,
+                data: list
+            };
+        });
+    }
 }
