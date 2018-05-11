@@ -569,6 +569,24 @@ var DataRetrieverService = /** @class */ (function () {
             });
         });
     };
+    DataRetrieverService.prototype.getListsForUser = function (userEmail) {
+        var _this = this;
+        return new Promise(function (resolve, reject) {
+            _this.http.get(API_URL + "user/" + userEmail + "/lists").subscribe(function (data) {
+                if (data.success) {
+                    resolve(data.data);
+                }
+                else {
+                    if (data) {
+                        reject(data.error);
+                    }
+                    else {
+                        reject(new Error("Unknown Error"));
+                    }
+                }
+            });
+        });
+    };
     DataRetrieverService.prototype.saveUser = function (userData, userEmail) {
         var _this = this;
         return new Promise(function (resolve, reject) {
@@ -626,6 +644,26 @@ var DataRetrieverService = /** @class */ (function () {
         var _this = this;
         return new Promise(function (resolve, reject) {
             _this.http.post(API_URL + "user/" + userEmail + "/fridge", {
+                contents: contents
+            }).subscribe(function (data) {
+                if (data.success) {
+                    resolve(data);
+                }
+                else {
+                    if (data) {
+                        reject(data.error);
+                    }
+                    else {
+                        reject(new Error("Unknown Error"));
+                    }
+                }
+            });
+        });
+    };
+    DataRetrieverService.prototype.saveGroceries = function (userEmail, contents) {
+        var _this = this;
+        return new Promise(function (resolve, reject) {
+            _this.http.post(API_URL + "user/" + userEmail + "/groceries", {
                 contents: contents
             }).subscribe(function (data) {
                 if (data.success) {
@@ -882,7 +920,7 @@ module.exports = "\r\n.large{\r\n  text-align: center;\r\n}\r\n.add{\r\n  text-a
 /***/ "./src/app/grocery-list/grocery-list.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<app-logged-header></app-logged-header>\n\n<div class=\"row\">\n  <div class=\"col-4 usuals\">\n    <h1>Saved Lists</h1>\n    <li class=\"list-group-item\"><h5>Previously made list templates</h5></li>\n    <ul class=\"list-group\" *ngFor=\"let item of appendableLists\">\n\n      <!-- <li class=\"list-group-item list-group-item-primary\">Weekly Essentials\n        <span><input type=\"checkbox\" class=\"checks\"></span>\n      </li>\n      <li class=\"list-group-item list-group-item-secondary\">Going on a Diet\n        <span><input type=\"checkbox\" class=\"checks\"></span>\n      </li>\n      <li class=\"list-group-item list-group-item-primary\">Friends coming over\n        <span><input type=\"checkbox\" class=\"checks\"></span>\n      </li>\n      <li class=\"list-group-item list-group-item-danger\">Exams coming, stress eat\n        <span><input type=\"checkbox\" class=\"checks\"></span>\n      </li> -->\n      <li class=\"list-group-item list-group-item-secondary\"><a [routerLink]=\"['/singlelist']\">{{ item.name }}</a>\n        <span><input type=\"checkbox\" class=\"checks\" (click)=\"checks[item.name] = !checks[item.name]\"></span>\n      </li>\n    </ul>\n\n    <a class=\"btn btn-primary btn- active addbutton\" role=\"button\" aria-pressed=\"true\" (click)=\"appendLists()\">Add to List</a>\n\n  </div>\n\n\n  <div class=\"col-7 large\">\n    <h1>Grocery List  <span><i class=\"fas fa-edit\"></i></span></h1>\n    <ul class=\"list-group translucent-list\" *ngFor=\"let item of shoppingList\">\n      <li class=\"list-group-item\">{{ item }}\n        <span><input type=\"checkbox\" class=\"checks\"></span>\n      </li>\n    </ul>\n\n\n    <button type=\"button\" class=\"btn btn-primary btn-lg addfridge\">Add to Fridge</button>\n\n    <div class=\"col-1\"></div>\n  </div>\n\n\n\n\n</div>\n\n<!--<div class=\"set-head\">-->\n  <!--<div class=\"box\">-->\n\n    <!--<h1 class=\"sett\">Settings</h1>-->\n    <!--<div class=\"dropdown-divider\"></div>-->\n\n    <!--<h3>Update Details</h3>-->\n    <!--<div class=\"dropdown-divider\"></div> -->\n"
+module.exports = "<app-logged-header></app-logged-header>\n\n<div class=\"row\">\n  <div class=\"col-4 usuals\">\n    <h1>Saved Lists</h1>\n    <li class=\"list-group-item\"><h5>Previously made list templates</h5></li>\n    <ul class=\"list-group\" *ngFor=\"let item of appendableLists\">\n      <li class=\"list-group-item list-group-item-secondary\"><a [routerLink]=\"['/singlelist']\">{{ item.name }}</a>\n        <span><input type=\"checkbox\" class=\"checks\" (click)=\"checks[item._id] = !checks[item._id]\"></span>\n      </li>\n    </ul>\n\n    <a class=\"btn btn-primary btn- active addbutton\" role=\"button\" aria-pressed=\"true\" (click)=\"appendLists()\">Add to List</a>\n\n  </div>\n\n\n  <div class=\"col-7 large\">\n    <h1>Grocery List  <span><i class=\"fas fa-edit\"></i></span></h1>\n    <ul class=\"list-group translucent-list\" *ngFor=\"let item of shoppingList\">\n      <li class=\"list-group-item\">{{ item.name }}\n        <span><input type=\"checkbox\" class=\"checks\"></span>\n      </li>\n    </ul>\n\n\n    <button type=\"button\" (click)=\"toFridge()\" class=\"btn btn-primary btn-lg addfridge\">Add to Fridge</button>\n\n    <div class=\"col-1\"></div>\n  </div>\n\n\n\n\n</div>\n\n<!--<div class=\"set-head\">-->\n  <!--<div class=\"box\">-->\n\n    <!--<h1 class=\"sett\">Settings</h1>-->\n    <!--<div class=\"dropdown-divider\"></div>-->\n\n    <!--<h3>Update Details</h3>-->\n    <!--<div class=\"dropdown-divider\"></div> -->\n"
 
 /***/ }),
 
@@ -906,31 +944,59 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 var GroceryListComponent = /** @class */ (function () {
     function GroceryListComponent(ds) {
+        this.userEmail = "john@john.com";
         this.checks = {};
-        this.shoppingList = ["Raw Salmon", "Chicken Breast", "Full-Cream Milk", "Coffee Ground", "Wholegrain Bread"];
+        this.shoppingList = [];
         this.appendableLists = [];
         this.service = ds;
     }
     GroceryListComponent.prototype.ngOnInit = function () {
-        this.appendableLists = this.service.getLists();
-        for (var _i = 0, _a = this.appendableLists; _i < _a.length; _i++) {
-            var item = _a[_i];
-            this.checks[item.name] = false;
-        }
+        this.refresh();
     };
     GroceryListComponent.prototype.appendLists = function () {
         var _this = this;
-        var tempLists = this.appendableLists.filter(function (i) { return _this.checks[i.name]; });
+        console.log(this.checks);
+        var tempLists = this.appendableLists.filter(function (i) { return _this.checks[i._id]; });
         for (var _i = 0, tempLists_1 = tempLists; _i < tempLists_1.length; _i++) {
             var currentList = tempLists_1[_i];
             for (var _a = 0, _b = currentList.contents; _a < _b.length; _a++) {
                 var shopItem = _b[_a];
-                if (!this.shoppingList.includes(shopItem.name)) {
-                    this.shoppingList.push(shopItem.name);
+                if (!this.shoppingList.map(function (thing) { return thing.name; }).includes(shopItem.name)) {
+                    this.shoppingList.push(shopItem);
                 }
             }
         }
+        this.service.saveGroceries(this.userEmail, this.shoppingList).then(function () {
+            _this.refresh();
+        });
     };
+    GroceryListComponent.prototype.refresh = function () {
+        var _this = this;
+        this.service.getUserData(this.userEmail).then(function (data) {
+            _this.shoppingList = data.groceries;
+        });
+        this.service.getListsForUser(this.userEmail).then(function (data) {
+            _this.appendableLists = data;
+            for (var _i = 0, _a = _this.appendableLists; _i < _a.length; _i++) {
+                var item = _a[_i];
+                if (!_this.checks[item._id]) {
+                    _this.checks[item._id] = false;
+                }
+            }
+        });
+    };
+    GroceryListComponent.prototype.toFridge = function () {
+        var _this = this;
+        this.service.getUserData(this.userEmail).then(function (data) {
+            return _this.service.saveFridge(_this.userEmail, data.fridge.concat(_this.shoppingList));
+        }).then(function () {
+            console.log("AYAYAYAYAYAY");
+        });
+    };
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["D" /* Input */])(),
+        __metadata("design:type", String)
+    ], GroceryListComponent.prototype, "userEmail", void 0);
     GroceryListComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
             selector: 'app-grocery-list',
