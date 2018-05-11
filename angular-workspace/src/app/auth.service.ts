@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 const API_LOGIN = "http://to-dd.herokuapp.com/api/login/"
 const API_SIGNUP = "http://to-dd.herokuapp.com/api/user/"
 
-interface UserData {
+export interface UserData {
   firstName: string,
   lastName: string,
   password: string,

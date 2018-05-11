@@ -1,9 +1,11 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { AuthService, UserData } from '../auth.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
+  providers: []
 })
 export class LoginComponent implements OnInit {
 
@@ -15,10 +17,14 @@ export class LoginComponent implements OnInit {
   @Output()
   signup: EventEmitter<any>;
 
-  constructor() {
+  private auth: AuthService;
+
+  constructor(service: AuthService) {
     this.login = new EventEmitter<any>();
     this.signup = new EventEmitter<any>();
     this.signupmode = false;
+
+    this.auth = service;
   }
 
   ngOnInit() {
@@ -35,13 +41,11 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  goSignup() {
-    // this.signup.emit(null);
-    if (!this.signupmode) {
-      this.signupmode = true;
+  goSignup(firstName: string, lastName: string, passwd: string, confPasswd: string, location: string) {
+    if (passwd === confPasswd) {
+
     } else {
-      this.signup.emit(null)
+
     }
-  }
 
 }
