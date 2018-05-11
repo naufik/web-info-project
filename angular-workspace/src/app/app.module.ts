@@ -28,8 +28,8 @@ import { ListAppenderComponent } from './list-appender/list-appender.component';
 
 const routes: Routes = [
   // { path: '', component: SoonComponent },
-  { path: 'home', component: LandingComponent },
-  { path: '', component: MainpageComponent },
+  { path: '', component: LandingComponent },
+  { path: 'main', component: MainpageComponent },
   { path: 'fridge', component: FridgeComponent},
   { path: 'settings', component: SettingsComponent},
   { path: 'groceries', component: GroceryListComponent},

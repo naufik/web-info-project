@@ -287,8 +287,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 var routes = [
     // { path: '', component: SoonComponent },
-    { path: 'home', component: __WEBPACK_IMPORTED_MODULE_7__landing_landing_component__["a" /* LandingComponent */] },
-    { path: '', component: __WEBPACK_IMPORTED_MODULE_12__mainpage_mainpage_component__["a" /* MainpageComponent */] },
+    { path: '', component: __WEBPACK_IMPORTED_MODULE_7__landing_landing_component__["a" /* LandingComponent */] },
+    { path: 'main', component: __WEBPACK_IMPORTED_MODULE_12__mainpage_mainpage_component__["a" /* MainpageComponent */] },
     { path: 'fridge', component: __WEBPACK_IMPORTED_MODULE_15__fridge_fridge_component__["a" /* FridgeComponent */] },
     { path: 'settings', component: __WEBPACK_IMPORTED_MODULE_14__settings_settings_component__["a" /* SettingsComponent */] },
     { path: 'groceries', component: __WEBPACK_IMPORTED_MODULE_16__grocery_list_grocery_list_component__["a" /* GroceryListComponent */] },
