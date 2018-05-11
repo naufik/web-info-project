@@ -38,7 +38,9 @@ export class AuthService {
 
   public signUp(data: UserData) {
     return new Promise((resolve, reject) => {
-      this.http.post(API_SIGNUP, data).subscribe((data: any) => {
+      this.http.post(API_SIGNUP, {
+          userData: data
+        }).subscribe((data: any) => {
         if (data.success) {
           resolve(data.data);
         } else {
