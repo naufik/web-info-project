@@ -18,6 +18,16 @@ UserRouter.post("/", (req: Request, res: Response) => {
     }
 });
 
+UserRouter.post("/update", (req: Request, res: Reponse) => {
+    if (!req.body.userData || !req.body.email) {
+        res.status(400).send("Broken request!");
+    } else {
+        UserController.saveUser(req.body.email, req.body.userData).then((data) => {
+            res.status(200).json(data);
+        });
+    }
+});
+
 UserRouter.post("/add.list", (req: Request, res: Response) => {
     if (!req.body.listData || !req.body.userEmail) {
         res.status(400).send("Broken Request");
