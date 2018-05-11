@@ -27,9 +27,9 @@ import { AddRecipesComponent } from './add-recipes/add-recipes.component';
 import { ListAppenderComponent } from './list-appender/list-appender.component';
 
 const routes: Routes = [
-  { path: '', component: SoonComponent },
+  // { path: '', component: SoonComponent },
   { path: 'home', component: LandingComponent },
-  { path: 'main', component: MainpageComponent },
+  { path: '', component: MainpageComponent },
   { path: 'fridge', component: FridgeComponent},
   { path: 'settings', component: SettingsComponent},
   { path: 'groceries', component: GroceryListComponent},
