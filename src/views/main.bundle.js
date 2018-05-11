@@ -112,6 +112,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 // import {ListData} from "../auth.service";
 var AllListsComponent = /** @class */ (function () {
     function AllListsComponent(ds) {
+        this.email = "john@john.com";
         this.add = false;
         this.formData = {
             name: "",
@@ -121,10 +122,10 @@ var AllListsComponent = /** @class */ (function () {
         this.service = ds;
     }
     AllListsComponent.prototype.ngOnInit = function () {
-        this.allLists = this.service.getLists();
+        this.refresh();
     };
     AllListsComponent.prototype.refresh = function () {
-        this.allLists = this.service.getLists();
+        this.getLists();
     };
     // addToLists(listName: string) {
     //   this.service.addNewList({
@@ -144,10 +145,20 @@ var AllListsComponent = /** @class */ (function () {
             url: name.replace(" ", "-").toLowerCase(),
             contents: []
         };
-        this.service.newList("egyptian.god@yugi.oh", newList).then(function (result) {
+        this.service.newList(this.email, newList).then(function (result) {
             console.log("test works");
         });
+        this.refresh();
         this.toggleAdd();
+    };
+    AllListsComponent.prototype.getLists = function () {
+        var _this = this;
+        this.service.getUserData(this.email).then(function (result) {
+            console.log(result);
+            return Promise.all(result.lists.map(function (x) { return _this.service.getListWithId(x); }));
+        }).then(function (listOfLists) {
+            _this.allLists = listOfLists;
+        });
     };
     AllListsComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
@@ -282,7 +293,7 @@ var routes = [
     { path: 'settings', component: __WEBPACK_IMPORTED_MODULE_14__settings_settings_component__["a" /* SettingsComponent */] },
     { path: 'groceries', component: __WEBPACK_IMPORTED_MODULE_16__grocery_list_grocery_list_component__["a" /* GroceryListComponent */] },
     { path: 'lists', component: __WEBPACK_IMPORTED_MODULE_20__all_lists_all_lists_component__["a" /* AllListsComponent */] },
-    { path: 'singlelist', component: __WEBPACK_IMPORTED_MODULE_22__list_page_list_page_component__["a" /* ListPageComponent */] },
+    { path: 'lists/:listid', component: __WEBPACK_IMPORTED_MODULE_22__list_page_list_page_component__["a" /* ListPageComponent */] },
 ];
 var AppModule = /** @class */ (function () {
     function AppModule() {
@@ -590,8 +601,26 @@ var DataRetrieverService = /** @class */ (function () {
             });
         });
     };
-    DataRetrieverService.prototype.saveList = function (listData, listId) {
-        // stub;
+    DataRetrieverService.prototype.saveList = function (userEmail, data) {
+        var _this = this;
+        return new Promise(function (resolve, reject) {
+            _this.http.post(API_URL + "user/list/", {
+                userEmail: userEmail,
+                listData: data
+            }).subscribe(function (data) {
+                if (data.success) {
+                    resolve(data.data);
+                }
+                else {
+                    if (data) {
+                        reject(data.err);
+                    }
+                    else {
+                        reject(new Error("Unknown error"));
+                    }
+                }
+            });
+        });
     };
     DataRetrieverService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
@@ -1119,7 +1148,7 @@ module.exports = ""
 /***/ "./src/app/list-appender/list-appender.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<!-- <li class=\"list-group-item list-group-item-secondary\">{{ item.name }}\n  <span><input type=\"checkbox\" class=\"checks\"></span>\n</li> -->\n<!-- not used and obsolete -->"
+module.exports = "<!-- not used and obsolete -->"
 
 /***/ }),
 
@@ -1172,7 +1201,7 @@ module.exports = ".main{\r\n  display: -ms-grid;\r\n  display: grid;\r\n  -ms-gr
 /***/ "./src/app/list-page/list-page.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<app-logged-header></app-logged-header>\r\n\r\n<style>\r\n  @import url('https://fonts.googleapis.com/css?family=Libre+Baskerville|Libre+Franklin');\r\n</style>\r\n\r\n<div class=\"main\">\r\n  <div class=\"title\">\r\n    <div class=\"listnames\">\r\n      <div class=\"listheader\">\r\n        TUNA SANDWHICH <a (click)=\"toggleAdd()\" class=\"click\"><i class=\"fas fa-edit section-icon\"></i></a>\r\n      </div>\r\n      <div class=\"addToGroceries\">\r\n        <a>+ADD TO GROCERIES</a>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n\r\n<div class=\"main\">\r\n  <hr>\r\n</div>\r\n\r\n<div class=\"main\">\r\n  <div class=\"search\">\r\n    <add-recipe (submit)=\"addItem($event)\" *ngIf=\"add\"></add-recipe>\r\n  </div>\r\n</div>\r\n\r\n\r\n<div class=\"main\">\r\n  <div class=\"list\" *ngFor=\"let item of list.contents\">\r\n    {{item.name}}\r\n  </div>\r\n</div>\r\n"
+module.exports = "<app-logged-header></app-logged-header>\r\n\r\n<style>\r\n  @import url('https://fonts.googleapis.com/css?family=Libre+Baskerville|Libre+Franklin');\r\n</style>\r\n\r\n<div class=\"main\">\r\n  <div class=\"title\">\r\n    <div class=\"listnames\">\r\n      <div class=\"listheader\">\r\n        {{list.name}} <a (click)=\"toggleAdd()\" class=\"click\"><i class=\"fas fa-edit section-icon\"></i></a>\r\n      </div>\r\n      <div class=\"addToGroceries\">\r\n        <a>+ADD TO GROCERIES</a>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n\r\n<div class=\"main\">\r\n  <hr>\r\n</div>\r\n\r\n<div class=\"main\">\r\n  <div class=\"search\">\r\n    <add-recipe (submit)=\"addItem($event)\" *ngIf=\"add\"></add-recipe>\r\n  </div>\r\n</div>\r\n\r\n\r\n<div class=\"main\">\r\n  <div class=\"list\" *ngFor=\"let item of list.contents\">\r\n    {{item.name}}\r\n  </div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -1182,7 +1211,8 @@ module.exports = "<app-logged-header></app-logged-header>\r\n\r\n<style>\r\n  @i
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ListPageComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__dataretriever_service__ = __webpack_require__("./src/app/dataretriever.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__dataretriever_service__ = __webpack_require__("./src/app/dataretriever.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1194,22 +1224,32 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
 var ListPageComponent = /** @class */ (function () {
-    function ListPageComponent(service) {
+    function ListPageComponent(activatedRoute, service) {
+        this.activatedRoute = activatedRoute;
         this.service = service;
+        this.list = {
+            contents: [],
+            name: "Loading...",
+            url: "..."
+        };
+        this.userEmail = "john@john.com";
         this.collapsed = true;
         this.add = false;
     }
     ListPageComponent.prototype.ngOnInit = function () {
-        for (var _i = 0, _a = this.service.getLists(); _i < _a.length; _i++) {
-            var i = _a[_i];
-            if (i.name === "Tuna Sandwich") {
-                this.list = i;
-            }
-        }
+        var _this = this;
+        this.activatedRoute.params.subscribe(function (params) {
+            _this.listId = params['listid'];
+            _this.refresh();
+        });
     };
     ListPageComponent.prototype.refresh = function () {
-        this.list = this.list;
+        var _this = this;
+        this.service.getListWithId(this.listId).then(function (listItem) {
+            _this.list = listItem;
+        });
     };
     ListPageComponent.prototype.toggleAdd = function () {
         this.add = !this.add;
@@ -1219,17 +1259,29 @@ var ListPageComponent = /** @class */ (function () {
             name: item,
             qty: 1
         });
-        this.toggleAdd();
-        this.refresh();
+        this.service.saveList(this.userEmail, this.list).then(function (result) {
+        });
     };
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["D" /* Input */])(),
+        __metadata("design:type", Object)
+    ], ListPageComponent.prototype, "list", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["D" /* Input */])(),
+        __metadata("design:type", String)
+    ], ListPageComponent.prototype, "userEmail", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["D" /* Input */])(),
+        __metadata("design:type", String)
+    ], ListPageComponent.prototype, "listId", void 0);
     ListPageComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
             selector: 'app-list-page',
             template: __webpack_require__("./src/app/list-page/list-page.component.html"),
             styles: [__webpack_require__("./src/app/list-page/list-page.component.css")],
-            providers: [__WEBPACK_IMPORTED_MODULE_1__dataretriever_service__["a" /* DataRetrieverService */]]
+            providers: [__WEBPACK_IMPORTED_MODULE_2__dataretriever_service__["a" /* DataRetrieverService */]]
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__dataretriever_service__["a" /* DataRetrieverService */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */], __WEBPACK_IMPORTED_MODULE_2__dataretriever_service__["a" /* DataRetrieverService */]])
     ], ListPageComponent);
     return ListPageComponent;
 }());
@@ -1612,7 +1664,7 @@ module.exports = ".main{\r\n  display: -ms-grid;\r\n  display: grid;\r\n  -ms-gr
 /***/ "./src/app/recipe/recipe.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<style>\r\n  @import url('https://fonts.googleapis.com/css?family=Libre+Baskerville|Libre+Franklin');\r\n</style>\r\n\r\n<div class=\"main\">\r\n  <a [routerLink]=\"['/singlelist']\">\r\n    <img class=\"img\" src=\"assets/list.jpg\">\r\n  </a>\r\n  <div class=\"caption\">\r\n    <h1><a [routerLink]=\"['/singlelist']\">{{ data.name }}</a></h1>\r\n    <p>{{ getDisplayedContents() }}</p>\r\n  </div>\r\n</div>\r\n"
+module.exports = "<style>\r\n  @import url('https://fonts.googleapis.com/css?family=Libre+Baskerville|Libre+Franklin');\r\n</style>\r\n\r\n<div class=\"main\">\r\n  <a [routerLink]=\"['/singlelist']\">\r\n    <img class=\"img\" src=\"assets/list.jpg\">\r\n  </a>\r\n  <div class=\"caption\">\r\n    <h1><a [routerLink]=\"['/lists/' + data._id]\">{{ data.name }}</a></h1>\r\n    <p>{{ getDisplayedContents() }}</p>\r\n  </div>\r\n</div>\r\n"
 
 /***/ }),
 
