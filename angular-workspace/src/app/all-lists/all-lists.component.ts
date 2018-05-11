@@ -59,8 +59,8 @@ export class AllListsComponent implements OnInit {
 
     this.service.newList(this.email, newList).then((result: any) =>{
       console.log("test works");
+      this.refresh();
     });
-    this.refresh();
     this.toggleAdd();
   }
 

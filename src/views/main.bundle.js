@@ -140,6 +140,7 @@ var AllListsComponent = /** @class */ (function () {
         this.add = !this.add;
     };
     AllListsComponent.prototype.addList = function (name) {
+        var _this = this;
         var newList = {
             name: name,
             url: name.replace(" ", "-").toLowerCase(),
@@ -147,8 +148,8 @@ var AllListsComponent = /** @class */ (function () {
         };
         this.service.newList(this.email, newList).then(function (result) {
             console.log("test works");
+            _this.refresh();
         });
-        this.refresh();
         this.toggleAdd();
     };
     AllListsComponent.prototype.getLists = function () {
