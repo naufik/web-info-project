@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 /** GET URL */
-const API_URL = "http://localhost:3000/api/"
+const API_URL = "http://to-dd.herokuapp.com/api/"
 
 /** placeholder hardcoded data */
 const allLists: List[] = [
@@ -155,7 +155,7 @@ export class DataRetrieverService {
         } else {
           reject(data.error);
         }
-      });  
+      });
     });
   }
 
@@ -167,15 +167,15 @@ export class DataRetrieverService {
         } else {
           reject(data.error);
         }
-      });  
-    })  
+      });
+    });
   }
 
   public saveUser(userData: any, userEmail: string) {
     return new Promise((resolve, reject) => {
       this.http.post(API_URL, {
         email: userEmail,
-        data: userData 
+        data: userData
       }).subscribe((data: any) => {
         if (data.success) {
           resolve(data.data);

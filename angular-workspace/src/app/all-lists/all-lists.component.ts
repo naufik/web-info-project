@@ -1,16 +1,25 @@
 import { Component, OnInit } from '@angular/core';
 import { DataRetrieverService, List } from '../dataretriever.service';
+import { AuthService, ListData} from '../auth.service';
+// import {ListData} from "../auth.service";
 
 @Component({
   selector: 'app-all-lists',
   templateUrl: './all-lists.component.html',
   styleUrls: ['./all-lists.component.css'],
-  providers: [ DataRetrieverService ]
+  providers: [ AuthService, DataRetrieverService ]
 })
+
 export class AllListsComponent implements OnInit {
 
   allLists: List[];
   add = false;
+
+  formData = {
+    name: "",
+    url: "",
+    contents: []
+  }
 
   private service: DataRetrieverService;
 
@@ -26,17 +35,30 @@ export class AllListsComponent implements OnInit {
     this.allLists = this.service.getLists();
   }
 
-  addToLists(listName: string) {
-    this.service.addNewList({
-      name: listName,
-      url: listName.toLowerCase(),
-      contents: []
-    });
-    this.refresh();
-    this.toggleAdd();
-  }
+  // addToLists(listName: string) {
+  //   this.service.addNewList({
+  //     name: listName,
+  //     url: listName.toLowerCase(),
+  //     contents: []
+  //   });
+  //   this.refresh();
+  //   this.toggleAdd();
+  // }
 
   toggleAdd() {
     this.add = !this.add;
+  }
+
+  addList(name: string) {
+    let newList: List = {
+      name: name,
+      url: name.replace(" ", "-").toLowerCase(),
+      contents: []
+    }
+
+    this.service.newList("egyptian.god@yugi.oh", newList).then((result: any) =>{
+      console.log("test works");
+    });
+    this.toggleAdd();
   }
 }

@@ -12,6 +12,12 @@ export interface UserData {
   locationId: string
 };
 
+export interface ListData{
+  name: string,
+  url: string,
+  contents: string
+}
+
 @Injectable()
 export class AuthService {
 
@@ -26,7 +32,7 @@ export class AuthService {
       this.http.post(API_LOGIN, {
         loginEmail: email,
         loginPassword: passwd
-      }).subscribe((data: any) => { 
+      }).subscribe((data: any) => {
         if (data.success) {
           resolve(data.token);
         } else {
@@ -35,6 +41,7 @@ export class AuthService {
       });
     });
   }
+
 
   public signUp(data: UserData) {
     return new Promise((resolve, reject) => {
