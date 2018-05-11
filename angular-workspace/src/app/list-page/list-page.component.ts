@@ -11,8 +11,15 @@ import {DataRetrieverService, List, ListFood} from "../dataretriever.service";
 
 export class ListPageComponent implements OnInit {
 
-  @Input();
-  list: List;
+  @Input()
+  someList: List = {
+    contents: [],
+    name: "Loading...",
+    url: "..."
+  };
+
+  @Input()
+  userEmail: string = "john@john.com";
 
   @Input()
   listId: string;
@@ -23,15 +30,16 @@ export class ListPageComponent implements OnInit {
   constructor(private activatedRoute: ActivatedRoute, private service: DataRetrieverService) {}
 
   ngOnInit() {
-    this.activatedRoute.params.subscribe((params: Params) => {
-     this.listId = params['listId'];
-     this.refresh();
-    })
+    this.listId = "5af56ce214736e0014907a9e";
+    console.log("hello gurl!~")
+    this.refresh();
   }
 
   refresh() {
     this.service.getListWithId(this.listId).then((listItem: List) => {
-      this.list = listItem;
+      console.log("try");
+      this.someList = listItem;
+      console.log(this.someList);
     });
   }
 
@@ -40,12 +48,12 @@ export class ListPageComponent implements OnInit {
   }
 
   addItem(item: string) {
-    this.list.contents.push({
+    this.someList.contents.push({
       name: item,
       qty: 1
     });
 
-    this.service.saveList(this.userEmail, this.list).then((result) => {
+    this.service.saveList(this.userEmail, this.someList).then((result) => {
       console.log("it is saved my boi");
     });
   }
