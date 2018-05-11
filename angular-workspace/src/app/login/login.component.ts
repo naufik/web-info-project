@@ -41,9 +41,25 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  goSignup(firstName: string, lastName: string, passwd: string, confPasswd: string, location: string) {
+  goSignup(firstName: string, lastName: string, email: string, passwd: string, confPasswd: string, location: string) {
     if (passwd === confPasswd) {
 
+      let newUser: UserData = {
+        firstName: firstName,
+        lastName: lastName,
+        email: email,
+        password: passwd,
+        locationId: location
+      }
+
+      this.auth.signUp(newUser).then((result) => {
+        this.signup.emit({
+          success: true,
+          user: result
+        });
+      }, (error) => {
+        
+      });
     } else {
 
     }
