@@ -25,11 +25,14 @@ export class FridgeitemComponent implements OnInit {
   }
 
   getDisplayQty() {
-    return this.itemsrc.qty.toString() + " " + this.itemsrc.unit;
+    return this.itemsrc.qty.toString() + (this.itemsrc.unit ? " " + this.itemsrc.unit : "");
   }
 
   getDateDisplay() {
-    console.log(this.itemsrc.expiry.toISOString());
-    return this.itemsrc.expiry.toISOString();
+    return this.itemsrc.expiry;
+  }
+
+  getExpiryDate() {
+
   }
 }
