@@ -32,7 +32,7 @@ export class ListPageComponent implements OnInit {
   ngOnInit() {
     this.activatedRoute.params.subscribe((params: Params) => {
       this.listId = params['listid'];
-      this.refresh()
+      this.refresh();
     });
   }
 
@@ -53,7 +53,8 @@ export class ListPageComponent implements OnInit {
     });
 
     this.service.saveList(this.userEmail, this.list).then((result) => {
-      
+
     });
+    this.toggleAdd();
   }
 }

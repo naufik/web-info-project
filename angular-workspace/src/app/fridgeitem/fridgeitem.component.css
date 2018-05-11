@@ -21,6 +21,10 @@ a{
   padding-left: 2px;
 }
 
+a:hover{
+  font-weight:bold;
+}
+
 .main{
   margin: 0px;
 }
