@@ -198,7 +198,7 @@ export class DataRetrieverService {
           reject(data.err);
         }
       });
-    })
+    });
   }
 
   public saveList(listData: any, listId: string) {
