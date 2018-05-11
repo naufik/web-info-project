@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { DataRetrieverService } from '../dataretriever.service';
 
 @Component({
@@ -8,6 +8,9 @@ import { DataRetrieverService } from '../dataretriever.service';
   providers: [ DataRetrieverService ]
 })
 export class MainpageComponent implements OnInit {
+
+  @Input()
+  email: string = "john@john.com";
 
   private dataretriver: DataRetrieverService;
   
@@ -20,8 +23,13 @@ export class MainpageComponent implements OnInit {
   lists = [];
 
   ngOnInit() {
-    this.fridge = this.dataretriver.getFridge();
-    this.lists = this.dataretriver.getLists();
+    this.dataretriver.getListsForUser(this.email).then((data: any) => {
+      this.lists = data.slice(3);
+    });
+
+    this.dataretriver.getUserData(this.email).then((data: any) => {
+      this.fridge = data.fridge.slice(3);
+    });
   }
 
 }

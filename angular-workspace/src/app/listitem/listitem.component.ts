@@ -20,6 +20,7 @@ export class ListitemComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log(this.listname);
   }
 
   navigate() {

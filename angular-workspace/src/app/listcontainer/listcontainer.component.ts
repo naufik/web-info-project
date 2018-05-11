@@ -19,22 +19,16 @@ export class ListcontainerComponent implements OnInit {
   @Input()
   datasource = [];
 
-  lists = [
-    "My Groceries",
-    "Hangover Cure",
-    "Cheetos Alternatives",
-    "Wine"
-  ]
+  lists = []
 
   constructor(router: Router) {
     this.router = router;
     }
 
   ngOnInit() {
-  if (this.datasource.length > 0) {
-    this.lists = this.datasource;
-
-  }
+    if (this.datasource.length > 0) {
+      this.lists = this.datasource;
+    }
   
   }
 
