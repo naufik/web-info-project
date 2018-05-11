@@ -29,6 +29,12 @@ UserRouter.post("/add.list", (req: Request, res: Response) => {
     }
 });
 
+UserRouter.post("/list/:listId", (req:Request, res: Response) => {
+    ListController.saveList(req.body.listData).then((res) => {
+        res.status(200).json(data);
+    })
+});
+
 UserRouter.get("/list/:listId", (req: Request, res: Response) => {
     ListController.getList(req.params.listId).then((data) => {
         res.status(200).json(data);
@@ -37,9 +43,19 @@ UserRouter.get("/list/:listId", (req: Request, res: Response) => {
     })
 })
 
-UserRouter.get('/:em', (req: Request, res: Response) => {
+UserRouter.get("/:em", (req: Request, res: Response) => {
     if (req.params.em) {
         UserController.getUserData(req.params.em).then((data) => {
+            res.status(200).json(data);
+        })
+    } else {
+        res.status(400).send("Broken request.");
+    }
+});
+
+UserRouter.get("/:em/lists", (req: Request, res: Response) => {
+    if (req.params.em) {
+        ListController.getListsForUser(req.params.em).then((data) => {
             res.status(200).json(data);
         })
     } else {
