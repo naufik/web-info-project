@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {DataRetrieverService, ListFood} from "../dataretriever.service";
+import {DataRetrieverService, List, ListFood} from "../dataretriever.service";
 
 @Component({
   selector: 'app-list-page',
@@ -10,7 +10,7 @@ import {DataRetrieverService, ListFood} from "../dataretriever.service";
 
 export class ListPageComponent implements OnInit {
 
-  list = [];
+  list: List;
   collapsed = true;
   add = false;
 
@@ -34,7 +34,8 @@ export class ListPageComponent implements OnInit {
 
   addItem(item: string) {
     this.list.contents.push({
-      name: item
+      name: item,
+      qty: 1
     });
     this.toggleAdd();
     this.refresh();
