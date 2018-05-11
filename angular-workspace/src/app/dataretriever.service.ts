@@ -219,4 +219,22 @@ export class DataRetrieverService {
       })
     });
   }
+
+  public saveFridge(userEmail: string, contents: any[]) {
+    return new Promise((resolve, reject) => {
+      this.http.post(API_URL + "user/" + userEmail + "/fridge", {
+        contents: contents
+      }).subscribe((data: any) => {
+        if (data.success) {
+          resolve(data);
+        } else {
+          if (data) {
+            reject(data.error);
+          } else {
+            reject(new Error("Unknown Error"));
+          }
+        }
+      });
+    })
+  }
 }

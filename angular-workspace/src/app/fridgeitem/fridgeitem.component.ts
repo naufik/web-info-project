@@ -12,23 +12,7 @@ export class FridgeitemComponent implements OnInit {
   itemsrc: FridgeFood;
 
   constructor() {
-    (function() {
-    'use strict';
-    window.addEventListener('load', function() {
-      // Fetch all the forms we want to apply custom Bootstrap validation styles to
-      var forms = document.getElementsByClassName('needs-validation');
-      // Loop over them and prevent submission
-      var validation = Array.prototype.filter.call(forms, function(form) {
-        form.addEventListener('submit', function(event) {
-          if (form.checkValidity() === false) {
-            event.preventDefault();
-            event.stopPropagation();
-          }
-          form.classList.add('was-validated');
-        }, false);
-      });
-    }, false);
-  })();
+
   }
 
   ngOnInit() {
@@ -42,5 +26,10 @@ export class FridgeitemComponent implements OnInit {
 
   getDisplayQty() {
     return this.itemsrc.qty.toString() + " " + this.itemsrc.unit;
+  }
+
+  getDateDisplay() {
+    console.log(this.itemsrc.expiry.toISOString());
+    return this.itemsrc.expiry.toISOString();
   }
 }
