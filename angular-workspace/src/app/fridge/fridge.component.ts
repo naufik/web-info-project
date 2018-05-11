@@ -18,22 +18,28 @@ export class FridgeComponent implements OnInit {
 
   data: FridgeFood[];
 
+  userEmail: string = "john@john.com";
+
   ngOnInit() {
     this.refresh();
   }
 
   refresh() {
-    this.data = this.fridgeService.getFridge();
+    this.fridgeService.getUserData(this.userEmail).then((data: any) => {
+      this.data = data.fridge;
+    });
   }
 
   addNew(itemName: string) {
-    this.fridgeService.addData({
+    this.data.push({
       name: itemName,
-      qty: 300,
-      unit: "kg+s",
+      qty: 1,
       expiry: new Date()
     });
-    this.refresh();
+    this.fridgeService.saveFridge(this.userEmail, this.data).then(() => {
+      this.refresh();  
+    });
+
     this.toggleAdd();
   }
 
