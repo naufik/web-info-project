@@ -95,6 +95,15 @@ export class UserController {
     public static getUserData(userEmail: string) {
         return User.findOne({
             email: userEmail
+        }).then((data) => {
+            return {
+                success: true,
+                data: data
+            }
+        }, (err: Error) => {
+            return {
+                success: false
+            }
         });
     }
 
