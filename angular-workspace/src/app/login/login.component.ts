@@ -30,13 +30,13 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
-  goLogin(email: string, password: string) {
+  goLogin() {
     if (this.signupmode) {
       this.signupmode = false;
     } else {      
       this.login.emit({
-        email: email,
-        password: password
+        email: this.formData.email,
+        password: this.formData.passwd
       });
     }
   }
