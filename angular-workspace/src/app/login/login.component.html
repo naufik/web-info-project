@@ -28,7 +28,7 @@
         <input class="form-control" id="exampleInputPassword1" placeholder="Password" [(ngModel)]="formData.location" name="location">
       </div>
       <div class="buttons">
-        <button (click)="goLogin(emailbox.value, passwdbox.value)" type="button" class="btn btn-primary loginbutton">Log-In</button>
+        <button (click)="goLogin()" type="button" class="btn btn-primary loginbutton">Log-In</button>
         <button (click)="switchSignup()" type="button" class="btn btn-primary signupbutton" *ngIf="!signupmode">Sign-Up</button>
         <button (click)="goSignup()" type="button" class="btn btn-primary signupbutton" *ngIf="signupmode">Sign-Up</button>
       </div>
