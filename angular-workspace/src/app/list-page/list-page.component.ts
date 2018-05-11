@@ -30,16 +30,15 @@ export class ListPageComponent implements OnInit {
   constructor(private activatedRoute: ActivatedRoute, private service: DataRetrieverService) {}
 
   ngOnInit() {
-    this.listId = "5af56ce214736e0014907a9e";
-    console.log("hello gurl!~")
-    this.refresh();
+    this.activatedRoute.params.subscribe((params: Params) => {
+      this.listId = params['listid'];
+      this.refresh()
+    });
   }
 
   refresh() {
     this.service.getListWithId(this.listId).then((listItem: List) => {
-      console.log("try");
       this.someList = listItem;
-      console.log(this.someList);
     });
   }
 
@@ -54,7 +53,7 @@ export class ListPageComponent implements OnInit {
     });
 
     this.service.saveList(this.userEmail, this.someList).then((result) => {
-      console.log("it is saved my boi");
+      
     });
   }
 }

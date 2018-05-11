@@ -34,7 +34,7 @@ const routes: Routes = [
   { path: 'settings', component: SettingsComponent},
   { path: 'groceries', component: GroceryListComponent},
   { path: 'lists', component: AllListsComponent},
-  { path: 'singlelist', component: ListPageComponent},
+  { path: 'lists/:listid', component: ListPageComponent},
 ]
 
 @NgModule({
