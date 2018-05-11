@@ -16,16 +16,16 @@ var userSchema = new mongoose.Schema(
         "fridge": [
             {
                 "name": String,
-                "expiryDate": Date,
+                "expiry": Date,
                 "dateAdded": { type: Date, default: Date.now },
-                "amount": Number,
+                "qty": Number,
                 "unit": String
             }
         ],
         "groceries":[
             {
                 "name": String,
-                "amount": Number,
+                "qty": Number,
                 "unit": String
             }
         ]
