@@ -91,6 +91,8 @@ UserRouter.post("/:em/:stash", (req: Request, res: Response) => {
             default:
                 break;
         }
+    } else {
+        res.status(400).send("Broken request.");
     }
 });
 
