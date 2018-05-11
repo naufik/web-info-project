@@ -11,6 +11,7 @@ import { AuthService, ListData} from '../auth.service';
 })
 
 export class AllListsComponent implements OnInit {
+  email: string = "john@john.com"
 
   allLists: List[];
   add = false;
@@ -56,9 +57,15 @@ export class AllListsComponent implements OnInit {
       contents: []
     }
 
-    this.service.newList("egyptian.god@yugi.oh", newList).then((result: any) =>{
+    this.service.newList(this.email, newList).then((result: any) =>{
       console.log("test works");
     });
     this.toggleAdd();
+  }
+
+  getLists(){
+    this.service.getUserData(this.email).then((result: any) =>{
+
+    })
   }
 }
