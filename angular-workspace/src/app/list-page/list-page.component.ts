@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output } from '@angular/core';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 import {DataRetrieverService, List, ListFood} from "../dataretriever.service";
 
 @Component({
@@ -10,22 +11,28 @@ import {DataRetrieverService, List, ListFood} from "../dataretriever.service";
 
 export class ListPageComponent implements OnInit {
 
+  @Input();
   list: List;
+
+  @Input()
+  listId: string;
+
   collapsed = true;
   add = false;
 
-  constructor(private service: DataRetrieverService) {}
+  constructor(private activatedRoute: ActivatedRoute, private service: DataRetrieverService) {}
 
   ngOnInit() {
-    for (const i of this.service.getLists()) {
-      if (i.name === "Tuna Sandwich") {
-        this.list = i;
-      }
-    }
+    this.activatedRoute.params.subscribe((params: Params) => {
+     this.listId = params['listId'];
+     this.refresh();
+    })
   }
 
   refresh() {
-    this.list = this.list;
+    this.service.getListWithId(this.listId).then((listItem: List) => {
+      this.list = listItem;
+    });
   }
 
   toggleAdd() {
@@ -37,7 +44,9 @@ export class ListPageComponent implements OnInit {
       name: item,
       qty: 1
     });
-    this.toggleAdd();
-    this.refresh();
+
+    this.service.saveList(this.userEmail, this.list).then((result) => {
+      console.log("it is saved my boi");
+    });
   }
 }
