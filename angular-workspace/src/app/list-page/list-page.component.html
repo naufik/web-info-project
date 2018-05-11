@@ -8,7 +8,7 @@
   <div class="title">
     <div class="listnames">
       <div class="listheader">
-        TUNA SANDWHICH <a (click)="toggleAdd()" class="click"><i class="fas fa-edit section-icon"></i></a>
+        {{list.name}} <a (click)="toggleAdd()" class="click"><i class="fas fa-edit section-icon"></i></a>
       </div>
       <div class="addToGroceries">
         <a>+ADD TO GROCERIES</a>
@@ -29,7 +29,7 @@
 
 
 <div class="main">
-  <div class="list" *ngFor="let item of someList.contents">
+  <div class="list" *ngFor="let item of list.contents">
     {{item.name}}
   </div>
 </div>

@@ -12,7 +12,7 @@ import {DataRetrieverService, List, ListFood} from "../dataretriever.service";
 export class ListPageComponent implements OnInit {
 
   @Input()
-  someList: List = {
+  list: List = {
     contents: [],
     name: "Loading...",
     url: "..."
@@ -38,7 +38,7 @@ export class ListPageComponent implements OnInit {
 
   refresh() {
     this.service.getListWithId(this.listId).then((listItem: List) => {
-      this.someList = listItem;
+      this.list = listItem;
     });
   }
 
@@ -47,12 +47,12 @@ export class ListPageComponent implements OnInit {
   }
 
   addItem(item: string) {
-    this.someList.contents.push({
+    this.list.contents.push({
       name: item,
       qty: 1
     });
 
-    this.service.saveList(this.userEmail, this.someList).then((result) => {
+    this.service.saveList(this.userEmail, this.list).then((result) => {
       
     });
   }
