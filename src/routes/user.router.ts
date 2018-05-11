@@ -77,4 +77,21 @@ UserRouter.get("/:em/lists", (req: Request, res: Response) => {
     }
 });
 
+UserRouter.post("/:em/:stash", (req: Request, res: Response) => {
+    if (req.params.em && req.params.stash && req.body.contents) {
+        switch (req.params.stash) {
+            case "groceries":
+                UserController.setGroceries(req.params.em, req.body.contents).then((result) => {
+                    res.status(200).json(result);
+                });
+            case "fridge":
+                UserController.setFridge(req.params.em, req.body.contents).then((result) => {
+                    res.status(200).json(result);
+                });
+            default:
+                break;
+        }
+    }
+});
+
 export default UserRouter;

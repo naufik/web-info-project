@@ -43,15 +43,12 @@ export class UserController {
         });
     }
 
-    public static addToGroceries(userEmail: string, items: any[]) {
+    public static setGroceries(userEmail: string, items: any[]) {
         return User.findOne({
             email: userEmail
         }).then((userData: any) => {
             if (userData){
-                items.forEach((item) => {
-                    userData.groceries.push(item);
-                });
-
+                userData.groceries = items;
                 return userData.save();
             } else {
                 return Bluebird.reject(new Error("Cannot find user."));
@@ -67,16 +64,12 @@ export class UserController {
         });
     }
 
-    public static addToFridge(userEmail: string, items: any[], expiryDate: Date) {
+    public static setFridge(userEmail: string, items: any[]) {
         return User.findOne({
             email: userEmail
         }).then((userData: any) => {
             if (userData){
-                items.forEach((item) => {
-                    item.expiryDate = expiryDate;
-                    userData.fridge.push(item);
-                });
-
+                userData.fridge = items;
                 return userData.save();
             } else {
                 return Bluebird.reject(new Error("Cannot find user."));
