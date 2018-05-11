@@ -5,8 +5,42 @@
 
 .list{
   grid-column: 2/3;
-  background-color: #fbf8f4;
-  padding: 10px;
+  background: rgba(255,255,255,0.75);
+  padding-left: 2px;
+  font-size: 85%;
+  font-family: 'Libre Franklin', sans-serif;
+  margin-top: 2px;
+  margin-bottom: 2px;
+  cursor: pointer;
+}
+
+a{
+  cursor: pointer;
+}
+
+.list:hover{
+  background: rgba(255,255,255,0.5);
+}
+
+.title{
+  grid-column: 2/3;
+}
+
+.search{
+  grid-column: 2/3;
+  padding-top: 10px;
+  padding-right: 20px;
+}
+
+hr{
+  margin: 2px;
+  grid-column: 2/3;
+}
+
+.main2{
+  display: grid;
+  grid-template-columns: 29% 42% 29%;
+  margin: 0px;
 }
 
 .listnames{
@@ -16,22 +50,18 @@
   font-family: 'Libre Franklin', sans-serif;
 }
 
-.addNewItem{
-  margin-top:11px;
-  grid-column: 2/3;
-  text-align: right;
-  font-size: 10px;
-  margin-right: 0px;
-  vertical-align: text-bottom;
-}
+/*.addNewItem{*/
+  /*margin-top:11px;*/
+  /*grid-column: 2/3;*/
+  /*text-align: right;*/
+  /*font-size: 10px;*/
+  /*margin-right: 0px;*/
+  /*vertical-align: text-bottom;*/
+/*}*/
 
-li{
-  font-family: 'Libre Franklin', sans-serif;
-}
-
-hr{
-  margin: 0px;
-}
+/*li{*/
+  /*font-family: 'Libre Franklin', sans-serif;*/
+/*}*/
 
 .addToGroceries{
   margin-top:11px;
@@ -39,6 +69,8 @@ hr{
   text-align: right;
   font-size: 10px;
   vertical-align: text-bottom;
+  color: black;
+  cursor: pointer;
 }
 
 .listheader{
@@ -46,6 +78,17 @@ hr{
   grid-column: 1/2;
 }
 
-a{
-  color: #2e3038;
+ul{
+  display: grid;
+  grid-template-columns: 29% 42% 29%;
 }
+
+li{
+  grid-column: 2/3;
+}
+
+app-recipe{
+  grid-column: 2/3;
+  margin-top: 5px;
+}
+

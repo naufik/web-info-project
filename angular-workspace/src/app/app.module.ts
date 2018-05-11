@@ -32,7 +32,7 @@ const routes: Routes = [
   { path: 'settings', component: SettingsComponent},
   { path: 'groceries', component: GroceryListComponent},
   { path: 'lists', component: AllListsComponent},
-  { path: 'singlelist', component: ListPageComponent}
+  { path: 'singlelist', component: ListPageComponent},
 ]
 
 @NgModule({
@@ -58,7 +58,7 @@ const routes: Routes = [
     AddRecipesComponent,
     ListAppenderComponent
   ],
-  
+
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

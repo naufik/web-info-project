@@ -7,13 +7,13 @@ a {
 
 .list{
   grid-column: 2/3;
-  background-color: #fbf8f4;
+  /*background-color: #fbf8f4;*/
   padding: 10px;
 }
 
 .listnames{
   display: grid;
-  grid-template-columns: 10% 70% 20%;
+  grid-template-columns: 20% 60% 20%;
   /*font-family: 'Work Sans', sans-serif;*/
   font-family: 'Libre Franklin', sans-serif;
 }
@@ -73,6 +73,7 @@ img{
   border: 1px solid #2e3038;
   padding: 0px;
   border-radius: 10px;
-  background-color: #f6f0de;
+  background-color: #fbf8f4;
   text-align: center;
+  font-family: 'MuseoSans_500', serif;
 }

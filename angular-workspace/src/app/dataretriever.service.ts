@@ -116,7 +116,7 @@ export interface FridgeFood {
   name: string,
   qty: number,
   unit?: string, // Unit of measurement (pcs, grams, kgs, litres)
-  expiry: Date 
+  expiry: Date
 }
 
 @Injectable()
@@ -142,4 +142,5 @@ export class DataRetrieverService {
   public addNewList(data: List) {
     allLists.push(data);
   }
+
 }

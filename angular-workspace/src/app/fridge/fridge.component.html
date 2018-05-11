@@ -1,13 +1,15 @@
+<body>
 <style>
   @import url('https://fonts.googleapis.com/css?family=Libre+Baskerville|Libre+Franklin');
 </style>
 
 <app-logged-header></app-logged-header>
 <br>
+
 <div class="main">
   <div class="tit">
     <div class="titlename">
-      WHAT'S ON MY FRIDGE  <a (click)="addNew()"><i class="fas fa-edit section-icon"></i></a>
+      WHAT'S ON MY FRIDGE  <a (click)="toggleAdd()" class=""><i class="fas fa-edit section-icon"></i></a>
     </div>
 
     <div class="btn-group">
@@ -50,9 +52,14 @@
   <hr>
 </div>
 
-<div class="main2" *ngFor="let item of data">
-    <app-fridgeitem [itemsrc]="item"></app-fridgeitem>
+<div class="main">
+  <div class="search">
+    <add-recipe (submit)="addNew($event)" *ngIf="add"></add-recipe>
+  </div>
 </div>
 
+<div class="main2" *ngFor="let item of data">
+  <app-fridgeitem [itemsrc]="item"></app-fridgeitem>
+</div>
 
-
+</body>

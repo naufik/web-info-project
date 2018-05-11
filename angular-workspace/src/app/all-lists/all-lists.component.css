@@ -3,9 +3,16 @@
   grid-template-columns: 29% 42% 29%;
 }
 
+.main1{
+  display: grid;
+  grid-template-columns: 29% 42% 29%;
+  margin-top: 10px;
+}
+
 .search{
   grid-column: 2/3;
-  padding-top: 20px;
+  padding-top: 10px;
+  padding-right: 20px;
 }
 
 .main2{
@@ -73,5 +80,3 @@ hr{
 .btn-group2{
   grid-column: 4/5;
 }
-
-
