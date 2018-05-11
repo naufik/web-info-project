@@ -60,12 +60,16 @@ export class AllListsComponent implements OnInit {
     this.service.newList(this.email, newList).then((result: any) =>{
       console.log("test works");
     });
+    this.getLists();
     this.toggleAdd();
   }
 
   getLists(){
     this.service.getUserData(this.email).then((result: any) =>{
-
-    })
+      console.log(result);
+      return Promise.all(result.lists.map(x => this.service.getListWithId(x)));
+    }).then((listOfLists: any) => {
+      this.allLists = listOfLists;
+    });
   }
 }
