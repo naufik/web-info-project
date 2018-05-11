@@ -40,6 +40,7 @@ export class LandingComponent implements OnInit {
   public getGithubLink (username: string): string {
     return "http://github.com/" + username;
   }
+
   public members: UserData[] = [
     {
       name: "Naufal Fikri Setiawan",

@@ -40,5 +40,4 @@ export class ListPageComponent implements OnInit {
     this.toggleAdd();
     this.refresh();
   }
-
 }
