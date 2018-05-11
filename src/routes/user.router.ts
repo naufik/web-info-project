@@ -40,7 +40,7 @@ UserRouter.post("/add.list", (req: Request, res: Response) => {
 });
 
 UserRouter.post("/list", (req:Request, res: Response) => {
-    ListController.saveList(req.body.listData).then((res) => {
+    ListController.saveList(req.body.listData).then((data) => {
         res.status(200).json(data);
     })
 });
