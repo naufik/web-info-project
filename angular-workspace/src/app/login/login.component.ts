@@ -45,14 +45,24 @@ export class LoginComponent implements OnInit {
     this.signupmode = true;
   }
 
-  goSignup(firstName: string, lastName: string, email: string, passwd: string, confPasswd: string, location: string) {
-    if (passwd === confPasswd) {
+  formData = {
+    firstName: "",
+    lastName: "",
+    email: "",
+    passwd: "",
+    confPasswd: "",
+    location: ""
+  }
+
+  goSignup() {
+    if (this.formData.passwd === this.formData.confPasswd) {
+      
       let newUser: UserData = {
-        firstName: firstName,
-        lastName: lastName,
-        email: email,
-        password: passwd,
-        locationId: location
+        firstName: this.formData.firstName,
+        lastName: this.formData.lastName,
+        email: this.formData.email,
+        password: this.formData.passwd,
+        locationId: this.formData.location
       }
 
       this.auth.signUp(newUser).then((result: any) => {
