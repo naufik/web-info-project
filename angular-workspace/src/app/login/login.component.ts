@@ -5,10 +5,10 @@ import { AuthService, UserData } from '../auth.service';
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
-  providers: []
+  providers: [ AuthService ]
 })
 export class LoginComponent implements OnInit {
-
+  message = "Log in here.";
   signupmode: boolean;
 
   @Output()
@@ -41,9 +41,12 @@ export class LoginComponent implements OnInit {
     }
   }
 
+  switchSignup() {
+    this.signupmode = true;
+  }
+
   goSignup(firstName: string, lastName: string, email: string, passwd: string, confPasswd: string, location: string) {
     if (passwd === confPasswd) {
-
       let newUser: UserData = {
         firstName: firstName,
         lastName: lastName,
@@ -52,16 +55,18 @@ export class LoginComponent implements OnInit {
         locationId: location
       }
 
-      this.auth.signUp(newUser).then((result) => {
+      this.auth.signUp(newUser).then((result: any) => {
         this.signup.emit({
           success: true,
           user: result
         });
+        this.message = "Sign up successful for user " + result.email;
       }, (error) => {
-        
+        this.message = error;
       });
     } else {
-
+      this.message = "Password does not match";
     }
+  }
 
 }
