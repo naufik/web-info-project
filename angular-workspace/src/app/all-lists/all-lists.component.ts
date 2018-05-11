@@ -29,11 +29,11 @@ export class AllListsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.allLists = this.service.getLists();
+    this.refresh();
   }
 
   refresh() {
-    this.allLists = this.service.getLists();
+    this.getLists();
   }
 
   // addToLists(listName: string) {
@@ -60,7 +60,7 @@ export class AllListsComponent implements OnInit {
     this.service.newList(this.email, newList).then((result: any) =>{
       console.log("test works");
     });
-    this.getLists();
+    this.refresh();
     this.toggleAdd();
   }
 
