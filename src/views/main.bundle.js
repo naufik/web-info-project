@@ -622,6 +622,26 @@ var DataRetrieverService = /** @class */ (function () {
             });
         });
     };
+    DataRetrieverService.prototype.saveFridge = function (userEmail, contents) {
+        var _this = this;
+        return new Promise(function (resolve, reject) {
+            _this.http.post(API_URL + "user/" + userEmail + "/fridge", {
+                contents: contents
+            }).subscribe(function (data) {
+                if (data.success) {
+                    resolve(data);
+                }
+                else {
+                    if (data) {
+                        reject(data.error);
+                    }
+                    else {
+                        reject(new Error("Unknown Error"));
+                    }
+                }
+            });
+        });
+    };
     DataRetrieverService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */]])
@@ -743,22 +763,28 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var FridgeComponent = /** @class */ (function () {
     function FridgeComponent(service) {
         this.add = false;
+        this.userEmail = "john@john.com";
         this.fridgeService = service;
     }
     FridgeComponent.prototype.ngOnInit = function () {
         this.refresh();
     };
     FridgeComponent.prototype.refresh = function () {
-        this.data = this.fridgeService.getFridge();
+        var _this = this;
+        this.fridgeService.getUserData(this.userEmail).then(function (data) {
+            _this.data = data.fridge;
+        });
     };
     FridgeComponent.prototype.addNew = function (itemName) {
-        this.fridgeService.addData({
+        var _this = this;
+        this.data.push({
             name: itemName,
-            qty: 300,
-            unit: "kg+s",
+            qty: 1,
             expiry: new Date()
         });
-        this.refresh();
+        this.fridgeService.saveFridge(this.userEmail, this.data).then(function () {
+            _this.refresh();
+        });
         this.toggleAdd();
     };
     FridgeComponent.prototype.toggleAdd = function () {
@@ -790,7 +816,7 @@ module.exports = "\r\n\r\n.section-header{\r\n  margin: 0px;\r\n}\r\n\r\nlabel{\
 /***/ "./src/app/fridgeitem/fridgeitem.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"page\" (click)=\"collapseItem()\">\n  <div class=\"section-header\"><a>{{ itemsrc.name }}</a></div>\n  <div class=\"main\">\n    <div class=\"contents\" *ngIf=\"!collapsed\">\n      <form class=\"needs-validation\" novalidate>\n        <div class=\"form-row\">\n          <div class=\"col\" >\n            <label for=\"DaysLeft\" class=\"col-form-label-sm\">Days Left</label>\n            <input class=\"form-control form-control-sm\" id=\"DaysLeft\" value=\"6\" required>\n          </div>\n\n          <div class=\"col\">\n            <label for=\"ExpiryDate\" class=\"col-form-label-sm\">Expiry Date</label>\n            <input class=\"form-control form-control-sm\" id=\"ExpiryDate\" value=\"09/09/09\" required>\n          </div>\n\n          <div class=\"col\">\n            <label for=\"AmountLeft\" class=\"col-form-label-sm\">Amount Left</label>\n            <input class=\"form-control form-control-sm\" id=\"AmountLeft\" value=\"{{ getDisplayQty() }}\" required>\n          </div>\n        </div>\n        <br>\n        <select class=\"custom-select custom-select-sm\">\n          <option selected>Food</option>\n          <option value=\"1\">Drink</option>\n        </select>\n      </form>\n    </div>\n  </div>\n</div>\n"
+module.exports = "<div class=\"page\" (click)=\"collapseItem()\">\n  <div class=\"section-header\"><a>{{ itemsrc.name }}</a></div>\n  <div class=\"main\">\n    <div class=\"contents\" *ngIf=\"!collapsed\">\n      <form class=\"needs-validation\" novalidate>\n        <div class=\"form-row\">\n          <div class=\"col\" >\n            <label for=\"DaysLeft\" class=\"col-form-label-sm\">Days Left</label>\n            <input class=\"form-control form-control-sm\" id=\"DaysLeft\" value=\"6\" required>\n          </div>\n\n          <div class=\"col\">\n            <label for=\"ExpiryDate\" class=\"col-form-label-sm\">Expiry Date</label>\n            <input class=\"form-control form-control-sm\" id=\"ExpiryDate\" value=\"{{ getDateDisplay() }}\" required>\n          </div>\n\n          <div class=\"col\">\n            <label for=\"AmountLeft\" class=\"col-form-label-sm\">Amount Left</label>\n            <input class=\"form-control form-control-sm\" id=\"AmountLeft\" value=\"{{ getDisplayQty() }}\" required>\n          </div>\n        </div>\n        <br>\n        <select class=\"custom-select custom-select-sm\">\n          <option selected>Food</option>\n          <option value=\"1\">Drink</option>\n        </select>\n      </form>\n    </div>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -813,23 +839,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var FridgeitemComponent = /** @class */ (function () {
     function FridgeitemComponent() {
         this.collapsed = true;
-        (function () {
-            'use strict';
-            window.addEventListener('load', function () {
-                // Fetch all the forms we want to apply custom Bootstrap validation styles to
-                var forms = document.getElementsByClassName('needs-validation');
-                // Loop over them and prevent submission
-                var validation = Array.prototype.filter.call(forms, function (form) {
-                    form.addEventListener('submit', function (event) {
-                        if (form.checkValidity() === false) {
-                            event.preventDefault();
-                            event.stopPropagation();
-                        }
-                        form.classList.add('was-validated');
-                    }, false);
-                });
-            }, false);
-        })();
     }
     FridgeitemComponent.prototype.ngOnInit = function () {
     };
@@ -837,7 +846,12 @@ var FridgeitemComponent = /** @class */ (function () {
         this.collapsed = !this.collapsed;
     };
     FridgeitemComponent.prototype.getDisplayQty = function () {
-        return this.itemsrc.qty.toString() + " " + this.itemsrc.unit;
+        return this.itemsrc.qty.toString() + (this.itemsrc.unit ? " " + this.itemsrc.unit : "");
+    };
+    FridgeitemComponent.prototype.getDateDisplay = function () {
+        return this.itemsrc.expiry;
+    };
+    FridgeitemComponent.prototype.getExpiryDate = function () {
     };
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["D" /* Input */])(),
