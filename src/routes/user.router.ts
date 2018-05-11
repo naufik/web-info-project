@@ -40,9 +40,13 @@ UserRouter.post("/add.list", (req: Request, res: Response) => {
 });
 
 UserRouter.post("/list", (req:Request, res: Response) => {
-    ListController.saveList(req.body.listData).then((data) => {
-        res.status(200).json(data);
-    })
+    if (!req.body.listData || !req.body.userEmail) {
+        res.status(400).send("Broken request.");
+    } else {
+        ListController.saveList(req.body.listData).then((data) => {
+            res.status(200).json(data);
+        });
+    }
 });
 
 UserRouter.get("/list/:listId", (req: Request, res: Response) => {
