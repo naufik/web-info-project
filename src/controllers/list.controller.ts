@@ -80,13 +80,14 @@ export class ListController {
     }
 
     public static saveList(listData: any) {
-        let l = new List(listData);
-
-        return l.save().then((list) => {
+        return List.findById(listData._id).then((l: any) => {
+            l.contents = listData.contents;
+            return l.save();
+        }).then((data) => {
             return {
                 success: true,
-                data: list
-            };
-        });
+                data: data
+            }
+        })
     }
 }
