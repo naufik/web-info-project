@@ -201,7 +201,22 @@ export class DataRetrieverService {
     });
   }
 
-  public saveList(listData: any, listId: string) {
-    // stub;
+  public saveList(userEmail: string, data: any) {
+    return new Promise((resolve, reject) => {
+      this.http.post(API_URL + "user/list/", {
+        userEmail: userEmail,
+        listData: data
+      }).subscribe((data: any) => {
+        if (data.success) {
+          resolve(data.data);
+        } else {
+          if (data) {
+            reject(data.err);
+          } else {
+            reject(new Error("Unknown error"));
+          }
+        }
+      })
+    });
   }
 }

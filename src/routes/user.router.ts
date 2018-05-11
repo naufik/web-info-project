@@ -35,7 +35,7 @@ UserRouter.post("/add.list", (req: Request, res: Response) => {
         ListController.newList(req.body.listData,
             req.body.userEmail).then((status) => {
                 res.status(200).json(status);
-        });
+            });
     }
 });
 
