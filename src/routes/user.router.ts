@@ -29,6 +29,14 @@ UserRouter.post("/add.list", (req: Request, res: Response) => {
     }
 });
 
+UserRouter.get("/list/:listId", (req: Request, res: Response) => {
+    ListController.getList(req.params.listId).then((data) => {
+        res.status(200).json(data);
+    }).catch((err: Error) => {
+        res.send(500).send(err.message);
+    })
+})
+
 UserRouter.get('/:em', (req: Request, res: Response) => {
     if (req.params.em) {
         UserController.getUserData(req.params.em).then((data) => {
