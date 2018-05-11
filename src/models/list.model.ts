@@ -2,7 +2,7 @@ import * as mongoose from 'mongoose';
 
 var listSchema  = new mongoose.Schema(
     {
-        "listID": Number,
+        "name": String,
         "contents": [
             {
                 "name": String,
