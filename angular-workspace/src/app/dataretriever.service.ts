@@ -171,6 +171,22 @@ export class DataRetrieverService {
     });
   }
 
+  public getListsForUser(userEmail: string) {
+    return new Promise((resolve, reject) => {
+      this.http.get(API_URL + "user/" + userEmail + "/lists").subscribe((data: any) => {
+        if (data.success) {
+          resolve(data.data);
+        } else {
+          if (data) {
+            reject(data.error);
+          } else {
+            reject(new Error("Unknown Error"));
+          }
+        }
+      });
+    })
+  }
+
   public saveUser(userData: any, userEmail: string) {
     return new Promise((resolve, reject) => {
       this.http.post(API_URL, {
@@ -223,6 +239,24 @@ export class DataRetrieverService {
   public saveFridge(userEmail: string, contents: any[]) {
     return new Promise((resolve, reject) => {
       this.http.post(API_URL + "user/" + userEmail + "/fridge", {
+        contents: contents
+      }).subscribe((data: any) => {
+        if (data.success) {
+          resolve(data);
+        } else {
+          if (data) {
+            reject(data.error);
+          } else {
+            reject(new Error("Unknown Error"));
+          }
+        }
+      });
+    })
+  }
+
+  public saveGroceries(userEmail: string, contents: any[]) {
+    return new Promise((resolve, reject) => {
+      this.http.post(API_URL + "user/" + userEmail + "/groceries", {
         contents: contents
       }).subscribe((data: any) => {
         if (data.success) {

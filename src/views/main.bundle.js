@@ -569,6 +569,24 @@ var DataRetrieverService = /** @class */ (function () {
             });
         });
     };
+    DataRetrieverService.prototype.getListsForUser = function (userEmail) {
+        var _this = this;
+        return new Promise(function (resolve, reject) {
+            _this.http.get(API_URL + "user/" + userEmail + "/lists").subscribe(function (data) {
+                if (data.success) {
+                    resolve(data.data);
+                }
+                else {
+                    if (data) {
+                        reject(data.error);
+                    }
+                    else {
+                        reject(new Error("Unknown Error"));
+                    }
+                }
+            });
+        });
+    };
     DataRetrieverService.prototype.saveUser = function (userData, userEmail) {
         var _this = this;
         return new Promise(function (resolve, reject) {
@@ -617,6 +635,46 @@ var DataRetrieverService = /** @class */ (function () {
                     }
                     else {
                         reject(new Error("Unknown error"));
+                    }
+                }
+            });
+        });
+    };
+    DataRetrieverService.prototype.saveFridge = function (userEmail, contents) {
+        var _this = this;
+        return new Promise(function (resolve, reject) {
+            _this.http.post(API_URL + "user/" + userEmail + "/fridge", {
+                contents: contents
+            }).subscribe(function (data) {
+                if (data.success) {
+                    resolve(data);
+                }
+                else {
+                    if (data) {
+                        reject(data.error);
+                    }
+                    else {
+                        reject(new Error("Unknown Error"));
+                    }
+                }
+            });
+        });
+    };
+    DataRetrieverService.prototype.saveGroceries = function (userEmail, contents) {
+        var _this = this;
+        return new Promise(function (resolve, reject) {
+            _this.http.post(API_URL + "user/" + userEmail + "/groceries", {
+                contents: contents
+            }).subscribe(function (data) {
+                if (data.success) {
+                    resolve(data);
+                }
+                else {
+                    if (data) {
+                        reject(data.error);
+                    }
+                    else {
+                        reject(new Error("Unknown Error"));
                     }
                 }
             });
@@ -743,22 +801,28 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var FridgeComponent = /** @class */ (function () {
     function FridgeComponent(service) {
         this.add = false;
+        this.userEmail = "john@john.com";
         this.fridgeService = service;
     }
     FridgeComponent.prototype.ngOnInit = function () {
         this.refresh();
     };
     FridgeComponent.prototype.refresh = function () {
-        this.data = this.fridgeService.getFridge();
+        var _this = this;
+        this.fridgeService.getUserData(this.userEmail).then(function (data) {
+            _this.data = data.fridge;
+        });
     };
     FridgeComponent.prototype.addNew = function (itemName) {
-        this.fridgeService.addData({
+        var _this = this;
+        this.data.push({
             name: itemName,
-            qty: 300,
-            unit: "kg+s",
+            qty: 1,
             expiry: new Date()
         });
-        this.refresh();
+        this.fridgeService.saveFridge(this.userEmail, this.data).then(function () {
+            _this.refresh();
+        });
         this.toggleAdd();
     };
     FridgeComponent.prototype.toggleAdd = function () {
@@ -790,7 +854,7 @@ module.exports = "\r\n\r\n.section-header{\r\n  margin: 0px;\r\n}\r\n\r\nlabel{\
 /***/ "./src/app/fridgeitem/fridgeitem.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"page\" (click)=\"collapseItem()\">\n  <div class=\"section-header\"><a>{{ itemsrc.name }}</a></div>\n  <div class=\"main\">\n    <div class=\"contents\" *ngIf=\"!collapsed\">\n      <form class=\"needs-validation\" novalidate>\n        <div class=\"form-row\">\n          <div class=\"col\" >\n            <label for=\"DaysLeft\" class=\"col-form-label-sm\">Days Left</label>\n            <input class=\"form-control form-control-sm\" id=\"DaysLeft\" value=\"6\" required>\n          </div>\n\n          <div class=\"col\">\n            <label for=\"ExpiryDate\" class=\"col-form-label-sm\">Expiry Date</label>\n            <input class=\"form-control form-control-sm\" id=\"ExpiryDate\" value=\"09/09/09\" required>\n          </div>\n\n          <div class=\"col\">\n            <label for=\"AmountLeft\" class=\"col-form-label-sm\">Amount Left</label>\n            <input class=\"form-control form-control-sm\" id=\"AmountLeft\" value=\"{{ getDisplayQty() }}\" required>\n          </div>\n        </div>\n        <br>\n        <select class=\"custom-select custom-select-sm\">\n          <option selected>Food</option>\n          <option value=\"1\">Drink</option>\n        </select>\n      </form>\n    </div>\n  </div>\n</div>\n"
+module.exports = "<div class=\"page\" (click)=\"collapseItem()\">\n  <div class=\"section-header\"><a>{{ itemsrc.name }}</a></div>\n  <div class=\"main\">\n    <div class=\"contents\" *ngIf=\"!collapsed\">\n      <form class=\"needs-validation\" novalidate>\n        <div class=\"form-row\">\n          <div class=\"col\" >\n            <label for=\"DaysLeft\" class=\"col-form-label-sm\">Days Left</label>\n            <input class=\"form-control form-control-sm\" id=\"DaysLeft\" value=\"6\" required>\n          </div>\n\n          <div class=\"col\">\n            <label for=\"ExpiryDate\" class=\"col-form-label-sm\">Expiry Date</label>\n            <input class=\"form-control form-control-sm\" id=\"ExpiryDate\" value=\"{{ getDateDisplay() }}\" required>\n          </div>\n\n          <div class=\"col\">\n            <label for=\"AmountLeft\" class=\"col-form-label-sm\">Amount Left</label>\n            <input class=\"form-control form-control-sm\" id=\"AmountLeft\" value=\"{{ getDisplayQty() }}\" required>\n          </div>\n        </div>\n        <br>\n        <select class=\"custom-select custom-select-sm\">\n          <option selected>Food</option>\n          <option value=\"1\">Drink</option>\n        </select>\n      </form>\n    </div>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -813,23 +877,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var FridgeitemComponent = /** @class */ (function () {
     function FridgeitemComponent() {
         this.collapsed = true;
-        (function () {
-            'use strict';
-            window.addEventListener('load', function () {
-                // Fetch all the forms we want to apply custom Bootstrap validation styles to
-                var forms = document.getElementsByClassName('needs-validation');
-                // Loop over them and prevent submission
-                var validation = Array.prototype.filter.call(forms, function (form) {
-                    form.addEventListener('submit', function (event) {
-                        if (form.checkValidity() === false) {
-                            event.preventDefault();
-                            event.stopPropagation();
-                        }
-                        form.classList.add('was-validated');
-                    }, false);
-                });
-            }, false);
-        })();
     }
     FridgeitemComponent.prototype.ngOnInit = function () {
     };
@@ -837,7 +884,12 @@ var FridgeitemComponent = /** @class */ (function () {
         this.collapsed = !this.collapsed;
     };
     FridgeitemComponent.prototype.getDisplayQty = function () {
-        return this.itemsrc.qty.toString() + " " + this.itemsrc.unit;
+        return this.itemsrc.qty.toString() + (this.itemsrc.unit ? " " + this.itemsrc.unit : "");
+    };
+    FridgeitemComponent.prototype.getDateDisplay = function () {
+        return this.itemsrc.expiry;
+    };
+    FridgeitemComponent.prototype.getExpiryDate = function () {
     };
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["D" /* Input */])(),
@@ -868,7 +920,7 @@ module.exports = "\r\n.large{\r\n  text-align: center;\r\n}\r\n.add{\r\n  text-a
 /***/ "./src/app/grocery-list/grocery-list.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<app-logged-header></app-logged-header>\n\n<div class=\"row\">\n  <div class=\"col-4 usuals\">\n    <h1>Saved Lists</h1>\n    <li class=\"list-group-item\"><h5>Previously made list templates</h5></li>\n    <ul class=\"list-group\" *ngFor=\"let item of appendableLists\">\n\n      <!-- <li class=\"list-group-item list-group-item-primary\">Weekly Essentials\n        <span><input type=\"checkbox\" class=\"checks\"></span>\n      </li>\n      <li class=\"list-group-item list-group-item-secondary\">Going on a Diet\n        <span><input type=\"checkbox\" class=\"checks\"></span>\n      </li>\n      <li class=\"list-group-item list-group-item-primary\">Friends coming over\n        <span><input type=\"checkbox\" class=\"checks\"></span>\n      </li>\n      <li class=\"list-group-item list-group-item-danger\">Exams coming, stress eat\n        <span><input type=\"checkbox\" class=\"checks\"></span>\n      </li> -->\n      <li class=\"list-group-item list-group-item-secondary\"><a [routerLink]=\"['/singlelist']\">{{ item.name }}</a>\n        <span><input type=\"checkbox\" class=\"checks\" (click)=\"checks[item.name] = !checks[item.name]\"></span>\n      </li>\n    </ul>\n\n    <a class=\"btn btn-primary btn- active addbutton\" role=\"button\" aria-pressed=\"true\" (click)=\"appendLists()\">Add to List</a>\n\n  </div>\n\n\n  <div class=\"col-7 large\">\n    <h1>Grocery List  <span><i class=\"fas fa-edit\"></i></span></h1>\n    <ul class=\"list-group translucent-list\" *ngFor=\"let item of shoppingList\">\n      <li class=\"list-group-item\">{{ item }}\n        <span><input type=\"checkbox\" class=\"checks\"></span>\n      </li>\n    </ul>\n\n\n    <button type=\"button\" class=\"btn btn-primary btn-lg addfridge\">Add to Fridge</button>\n\n    <div class=\"col-1\"></div>\n  </div>\n\n\n\n\n</div>\n\n<!--<div class=\"set-head\">-->\n  <!--<div class=\"box\">-->\n\n    <!--<h1 class=\"sett\">Settings</h1>-->\n    <!--<div class=\"dropdown-divider\"></div>-->\n\n    <!--<h3>Update Details</h3>-->\n    <!--<div class=\"dropdown-divider\"></div> -->\n"
+module.exports = "<app-logged-header></app-logged-header>\n\n<div class=\"row\">\n  <div class=\"col-4 usuals\">\n    <h1>Saved Lists</h1>\n    <li class=\"list-group-item\"><h5>Previously made list templates</h5></li>\n    <ul class=\"list-group\" *ngFor=\"let item of appendableLists\">\n      <li class=\"list-group-item list-group-item-secondary\"><a [routerLink]=\"['/singlelist']\">{{ item.name }}</a>\n        <span><input type=\"checkbox\" class=\"checks\" (click)=\"checks[item._id] = !checks[item._id]\"></span>\n      </li>\n    </ul>\n\n    <a class=\"btn btn-primary btn- active addbutton\" role=\"button\" aria-pressed=\"true\" (click)=\"appendLists()\">Add to List</a>\n\n  </div>\n\n\n  <div class=\"col-7 large\">\n    <h1>Grocery List  <span><i class=\"fas fa-edit\"></i></span></h1>\n    <ul class=\"list-group translucent-list\" *ngFor=\"let item of shoppingList\">\n      <li class=\"list-group-item\">{{ item.name }}\n        <span><input type=\"checkbox\" class=\"checks\"></span>\n      </li>\n    </ul>\n\n\n    <button type=\"button\" (click)=\"toFridge()\" class=\"btn btn-primary btn-lg addfridge\">Add to Fridge</button>\n\n    <div class=\"col-1\"></div>\n  </div>\n\n\n\n\n</div>\n\n<!--<div class=\"set-head\">-->\n  <!--<div class=\"box\">-->\n\n    <!--<h1 class=\"sett\">Settings</h1>-->\n    <!--<div class=\"dropdown-divider\"></div>-->\n\n    <!--<h3>Update Details</h3>-->\n    <!--<div class=\"dropdown-divider\"></div> -->\n"
 
 /***/ }),
 
@@ -892,31 +944,59 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 var GroceryListComponent = /** @class */ (function () {
     function GroceryListComponent(ds) {
+        this.userEmail = "john@john.com";
         this.checks = {};
-        this.shoppingList = ["Raw Salmon", "Chicken Breast", "Full-Cream Milk", "Coffee Ground", "Wholegrain Bread"];
+        this.shoppingList = [];
         this.appendableLists = [];
         this.service = ds;
     }
     GroceryListComponent.prototype.ngOnInit = function () {
-        this.appendableLists = this.service.getLists();
-        for (var _i = 0, _a = this.appendableLists; _i < _a.length; _i++) {
-            var item = _a[_i];
-            this.checks[item.name] = false;
-        }
+        this.refresh();
     };
     GroceryListComponent.prototype.appendLists = function () {
         var _this = this;
-        var tempLists = this.appendableLists.filter(function (i) { return _this.checks[i.name]; });
+        console.log(this.checks);
+        var tempLists = this.appendableLists.filter(function (i) { return _this.checks[i._id]; });
         for (var _i = 0, tempLists_1 = tempLists; _i < tempLists_1.length; _i++) {
             var currentList = tempLists_1[_i];
             for (var _a = 0, _b = currentList.contents; _a < _b.length; _a++) {
                 var shopItem = _b[_a];
-                if (!this.shoppingList.includes(shopItem.name)) {
-                    this.shoppingList.push(shopItem.name);
+                if (!this.shoppingList.map(function (thing) { return thing.name; }).includes(shopItem.name)) {
+                    this.shoppingList.push(shopItem);
                 }
             }
         }
+        this.service.saveGroceries(this.userEmail, this.shoppingList).then(function () {
+            _this.refresh();
+        });
     };
+    GroceryListComponent.prototype.refresh = function () {
+        var _this = this;
+        this.service.getUserData(this.userEmail).then(function (data) {
+            _this.shoppingList = data.groceries;
+        });
+        this.service.getListsForUser(this.userEmail).then(function (data) {
+            _this.appendableLists = data;
+            for (var _i = 0, _a = _this.appendableLists; _i < _a.length; _i++) {
+                var item = _a[_i];
+                if (!_this.checks[item._id]) {
+                    _this.checks[item._id] = false;
+                }
+            }
+        });
+    };
+    GroceryListComponent.prototype.toFridge = function () {
+        var _this = this;
+        this.service.getUserData(this.userEmail).then(function (data) {
+            return _this.service.saveFridge(_this.userEmail, data.fridge.concat(_this.shoppingList));
+        }).then(function () {
+            console.log("AYAYAYAYAYAY");
+        });
+    };
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["D" /* Input */])(),
+        __metadata("design:type", String)
+    ], GroceryListComponent.prototype, "userEmail", void 0);
     GroceryListComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
             selector: 'app-grocery-list',
@@ -1494,7 +1574,7 @@ module.exports = "/*.body{*/\r\n  /*display: grid;*/\r\n  /*grid-template-column
 /***/ "./src/app/login/login.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"body\">\n  <div class=\"login\">\n    <h2>Hello!</h2>\n    <p>{{ this.message }}</p>\n    <form>\n      <div class=\"form-group\" *ngIf=\"signupmode\">\n        <label for=\"exampleInputEmail1\">First Name</label>\n        <input class=\"form-control\" id=\"exampleInputEmail1\" aria-describedby=\"emailHelp\" placeholder=\"\" [(ngModel)]=\"formData.firstName\" name=\"firstName\">\n      </div>\n      <div class=\"form-group\" *ngIf=\"signupmode\">\n        <label for=\"exampleInputEmail1\">Last Name</label>\n        <input class=\"form-control\" id=\"exampleInputEmail1\" aria-describedby=\"emailHelp\" placeholder=\"\" [(ngModel)]=\"formData.lastName\" name=\"lastName\">\n      </div>\n      <div class=\"form-group\">\n        <label for=\"exampleInputEmail1\">Email address</label>\n        <input type=\"email\" class=\"form-control\" id=\"exampleInputEmail1\" aria-describedby=\"emailHelp\" placeholder=\"hello@example.com\" [(ngModel)]=\"formData.email\" name=\"email\">\n      </div>\n      <div class=\"form-group\">\n        <label for=\"exampleInputPassword1\">Password</label>\n        <input type=\"password\" class=\"form-control\" id=\"exampleInputPassword1\" placeholder=\"Password\" [(ngModel)]=\"formData.passwd\" name=\"passwd\">\n      </div>\n      <div class=\"form-group\" *ngIf=\"signupmode\">\n        <label for=\"exampleInputPassword1\">Confirm Password</label>\n        <input type=\"password\" class=\"form-control\" id=\"exampleInputPassword1\" placeholder=\"Password\" [(ngModel)]=\"formData.confPasswd\" name=\"confPasswd\">\n      </div>\n      <div class=\"form-group\" *ngIf=\"signupmode\">\n        <label for=\"exampleInputPassword1\">Enter Location</label>\n        <input class=\"form-control\" id=\"exampleInputPassword1\" placeholder=\"Password\" [(ngModel)]=\"formData.location\" name=\"location\">\n      </div>\n      <div class=\"buttons\">\n        <button (click)=\"goLogin(emailbox.value, passwdbox.value)\" type=\"button\" class=\"btn btn-primary loginbutton\">Log-In</button>\n        <button (click)=\"switchSignup()\" type=\"button\" class=\"btn btn-primary signupbutton\" *ngIf=\"!signupmode\">Sign-Up</button>\n        <button (click)=\"goSignup()\" type=\"button\" class=\"btn btn-primary signupbutton\" *ngIf=\"signupmode\">Sign-Up</button>\n      </div>\n    </form>\n  </div>\n </div>\n"
+module.exports = "<div class=\"body\">\n  <div class=\"login\">\n    <h2>Hello!</h2>\n    <p>{{ this.message }}</p>\n    <form>\n      <div class=\"form-group\" *ngIf=\"signupmode\">\n        <label for=\"exampleInputEmail1\">First Name</label>\n        <input class=\"form-control\" id=\"exampleInputEmail1\" aria-describedby=\"emailHelp\" placeholder=\"\" [(ngModel)]=\"formData.firstName\" name=\"firstName\">\n      </div>\n      <div class=\"form-group\" *ngIf=\"signupmode\">\n        <label for=\"exampleInputEmail1\">Last Name</label>\n        <input class=\"form-control\" id=\"exampleInputEmail1\" aria-describedby=\"emailHelp\" placeholder=\"\" [(ngModel)]=\"formData.lastName\" name=\"lastName\">\n      </div>\n      <div class=\"form-group\">\n        <label for=\"exampleInputEmail1\">Email address</label>\n        <input type=\"email\" class=\"form-control\" id=\"exampleInputEmail1\" aria-describedby=\"emailHelp\" placeholder=\"hello@example.com\" [(ngModel)]=\"formData.email\" name=\"email\">\n      </div>\n      <div class=\"form-group\">\n        <label for=\"exampleInputPassword1\">Password</label>\n        <input type=\"password\" class=\"form-control\" id=\"exampleInputPassword1\" placeholder=\"Password\" [(ngModel)]=\"formData.passwd\" name=\"passwd\">\n      </div>\n      <div class=\"form-group\" *ngIf=\"signupmode\">\n        <label for=\"exampleInputPassword1\">Confirm Password</label>\n        <input type=\"password\" class=\"form-control\" id=\"exampleInputPassword1\" placeholder=\"Password\" [(ngModel)]=\"formData.confPasswd\" name=\"confPasswd\">\n      </div>\n      <div class=\"form-group\" *ngIf=\"signupmode\">\n        <label for=\"exampleInputPassword1\">Enter Location</label>\n        <input class=\"form-control\" id=\"exampleInputPassword1\" placeholder=\"Password\" [(ngModel)]=\"formData.location\" name=\"location\">\n      </div>\n      <div class=\"buttons\">\n        <button (click)=\"goLogin()\" type=\"button\" class=\"btn btn-primary loginbutton\">Log-In</button>\n        <button (click)=\"switchSignup()\" type=\"button\" class=\"btn btn-primary signupbutton\" *ngIf=\"!signupmode\">Sign-Up</button>\n        <button (click)=\"goSignup()\" type=\"button\" class=\"btn btn-primary signupbutton\" *ngIf=\"signupmode\">Sign-Up</button>\n      </div>\n    </form>\n  </div>\n </div>\n"
 
 /***/ }),
 
