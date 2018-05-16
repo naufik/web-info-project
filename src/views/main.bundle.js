@@ -140,6 +140,7 @@ var AllListsComponent = /** @class */ (function () {
         this.add = !this.add;
     };
     AllListsComponent.prototype.addList = function (name) {
+        var _this = this;
         var newList = {
             name: name,
             url: name.replace(" ", "-").toLowerCase(),
@@ -147,8 +148,8 @@ var AllListsComponent = /** @class */ (function () {
         };
         this.service.newList(this.email, newList).then(function (result) {
             console.log("test works");
+            _this.refresh();
         });
-        this.refresh();
         this.toggleAdd();
     };
     AllListsComponent.prototype.getLists = function () {
@@ -286,8 +287,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 var routes = [
-    { path: '', component: __WEBPACK_IMPORTED_MODULE_6__soon_soon_component__["a" /* SoonComponent */] },
-    { path: 'home', component: __WEBPACK_IMPORTED_MODULE_7__landing_landing_component__["a" /* LandingComponent */] },
+    // { path: '', component: SoonComponent },
+    { path: '', component: __WEBPACK_IMPORTED_MODULE_7__landing_landing_component__["a" /* LandingComponent */] },
     { path: 'main', component: __WEBPACK_IMPORTED_MODULE_12__mainpage_mainpage_component__["a" /* MainpageComponent */] },
     { path: 'fridge', component: __WEBPACK_IMPORTED_MODULE_15__fridge_fridge_component__["a" /* FridgeComponent */] },
     { path: 'settings', component: __WEBPACK_IMPORTED_MODULE_14__settings_settings_component__["a" /* SettingsComponent */] },
@@ -847,14 +848,14 @@ var FridgeComponent = /** @class */ (function () {
 /***/ "./src/app/fridgeitem/fridgeitem.component.css":
 /***/ (function(module, exports) {
 
-module.exports = "\r\n\r\n.section-header{\r\n  margin: 0px;\r\n}\r\n\r\nlabel{\r\n  font-family: 'Libre Franklin', sans-serif;\r\n  font-size: 85%;\r\n}\r\n\r\n.page{\r\n  font-size: 85%;\r\n  font-family: 'Libre Franklin', sans-serif;\r\n}\r\n\r\na{\r\n  padding-top:5px;\r\n  padding-bottom:5px;\r\n  padding-left: 2px;\r\n}\r\n\r\n.main{\r\n  margin: 0px;\r\n}\r\n\r\n.contents{\r\n  margin-bottom: 10px;\r\n  padding-left: 2px;\r\n  padding-right: 2px;\r\n}\r\n"
+module.exports = "\r\n\r\n.section-header{\r\n  margin: 0px;\r\n}\r\n\r\nlabel{\r\n  font-family: 'Libre Franklin', sans-serif;\r\n  font-size: 85%;\r\n}\r\n\r\n.page{\r\n  font-size: 85%;\r\n  font-family: 'Libre Franklin', sans-serif;\r\n}\r\n\r\na{\r\n  padding-top:5px;\r\n  padding-bottom:5px;\r\n  padding-left: 2px;\r\n}\r\n\r\na:hover{\r\n  font-weight:bold;\r\n}\r\n\r\n.main{\r\n  margin: 0px;\r\n}\r\n\r\n.contents{\r\n  margin-bottom: 10px;\r\n  padding-left: 2px;\r\n  padding-right: 2px;\r\n}\r\n"
 
 /***/ }),
 
 /***/ "./src/app/fridgeitem/fridgeitem.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"page\" (click)=\"collapseItem()\">\n  <div class=\"section-header\"><a>{{ itemsrc.name }}</a></div>\n  <div class=\"main\">\n    <div class=\"contents\" *ngIf=\"!collapsed\">\n      <form class=\"needs-validation\" novalidate>\n        <div class=\"form-row\">\n          <div class=\"col\" >\n            <label for=\"DaysLeft\" class=\"col-form-label-sm\">Days Left</label>\n            <input class=\"form-control form-control-sm\" id=\"DaysLeft\" value=\"6\" required>\n          </div>\n\n          <div class=\"col\">\n            <label for=\"ExpiryDate\" class=\"col-form-label-sm\">Expiry Date</label>\n            <input class=\"form-control form-control-sm\" id=\"ExpiryDate\" value=\"{{ getDateDisplay() }}\" required>\n          </div>\n\n          <div class=\"col\">\n            <label for=\"AmountLeft\" class=\"col-form-label-sm\">Amount Left</label>\n            <input class=\"form-control form-control-sm\" id=\"AmountLeft\" value=\"{{ getDisplayQty() }}\" required>\n          </div>\n        </div>\n        <br>\n        <select class=\"custom-select custom-select-sm\">\n          <option selected>Food</option>\n          <option value=\"1\">Drink</option>\n        </select>\n      </form>\n    </div>\n  </div>\n</div>\n"
+module.exports = "<div class=\"page\">\n  <div class=\"section-header\">\n    <a (click)=\"collapseItem()\">{{ itemsrc.name }}</a>\n  </div>\n  <div class=\"main\">\n    <div class=\"contents\" *ngIf=\"!collapsed\">\n      <form class=\"needs-validation\" novalidate>\n        <div class=\"form-row\">\n          <div class=\"col\" >\n            <label for=\"DaysLeft\" class=\"col-form-label-sm\">Days Left</label>\n            <input class=\"form-control form-control-sm\" id=\"DaysLeft\" value=\"6\" required>\n          </div>\n\n          <div class=\"col\">\n            <label for=\"ExpiryDate\" class=\"col-form-label-sm\">Expiry Date</label>\n            <input class=\"form-control form-control-sm\" id=\"ExpiryDate\" value=\"{{ getDateDisplay() }}\" required>\n          </div>\n\n          <div class=\"col\">\n            <label for=\"AmountLeft\" class=\"col-form-label-sm\">Amount Left</label>\n            <input class=\"form-control form-control-sm\" id=\"AmountLeft\" value=\"{{ getDisplayQty() }}\" required>\n          </div>\n        </div>\n        <br>\n        <select class=\"custom-select custom-select-sm\">\n          <option selected>Food</option>\n          <option value=\"1\">Drink</option>\n        </select>\n      </form>\n    </div>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -1341,6 +1342,7 @@ var ListPageComponent = /** @class */ (function () {
         });
         this.service.saveList(this.userEmail, this.list).then(function (result) {
         });
+        this.toggleAdd();
     };
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["D" /* Input */])(),
