@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FridgeFood, DataRetrieverService } from '../dataretriever.service';
+import * as Moment from 'moment';
 
 @Component({
   selector: 'app-fridge',
@@ -64,5 +65,23 @@ export class FridgeComponent implements OnInit {
     this.timeoutEvent = setTimeout(() => {
       this.saveAll(); 
     }, 200);
+  }
+
+  sortFridge(compare: (a: FridgeFood, b: FridgeFood) => number, reverse=false) {
+    this.data.sort(reverse ? (a, b) => compare(b, a) : compare);
+  }
+
+  compareByExpiry(a: FridgeFood, b: FridgeFood) {
+    return Moment(a.expiry).diff(Moment(b.expiry), 'days');
+  }
+
+  compareByAlpha(a: FridgeFood, b: FridgeFood) {
+    if (a.name > b.name) {
+      return -1;
+    } if (a.name === b.name) {
+      return 0;
+    } else {
+      return 1;
+    }
   }
 }

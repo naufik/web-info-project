@@ -1,6 +1,6 @@
 <body>
 <style>
-  @import url('https://fonts.googleapis.com/css?family=Libre+Baskerville|Libre+Franklin');
+  @import url('https://fonts.googleapis.com/css?family='Libre+Baskerville|Libre+Franklin');
 </style>
 
 <app-logged-header></app-logged-header>
@@ -19,14 +19,14 @@
       </button>
       <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
         <h6 class="dropdown-header">When Added</h6>
-        <a class="dropdown-item" href="#">Newest First</a>
-        <a class="dropdown-item" href="#">Oldest First</a>
+        <li class="dropdown-item">Oldest First</li>
+        <li class="dropdown-item">Newest First</li>
         <div class="dropdown-divider"></div>
         <h6 class="dropdown-header">Expiry</h6>
-        <a class="dropdown-item" href="#">Ascending</a>
-        <a class="dropdown-item" href="#">Descending</a>
+        <li class="dropdown-item" (click)="sortFridge(compareByExpiry)">Ascending</li>
+        <li class="dropdown-item" (click)="sortFridge(compareByExpiry, true)">Descending</li>
         <div class="dropdown-divider"></div>
-        <a class="dropdown-item" href="#">Alphabetic</a>
+        <li class="dropdown-item" (click)="sortFridge(compareByAlpha)">Alphabetic</li>
       </ul>
     </div>
 
@@ -37,11 +37,11 @@
       </button>
       <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
         <h6 class="dropdown-header">Expired In</h6>
-        <a class="dropdown-item" href="#">Day</a>
-        <a class="dropdown-item" href="#">Week</a>
+        <li class="dropdown-item">Day</li>
+        <li class="dropdown-item">Week</li>
         <div class="dropdown-divider"></div>
-        <a class="dropdown-item" href="#">Food</a>
-        <a class="dropdown-item" href="#">Drink</a>
+        <li class="dropdown-item">Food</li>
+        <li class="dropdown-item">Drink</li>
 
       </ul>
     </div>
