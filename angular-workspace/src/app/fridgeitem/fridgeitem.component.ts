@@ -17,6 +17,7 @@ export class FridgeitemComponent implements OnInit {
 
   shownQty: string = "0";
   dateString: string;
+  daysLeft: string;
 
   constructor() {
     this.save = new EventEmitter<null>();
@@ -25,6 +26,7 @@ export class FridgeitemComponent implements OnInit {
   ngOnInit() {
     this.shownQty = this.itemsrc.qty.toString();
     this.dateString = this.getDateDisplay();
+    this.daysLeft = this.getDaysLeft().toString();
   }
 
   collapsed = true;
@@ -41,10 +43,6 @@ export class FridgeitemComponent implements OnInit {
     return Moment(this.itemsrc.expiry).format("DD/MM/YYYY");
   }
 
-  getExpiryDate() {
-
-  }
-
   onChange(newStr: string) {
     this.itemsrc.qty = parseInt(this.shownQty);
     try {
@@ -52,12 +50,23 @@ export class FridgeitemComponent implements OnInit {
       date.set('hour', 0);
       date.set('minute', 0);
       this.itemsrc.expiry = date.toDate();
+      this.daysLeft = this.getDaysLeft().toString();
     } catch {
-      // on parsing error do nothing
+      console.log("smth went wrong my friend");
     }
 
     if (newStr.length > 0) {
       this.save.emit();
     }
+  }
+
+  getDaysLeft() {
+    return Moment(this.itemsrc.expiry).diff(Moment(), 'days');
+  }
+
+  setDate(daysLeft: string) {
+    this.itemsrc.expiry = Moment().add(parseInt(daysLeft), 'days').toDate();
+    this.dateString = this.getDateDisplay();
+    this.save.emit();
   }
 }

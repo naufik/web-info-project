@@ -8,7 +8,7 @@
         <div class="form-row">
           <div class="col" >
             <label for="DaysLeft" class="col-form-label-sm">Days Left</label>
-            <input class="form-control form-control-sm" (change)="onChange(daysLeftBox.value)" id="DaysLeft" value="6" name="daysLeftBox" #daysLeftBox>
+            <input class="form-control form-control-sm" (change)="setDate(daysLeftBox.value)" id="DaysLeft" [(ngModel)]="daysLeft" name="daysLeftBox" #daysLeftBox>
           </div>
           <div class="col">
             <label for="ExpiryDate" class="col-form-label-sm">Expiry Date</label>
