@@ -24,11 +24,11 @@ export class MainpageComponent implements OnInit {
 
   ngOnInit() {
     this.dataretriver.getListsForUser(this.email).then((data: any) => {
-      this.lists = data.slice(3);
+      this.lists = data;
     });
 
     this.dataretriver.getUserData(this.email).then((data: any) => {
-      this.fridge = data.fridge.slice(3);
+      this.fridge = data.fridge;
     });
   }
 

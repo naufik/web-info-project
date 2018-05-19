@@ -60,7 +60,7 @@ export class FridgeComponent implements OnInit {
     }
 
     this.timeoutEvent = setTimeout(() => {
-      this.saveAll() 
+      this.saveAll(); 
     }, 200);
   }
 }
