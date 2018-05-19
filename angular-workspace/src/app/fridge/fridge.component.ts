@@ -45,11 +45,9 @@ export class FridgeComponent implements OnInit {
     this.toggleAdd();
   }
 
-  saveAll(refresh = true) {
+  saveAll() {
     this.fridgeService.saveFridge(this.userEmail, this.data).then(() => {
-      if (refresh) {
-        this.refresh();
-      }
+      this.refresh();
     });
   }
 
@@ -58,6 +56,7 @@ export class FridgeComponent implements OnInit {
   }
 
   onItemChanged() {
+    console.log("save event added");
     if (this.timeoutEvent) {
       clearTimeout(this.timeoutEvent);
       this.timeoutEvent = undefined;
@@ -78,11 +77,11 @@ export class FridgeComponent implements OnInit {
 
   compareByAlpha(a: FridgeFood, b: FridgeFood) {
     if (a.name > b.name) {
-      return 1;
+      return -1;
     } if (a.name === b.name) {
       return 0;
     } else {
-      return -1;
+      return 1;
     }
   }
 }

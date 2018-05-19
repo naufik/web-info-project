@@ -12,7 +12,7 @@
           </div>
           <div class="col">
             <label for="ExpiryDate" class="col-form-label-sm">Expiry Date</label>
-            <input class="form-control form-control-sm" (change)="onChange(dateBox.value)" id="ExpiryDate" [(ngModel)]="dateString"; name="dateBox" #dateBox>
+            <input class="form-control form-control-sm" (change)="onChange(dateBox.value)" id="ExpiryDate" value="{{ getDateDisplay() }}" name="dateBox" #dateBox>
           </div>
 
           <div class="col">
