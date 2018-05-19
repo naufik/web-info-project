@@ -1,5 +1,6 @@
 import { Input, Output, Component, EventEmitter, OnInit } from '@angular/core';
 import { FridgeFood } from '../dataretriever.service';
+import * as Moment from 'moment';
 
 @Component({
   selector: 'app-fridgeitem',
@@ -14,7 +15,8 @@ export class FridgeitemComponent implements OnInit {
   @Output()
   save: EventEmitter<null>;
 
-  shownQty = "0";
+  shownQty: string = "0";
+  dateString: string;
 
   constructor() {
     this.save = new EventEmitter<null>();
@@ -22,6 +24,7 @@ export class FridgeitemComponent implements OnInit {
 
   ngOnInit() {
     this.shownQty = this.itemsrc.qty.toString();
+    this.dateString = this.getDateDisplay();
   }
 
   collapsed = true;
@@ -35,7 +38,7 @@ export class FridgeitemComponent implements OnInit {
   }
 
   getDateDisplay() {
-    return this.itemsrc.expiry.toString();
+    return Moment(this.itemsrc.expiry).format("DD/MM/YYYY");
   }
 
   getExpiryDate() {
@@ -44,6 +47,15 @@ export class FridgeitemComponent implements OnInit {
 
   onChange(newStr: string) {
     this.itemsrc.qty = parseInt(this.shownQty);
+    try {
+      let date = Moment(this.dateString, "DD/MM/YYYY");
+      date.set('hour', 0);
+      date.set('minute', 0);
+      this.itemsrc.expiry = date.toDate();
+    } catch {
+      // on parsing error do nothing
+    }
+
     if (newStr.length > 0) {
       this.save.emit();
     }
