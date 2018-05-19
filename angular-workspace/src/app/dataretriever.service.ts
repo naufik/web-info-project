@@ -103,12 +103,14 @@ const allFridge: FridgeFood[] = [
 ]
 
 export interface List {
+  _id?: any,
   name: string,
   url: string,
   contents: ListFood[]
 }
 
 export interface ListFood {
+  _id?: any,
   name: string,
   qty: number,
   unit?: string, // Unit of measurement (pcs, grams, kgs, litres)
@@ -116,6 +118,7 @@ export interface ListFood {
 }
 
 export interface FridgeFood {
+  _id?: any,
   name: string,
   qty: number,
   unit?: string, // Unit of measurement (pcs, grams, kgs, litres)
