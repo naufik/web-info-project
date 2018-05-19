@@ -1,5 +1,6 @@
 import { Component, OnInit, Input} from '@angular/core';
 import { Router } from '@angular/router';
+import * as Moment from 'moment';
 
 @Component({
   selector: 'app-listcontainer',
@@ -23,16 +24,30 @@ export class ListcontainerComponent implements OnInit {
 
   constructor(router: Router) {
     this.router = router;
-    }
+  }
 
   ngOnInit() {
-    if (this.datasource.length > 0) {
-      this.lists = this.datasource;
-    }
-  
+
   }
 
   navigate() {
     this.router.navigate(["/" + this.destination]);
+  }
+
+  getUrl(item: any) {
+    // items do not have url
+    if (!item.qty) {
+      return "/lists/" + item._id;
+    } else {
+      return "/fridge";
+    }
+  }
+
+  getPostAnnotation(item: any) {
+    if (!item.qty) {
+      return undefined;
+    } else {
+      return Moment(item.expiry).diff(Moment(), 'days').toString() + " days";
+    }
   }
 }

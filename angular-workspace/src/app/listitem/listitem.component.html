@@ -1,9 +1,10 @@
 <div class="list-base">
   <div class="grocerymodule">
-    <a href="">
+    <a *ngIf="destination" [routerLink]="['/' + destination]">
       <img class="img" src="assets/grocery.jpg">
     </a>
+    <img *ngIf="destination === undefined" class="img" src="assets/grocery.jpg">
   </div>
   <hr>
-  <p>{{ listname }}</p>
+  <p>{{ getDisplayText() }}</p>
 </div>

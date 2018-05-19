@@ -18,7 +18,7 @@ UserRouter.post("/", (req: Request, res: Response) => {
     }
 });
 
-UserRouter.post("/update", (req: Request, res: Reponse) => {
+UserRouter.post("/update", (req: Request, res: Response) => {
     if (!req.body.userData || !req.body.email) {
         res.status(400).send("Broken request!");
     } else {

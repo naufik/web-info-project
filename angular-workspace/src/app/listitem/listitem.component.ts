@@ -13,6 +13,9 @@ export class ListitemComponent implements OnInit {
   listname: string;
 
   @Input()
+  postAnnotation: string;
+
+  @Input()
   destination: string;
 
   constructor(router: Router) { 
@@ -20,11 +23,20 @@ export class ListitemComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.listname);
+
   }
 
   navigate() {
-    this.router.navigate(["/" + this.destination]);
+    if (this.destination) {
+      this.router.navigate(["/" + this.destination]);
+    }
   }
 
+  getDisplayText() {
+    let display = this.listname;
+    if (this.postAnnotation) {
+      display += " (" + this.postAnnotation + ")";
+    }
+    return display;
+  }
 }

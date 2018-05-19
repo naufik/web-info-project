@@ -33,10 +33,12 @@ export class FridgeComponent implements OnInit {
   }
 
   addNew(itemName: string) {
+    let newDate = new Date();
+    newDate.setDate(newDate.getDate() + 7);
     this.data.push({
       name: itemName,
       qty: 1,
-      expiry: new Date()
+      expiry: newDate
     });
     this.saveAll();
     this.toggleAdd();
@@ -44,7 +46,7 @@ export class FridgeComponent implements OnInit {
 
   saveAll() {
     this.fridgeService.saveFridge(this.userEmail, this.data).then(() => {
-      this.refresh();  
+      this.refresh();
     });
   }
 

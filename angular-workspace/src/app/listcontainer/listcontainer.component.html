@@ -14,8 +14,8 @@
     </div>
     <hr>
     <div class="listitems">
-      <div *ngFor="let item of lists">
-        <app-listitem [listname]="item.name"></app-listitem>
+      <div *ngFor="let item of datasource">
+        <app-listitem [postAnnotation]="getPostAnnotation(item)" [destination]="getUrl(item)" [listname]="item.name"></app-listitem>
       </div>
     </div>
   </div>
