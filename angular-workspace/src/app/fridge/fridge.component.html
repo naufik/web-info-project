@@ -59,7 +59,7 @@
 </div>
 
 <div class="main2" *ngFor="let item of data">
-  <app-fridgeitem [itemsrc]="item"></app-fridgeitem>
+  <app-fridgeitem (save)="onItemChanged()" [itemsrc]="item"></app-fridgeitem>
 </div>
 
 </body>
