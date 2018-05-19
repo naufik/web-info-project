@@ -1,4 +1,4 @@
-import { Input, Component, OnInit } from '@angular/core';
+import { Input, Output, Component, EventEmitter, OnInit } from '@angular/core';
 import { FridgeFood } from '../dataretriever.service';
 
 @Component({
@@ -11,11 +11,17 @@ export class FridgeitemComponent implements OnInit {
   @Input()
   itemsrc: FridgeFood;
 
-  constructor() {
+  @Output()
+  save: EventEmitter<null>;
 
+  shownQty = "0";
+
+  constructor() {
+    this.save = new EventEmitter<null>();
   }
 
   ngOnInit() {
+    this.shownQty = this.itemsrc.qty.toString();
   }
 
   collapsed = true;
@@ -29,10 +35,17 @@ export class FridgeitemComponent implements OnInit {
   }
 
   getDateDisplay() {
-    return this.itemsrc.expiry;
+    return this.itemsrc.expiry.toString();
   }
 
   getExpiryDate() {
 
+  }
+
+  onChange(newStr: string) {
+    this.itemsrc.qty = parseInt(this.shownQty);
+    if (newStr.length > 0) {
+      this.save.emit();
+    }
   }
 }

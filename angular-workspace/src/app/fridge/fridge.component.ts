@@ -12,6 +12,8 @@ export class FridgeComponent implements OnInit {
   fridgeService: DataRetrieverService;
   add = false;
 
+  timeoutEvent = undefined;
+
   constructor(service: DataRetrieverService) {
     this.fridgeService = service;
   }
@@ -36,14 +38,29 @@ export class FridgeComponent implements OnInit {
       qty: 1,
       expiry: new Date()
     });
+    this.saveAll();
+    this.toggleAdd();
+  }
+
+  saveAll() {
     this.fridgeService.saveFridge(this.userEmail, this.data).then(() => {
       this.refresh();  
     });
-
-    this.toggleAdd();
   }
 
   toggleAdd() {
     this.add = !this.add;
+  }
+
+  onItemChanged() {
+    console.log("save event added");
+    if (this.timeoutEvent) {
+      clearTimeout(this.timeoutEvent);
+      this.timeoutEvent = undefined;
+    }
+
+    this.timeoutEvent = setTimeout(() => {
+      this.saveAll(); 
+    }, 200);
   }
 }
