@@ -1,9 +1,3 @@
-
-
-.section-header{
-  margin: 0px;
-}
-
 label{
   font-family: 'Libre Franklin', sans-serif;
   font-size: 85%;
@@ -13,6 +7,10 @@ label{
 .page{
   font-size: 85%;
   font-family: 'Libre Franklin', sans-serif;
+}
+
+i{
+  padding-left: 20px;
 }
 
 a{
@@ -29,11 +27,6 @@ a:hover{
 a:hover{
   font-weight:bold;
 }
-
-.main{
-  margin: 0px;
-}
-
 
 .contents{
   margin-bottom: 10px;
