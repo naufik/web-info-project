@@ -88,7 +88,7 @@ UserRouter.get("/:em", (req: Request, res: Response) => {
         //     });
         //     return;
         // }
-        
+
         UserController.getUserData(req.user.email).then((data) => {
             res.status(200).json(data);
         })
@@ -100,15 +100,15 @@ UserRouter.get("/:em", (req: Request, res: Response) => {
 UserRouter.get("/:em/lists", (req: Request, res: Response) => {
     if (req.params.em) {
 
-        if (req.params.em !== req.user.email) {
-            res.status(403).send({
-                success: false,
-                error: new Error("Forbidden")
-            });
-            return;
-        }
+        // if (req.params.em !== req.user.email) {
+        //     res.status(403).send({
+        //         success: false,
+        //         error: new Error("Forbidden")
+        //     });
+        //     return;
+        // }
 
-        ListController.getListsForUser(req.params.em).then((data) => {
+        ListController.getListsForUser(req.user.email).then((data) => {
             res.status(200).json(data);
         })
     } else {
