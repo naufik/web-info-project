@@ -89,11 +89,11 @@ UserRouter.get("/:em", (req: Request, res: Response) => {
         //     return;
         // }
 
-        UserController.getUserData(req.params.em).then((data) => {
+        UserController.getUserData(req.user.email).then((data) => {
             res.status(200).json(data);
         })
     } else {
-        res.status(400).send("Broken request.");
+        res.status(403).send("Forbidden");
     }
 });
 
