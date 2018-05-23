@@ -42,7 +42,7 @@ UserRouter.post("/add.list", (req: Request, res: Response) => {
         if (!req.user) {
             res.status(403).send({
                 success: false,
-                error: new Error("Forbidden.");
+                error: new Error("Forbidden.")
             });
             return;
         }
