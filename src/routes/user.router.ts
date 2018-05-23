@@ -129,11 +129,11 @@ UserRouter.post("/:em/:stash", (req: Request, res: Response) => {
 
         switch (req.params.stash) {
             case "groceries":
-                UserController.setGroceries(req.body.user, req.body.contents).then((result) => {
+                UserController.setGroceries(req.user.email, req.body.contents).then((result) => {
                     res.status(200).json(result);
                 });
             case "fridge":
-                UserController.setFridge(req.body.user, req.body.contents).then((result) => {
+                UserController.setFridge(req.user.email, req.body.contents).then((result) => {
                     res.status(200).json(result);
                 });
             default:
