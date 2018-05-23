@@ -35,7 +35,6 @@ export class LoginComponent implements OnInit {
       this.signupmode = false;
     } else {
       this.auth.login(this.formData.email, this.formData.passwd).then((data) => {
-        console.log(data);
         this.login.emit(data);
       })
     }
