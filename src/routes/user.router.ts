@@ -118,9 +118,15 @@ UserRouter.get("/:em/lists", (req: Request, res: Response) => {
         //     return;
         // }
 
-        ListController.getListsForUser(req.user.email).then((data) => {
-            res.status(200).json(data);
-        })
+        if (req.user) {
+            ListController.getListsForUser(req.user.email).then((data) => {
+                res.status(200).json(data);
+            });
+        } else {
+            ListController.getListsForUser(req.params.em).then((data) => {
+                res.status(200).json(data);
+            });
+        }
     } else {
         res.status(400).send("Broken request.");
     }
