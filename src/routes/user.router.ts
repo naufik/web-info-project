@@ -88,15 +88,10 @@ UserRouter.get("/:em", (req: Request, res: Response) => {
         //     });
         //     return;
         // }
-        if (!req.user) {
-            res.status(200).send("user not found");
-        } else {
-            res.status(200).json(req.user);
-        }
-        return;
-        // UserController.getUserData(req.user.email).then((data) => {
-        //     res.status(200).json(data);
-        // })
+        
+        UserController.getUserData(req.user.email).then((data) => {
+            res.status(200).json(data);
+        })
     } else {
         res.status(403).send("Forbidden");
     }
