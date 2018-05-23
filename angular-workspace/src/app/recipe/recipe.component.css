@@ -15,7 +15,12 @@ h1{
 
 a{
   color: black;
+  margin-right: 10px;
 }
+.fa-trash-alt{
+  cursor: pointer;
+}
+
 
 img{
   height: 150px;

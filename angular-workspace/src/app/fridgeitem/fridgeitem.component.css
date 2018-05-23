@@ -9,8 +9,8 @@ label{
   font-family: 'Libre Franklin', sans-serif;
 }
 
-i{
-  padding-left: 20px;
+span{
+  cursor: pointer;
 }
 
 a{
