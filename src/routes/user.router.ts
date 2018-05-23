@@ -88,7 +88,7 @@ UserRouter.get("/:em", (req: Request, res: Response) => {
         //     });
         //     return;
         // }
-
+        console.log(req.user.email);
         UserController.getUserData(req.user.email).then((data) => {
             res.status(200).json(data);
         })
