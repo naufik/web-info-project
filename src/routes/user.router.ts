@@ -98,7 +98,7 @@ UserRouter.get("/:em", (req: Request, res: Response) => {
                 res.status(200).json(data);
             });
         } else {
-            UserController.getUserData(req.params.email).then((data) => {
+            UserController.getUserData(req.params.em).then((data) => {
                 res.status(200).json(data);
             });
         }
