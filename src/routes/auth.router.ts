@@ -7,10 +7,22 @@ import User from '../models/user.model';
 
 const AuthRouter = Router();
 
-AuthRouter.post('/', Passport.authenticate('local', { 
-	successRedirect: '/main', 
-	failureRedirect: '/'
-	}));
+AuthRouter.post('/', (req, res, next) => {
+	Passport.authenticate('local', (err, user, info) => {
+		if (err) {
+			return res.status(400).send(err.message);
+		}
+		req.login(user, (err) => {
+			if (err){
+				return res.status(400).send(err.message);
+			}
+			return res.status(200).json({
+				success: true,
+				data: user
+			})
+		});
+	})(req, res, next);
+});
 
 Passport.use(new Strategy((username: string, passwd: string, done: Function) => {
 	User.findOne({
