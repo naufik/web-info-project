@@ -29,6 +29,20 @@ Passport.use(new Strategy((username: string, passwd: string, done: Function) => 
 		}
 
 		return done(null, user);
+	}, (err: Error) => {
+		done(err, null);
 	});
 
 }));
+
+Passport.serializeUser((user: any, done: Function)  => {
+  return done(null, user._id);
+});
+
+Passport.deserializeUser((id, done) => {
+  User.findById(id).then((user) => {
+	return done(null, user);
+  }, (err: Error) => {
+  	done(err, null);
+  });
+});
