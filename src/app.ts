@@ -5,17 +5,14 @@ import * as CORS from 'cors';
 import * as Mongoose from 'mongoose';
 import * as Bluebird from 'bluebird';
 import * as Path from 'path';
+import * as Passport from 'passport';
+import * as Session from 'express-session';
 import DB from './database';
 
 /** Import Routers */
 import HomeRouter from './routes/home.router';
 import APIRouter from './routes/api.router';
 
-/**
-	Is a class really necessary? 
-	I'm thinking we could just write this straight out as a script file :/
-	We'll change that lataer
-*/
 export class App {
 	public app: Express.Application;
 
@@ -35,6 +32,13 @@ export class App {
 		this.app.use(BodyParser.json());
 		this.app.use(BodyParser.urlencoded({extended: true}));
 
+        // For express sessions
+        this.app.use(Session({ secret: 'RIP spiderman' }));
+
+		// For authentication purposes
+        this.app.use(Passport.initialize());
+        this.app.use(Passport.session());
+
 		// For easier front-end testing, browsers often reject responses created by servers hosted in another domain.
 		// If we have a backend in Heroku and testing our frontend in localhost, most responses by the server will be rejected.
 		this.app.use(CORS());
@@ -42,13 +46,16 @@ export class App {
 		// For mongoDB later on
 		(<any>Mongoose).Promise = Bluebird;
 
+		// Database callbacks
         DB.once('open', () => {
             console.log("Connection success");
         });
 
+        // Database error callbacks
         DB.on('error', (err: Error) => {
             console.log("error happened" + err.message);
         });
+
 	}
 
 	/**
