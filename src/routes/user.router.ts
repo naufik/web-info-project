@@ -71,15 +71,15 @@ UserRouter.post("/list", (req:Request, res: Response) => {
 });
 
 UserRouter.get("/list/:listId", (req: Request, res: Response) => {
-    if (!req.user){
-        res.status(403).send("Forbidden.");
-    } else {
+    // if (!req.user){
+    //     res.status(403).send("Forbidden.");
+    // } else {
         ListController.getList(req.params.listId).then((data) => {
             res.status(200).json(data);
         }).catch((err: Error) => {
             res.send(500).send(err.message);
         });
-    }
+    // }
 })
 
 UserRouter.get("/:em", (req: Request, res: Response) => {
