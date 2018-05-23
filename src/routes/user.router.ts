@@ -71,7 +71,7 @@ UserRouter.post("/list", (req:Request, res: Response) => {
 });
 
 UserRouter.get("/list/:listId", (req: Request, res: Response) => {
-    if (!req.user || !req.user.lists.includes(req.params.listId)){
+    if (!req.user){
         res.status(403).send("Forbidden.");
     } else {
         ListController.getList(req.params.listId).then((data) => {
