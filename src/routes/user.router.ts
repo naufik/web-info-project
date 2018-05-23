@@ -57,7 +57,7 @@ UserRouter.post("/list", (req:Request, res: Response) => {
     if (!req.body.listData || !req.body.userEmail || !req.user) {
         res.status(400).send("Broken request.");
     } else {
-        if (!req.user || !req.user.lists.includes(req.body.listData._id)) {
+        if (!req.user) {
             res.status(403).send({
                 success: false,
                 error: new Error("Forbidden")
@@ -93,9 +93,15 @@ UserRouter.get("/:em", (req: Request, res: Response) => {
         //     return;
         // }
 
-        UserController.getUserData(req.user.email).then((data) => {
-            res.status(200).json(data);
-        })
+        if (req.user) {
+            UserController.getUserData(req.user.email).then((data) => {
+                res.status(200).json(data);
+            });
+        } else {
+            UserController.getUserData(req.params.email).then((data) => {
+                res.status(200).json(data);
+            });
+        }
     } else {
         res.status(403).send("Forbidden");
     }
