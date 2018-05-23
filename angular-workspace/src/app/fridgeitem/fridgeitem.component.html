@@ -6,7 +6,7 @@
     <div class="contents" *ngIf="!collapsed">
       <form class="needs-validation" novalidate>
         <div class="form-row">
-          <div class="col" >
+          <div class="col">
             <label for="DaysLeft" class="col-form-label-sm">Days Left</label>
             <input class="form-control form-control-sm" (change)="setDate(daysLeftBox.value)" id="DaysLeft" [(ngModel)]="daysLeft" name="daysLeftBox" #daysLeftBox>
           </div>
