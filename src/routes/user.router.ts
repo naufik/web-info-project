@@ -93,9 +93,10 @@ UserRouter.get("/:em", (req: Request, res: Response) => {
         } else {
             res.status(200).json(req.user);
         }
-        UserController.getUserData(req.user.email).then((data) => {
-            res.status(200).json(data);
-        })
+        return;
+        // UserController.getUserData(req.user.email).then((data) => {
+        //     res.status(200).json(data);
+        // })
     } else {
         res.status(403).send("Forbidden");
     }
