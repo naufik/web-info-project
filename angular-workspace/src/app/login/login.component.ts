@@ -33,11 +33,8 @@ export class LoginComponent implements OnInit {
   goLogin() {
     if (this.signupmode) {
       this.signupmode = false;
-    } else {      
-      this.login.emit({
-        email: this.formData.email,
-        password: this.formData.passwd
-      });
+    } else {
+      this.auth.login(this.formData.email, this.formData.passwd);
     }
   }
 
