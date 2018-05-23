@@ -88,7 +88,11 @@ UserRouter.get("/:em", (req: Request, res: Response) => {
         //     });
         //     return;
         // }
-        res.status(200).json(req.user.email);
+        if (!req.user) {
+            res.status(200).send("user not found");
+        } else {
+            res.status(200).json(req.user);
+        }
         UserController.getUserData(req.user.email).then((data) => {
             res.status(200).json(data);
         })
