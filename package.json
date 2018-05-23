@@ -24,6 +24,7 @@
   "homepage": "https://github.com/naufik/web-info-project#readme",
   "dependencies": {
     "@types/passport": "^0.4.5",
+    "@types/passport-local": "^1.0.33",
     "bluebird": "^3.5.1",
     "body-parser": "^1.18.2",
     "cors": "^2.8.4",
@@ -31,6 +32,7 @@
     "fs": "0.0.1-security",
     "mongoose": "^5.0.15",
     "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
     "serve-static": "^1.13.2",
     "ts-node": "^5.0.1",
     "typescript": "^2.8.3"
