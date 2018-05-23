@@ -46,3 +46,5 @@ Passport.deserializeUser((id: any, done: Function) => {
   	done(err, null);
   });
 });
+
+export default AuthRouter;
