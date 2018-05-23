@@ -26,9 +26,10 @@ export class LandingComponent implements OnInit {
 
   }
 
-  navigateLogin() {
-    this.testvar += "A";
-    this.router.navigate(['/main']);
+  navigateLogin(data: any) {
+    if (!data.message){
+      this.router.navigate(['/main']);
+    }
   }
 
   collapsearr = [false, false];
