@@ -19,7 +19,7 @@ AuthRouter.post('/', (req, res, next) => {
 			return res.status(200).json({
 				success: true,
 				data: user
-			})
+			});
 		});
 	})(req, res, next);
 });

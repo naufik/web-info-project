@@ -34,7 +34,7 @@ export class AuthService {
         password: passwd
       }).subscribe((data: any) => {
         if (data.success) {
-          resolve(data.token);
+          resolve(data.data);
         } else {
           reject(data.error);
         }
