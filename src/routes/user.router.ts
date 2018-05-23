@@ -29,7 +29,7 @@ UserRouter.post("/update", (req: Request, res: Response) => {
             });
             return;
         }
-        UserController.saveUser(req.body.email, req.body.userData).then((data) => {
+        UserController.saveUser(req.user.email, req.body.userData).then((data) => {
             res.status(200).json(data);
         });
     }
@@ -39,15 +39,15 @@ UserRouter.post("/add.list", (req: Request, res: Response) => {
     if (!req.body.listData || !req.body.userEmail || !req.user) {
         res.status(400).send("Broken Request");
     } else {
-        if (req.user.email !== req.body.userEmail) {
+        if (!req.user) {
             res.status(403).send({
                 success: false,
-                error: new Error("Forbidden")
+                error: new Error("Forbidden.");
             });
             return;
         }
         ListController.newList(req.body.listData,
-            req.body.userEmail).then((status) => {
+            req.user.email).then((status) => {
                 res.status(200).json(status);
             });
     }
@@ -57,7 +57,7 @@ UserRouter.post("/list", (req:Request, res: Response) => {
     if (!req.body.listData || !req.body.userEmail || !req.user) {
         res.status(400).send("Broken request.");
     } else {
-        if (req.user.email !== req.body.userEmail) {
+        if (!req.user || !req.user.lists.includes(req.body.listData._id)) {
             res.status(403).send({
                 success: false,
                 error: new Error("Forbidden")
@@ -71,11 +71,15 @@ UserRouter.post("/list", (req:Request, res: Response) => {
 });
 
 UserRouter.get("/list/:listId", (req: Request, res: Response) => {
-    ListController.getList(req.params.listId).then((data) => {
-        res.status(200).json(data);
-    }).catch((err: Error) => {
-        res.send(500).send(err.message);
-    })
+    if (!req.user || !req.user.lists.includes(req.params.listId)){
+        res.status(403).send("Forbidden.");
+    } else {
+        ListController.getList(req.params.listId).then((data) => {
+            res.status(200).json(data);
+        }).catch((err: Error) => {
+            res.send(500).send(err.message);
+        });
+    }
 })
 
 UserRouter.get("/:em", (req: Request, res: Response) => {
