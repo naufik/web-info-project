@@ -81,13 +81,13 @@ UserRouter.get("/list/:listId", (req: Request, res: Response) => {
 UserRouter.get("/:em", (req: Request, res: Response) => {
     if (req.params.em) {
 
-        if (req.params.em !== req.user.email) {
-            res.status(403).send({
-                success: false,
-                error: new Error("Forbidden")
-            });
-            return;
-        }
+        // if (req.params.em !== req.user.email) {
+        //     res.status(403).send({
+        //         success: false,
+        //         error: new Error("Forbidden")
+        //     });
+        //     return;
+        // }
 
         UserController.getUserData(req.params.em).then((data) => {
             res.status(200).json(data);
