@@ -119,28 +119,28 @@ UserRouter.get("/:em/lists", (req: Request, res: Response) => {
 UserRouter.post("/:em/:stash", (req: Request, res: Response) => {
     if (req.params.em && req.params.stash && req.body.contents) {
 
-        if (req.user.email !== req.params.em) {
-            res.status(403).send({
-                success: false,
-                error: new Error("Forbidden")
-            });
-            return;
-        }
+        // if (req.user.email !== req.params.em) {
+        //     res.status(403).send({
+        //         success: false,
+        //         error: new Error("Forbidden")
+        //     });
+        //     return;
+        // }
 
         switch (req.params.stash) {
             case "groceries":
-                UserController.setGroceries(req.params.em, req.body.contents).then((result) => {
+                UserController.setGroceries(req.body.user, req.body.contents).then((result) => {
                     res.status(200).json(result);
                 });
             case "fridge":
-                UserController.setFridge(req.params.em, req.body.contents).then((result) => {
+                UserController.setFridge(req.body.user, req.body.contents).then((result) => {
                     res.status(200).json(result);
                 });
             default:
                 break;
         }
     } else {
-        res.status(400).send("Broken request.");
+        res.status(403).send("Forbidden.");
     }
 });
 
