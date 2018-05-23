@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-const API_LOGIN = "http://to-dd.herokuapp.com/api/login/"
+const API_LOGIN = "http://to-dd.herokuapp.com/api/auth/"
 const API_SIGNUP = "http://to-dd.herokuapp.com/api/user/"
 
 export interface UserData {
@@ -30,8 +30,8 @@ export class AuthService {
   public login(email: string, passwd: string) {
     return new Promise((resolve, reject) => {
       this.http.post(API_LOGIN, {
-        loginEmail: email,
-        loginPassword: passwd
+        username: email,
+        password: passwd
       }).subscribe((data: any) => {
         if (data.success) {
           resolve(data.token);

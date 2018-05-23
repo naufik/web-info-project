@@ -7,7 +7,7 @@ import User from '../models/user.model';
 
 const AuthRouter = Router();
 
-AuthRouter.post('/', (req, res) => Passport.authenticate('local', { 
+AuthRouter.post('/', Passport.authenticate('local', { 
 	successRedirect: '/main', 
 	failureRedirect: '/'
 	}));
