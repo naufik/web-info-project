@@ -27,3 +27,31 @@
 .translucent-list:hover{
   opacity: 0.8;
 }
+
+.lists{
+	grid-area: list;
+}
+
+.groceries{
+	grid-area: groceries;
+}
+
+
+.wrapper {
+  display: grid;
+  grid-gap: 20px;
+  grid-template-areas:
+    "list"
+    "groceries";
+}
+
+@media (min-width: 700px) {
+  .wrapper {
+    grid-template-columns: 30% 70%;
+    grid-template-areas:
+      "list groceries"
+  }
+  nav ul {
+    flex-direction: column;
+  }
+}
