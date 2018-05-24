@@ -1,8 +1,31 @@
 
-.left-content{
-  text-align: left;
-  font-size: 100%;
-  color: green;
+.wrapper {
+  display: grid;
+  grid-gap: 20px;
+  grid-template-areas:
+    "header"
+    "content"
+    "sidebar"
+    "ad"
+    "footer";
+}
+
+/*.left-content{*/
+  /*text-align: left;*/
+  /*font-size: 100%;*/
+  /*color: green;*/
+/*}*/
+
+@media (min-width: 700px) {
+  .wrapper {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-areas:
+      "empty header header  sidebar"
+      "empty content content sidebar"
+  }
+  nav ul {
+    flex-direction: column;
+  }
 }
 
 .login-box{
@@ -10,20 +33,10 @@
   padding: 0px;
 }
 
-.main{
-  display: grid;
-  grid-template-columns: 5% 60% 5% 25% 5%;
-}
-
-
 .login{
-  grid-column: 4/5;
   margin-top: 2px;
   background: rgba(255,255,255,0.75);
-}
-
-.info{
-  grid-column: 2/3;
+  grid-area: sidebar;
 }
 
 .section-header {
@@ -35,12 +48,23 @@
   text-align: center;
 }
 
-.section {
+.about {
   margin-top: 2px;
   background: rgba(255,255,255,0.75);
   border: 1px solid #2e3038;
   padding-left: 15px;
+  grid-area: header;
 }
+
+.team {
+  margin-top: 2px;
+  background: rgba(255,255,255,0.75);
+  border: 1px solid #2e3038;
+  padding-left: 15px;
+  grid-area: content;
+}
+
+
 
 .section-icon{
   margin-right: 5px;
