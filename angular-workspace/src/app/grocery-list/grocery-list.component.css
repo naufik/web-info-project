@@ -1,4 +1,3 @@
-
 .large{
   text-align: center;
 }
@@ -17,13 +16,17 @@
   float: right;
 }
 
+button{
+  grid-area: button;
+}
+
 .addbutton{
   margin-top: 2%;
   float: right;
 }
-.addfridge{
-  margin-top: 10%;
-}
+/*.addfridge{*/
+  /*margin-top: 2%;*/
+/*}*/
 .translucent-list:hover{
   opacity: 0.8;
 }
@@ -36,13 +39,13 @@
 	grid-area: groceries;
 }
 
-
 .wrapper {
   display: grid;
   grid-gap: 20px;
   grid-template-areas:
     "list"
-    "groceries";
+    "groceries"
+    "button";
 }
 
 @media (min-width: 700px) {
@@ -50,6 +53,7 @@
     grid-template-columns: 30% 70%;
     grid-template-areas:
       "list groceries"
+      "list button"
   }
   nav ul {
     flex-direction: column;
