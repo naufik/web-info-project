@@ -2,11 +2,20 @@
 @import url("https://fonts.googleapis.com/css?family=Merriweather:300");
 @import url('https://fonts.googleapis.com/css?family=Basic');
 
-body {
-  /*background: url("assets/img1.jpg") no-repeat center center fixed;*/
-    background-size: cover;
-  /*background-color: #fbf8f4;*/
-  background-image: url('https://images.unsplash.com/photo-1495195129352-aeb325a55b65?ixlib=rb-0.3.5&s=4be08f60880c4f9b5344eb20d13465ee&auto=format&fit=crop&w=755&q=80');
+/*body {*/
+  /*!*background: url("assets/img1.jpg") no-repeat center center fixed;*!*/
+  /*background-size: cover;*/
+  /*!*background-color: #fbf8f4;*!*/
+  /*background-image: url('https://images.unsplash.com/photo-1495195129352-aeb325a55b65?ixlib=rb-0.3.5&s=4be08f60880c4f9b5344eb20d13465ee&auto=format&fit=crop&w=755&q=80');*/
+/*}*/
 
+body {
+  background: url('https://images.unsplash.com/photo-1495195129352-aeb325a55b65?ixlib=rb-0.3.5&s=4be08f60880c4f9b5344eb20d13465ee&auto=format&fit=crop&w=755&q=80') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: 100%;
+  overflow: hidden;
 }
 
