@@ -1,6 +1,7 @@
 <div class="page">
   <div class="section-header">
-    <a (click)="collapseItem()">{{ itemsrc.name }}</a>
+    <a (click)="collapseItem()">{{ itemsrc.name }}</a> <span style="float:right;"><i class="fas fa-trash-alt"></i></span>
+
   </div>
   <div class="main">
     <div class="contents" *ngIf="!collapsed">

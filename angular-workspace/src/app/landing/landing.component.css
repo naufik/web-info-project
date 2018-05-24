@@ -1,8 +1,39 @@
 
-.left-content{
-  text-align: left;
-  font-size: 100%;
-  color: green;
+.wrapper {
+  display: grid;
+  grid-gap: 20px;
+  grid-template-areas:
+    "header"
+    "content"
+    "sidebar";
+}
+
+/*.left-content{*/
+  /*text-align: left;*/
+  /*font-size: 100%;*/
+  /*color: green;*/
+/*}*/
+
+.empty{
+  grid-area: empty;
+}
+.empty2{
+  grid-area: empty2;
+}
+.empty3{
+  grid-area: empty3;
+}
+
+@media (min-width: 700px) {
+  .wrapper {
+    grid-template-columns: 5% 60% 5% 25% 5%;
+    grid-template-areas:
+      "empty header empty2 sidebar empty3"
+      "empty content empty2 sidebar empty3"
+  }
+  nav ul {
+    flex-direction: column;
+  }
 }
 
 .login-box{
@@ -10,20 +41,9 @@
   padding: 0px;
 }
 
-.main{
-  display: grid;
-  grid-template-columns: 5% 60% 5% 25% 5%;
-}
-
-
 .login{
-  grid-column: 4/5;
   margin-top: 2px;
-  background: rgba(255,255,255,0.75);
-}
-
-.info{
-  grid-column: 2/3;
+  grid-area: sidebar;
 }
 
 .section-header {
@@ -35,11 +55,20 @@
   text-align: center;
 }
 
-.section {
+.about {
   margin-top: 2px;
   background: rgba(255,255,255,0.75);
   border: 1px solid #2e3038;
   padding-left: 15px;
+  grid-area: header;
+}
+
+.team {
+  margin-top: 2px;
+  background: rgba(255,255,255,0.75);
+  border: 1px solid #2e3038;
+  padding-left: 15px;
+  grid-area: content;
 }
 
 .section-icon{

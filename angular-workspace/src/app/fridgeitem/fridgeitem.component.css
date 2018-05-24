@@ -5,12 +5,17 @@ label{
 
 
 .page{
+  background: rgba(255,255,255,0.75);
   font-size: 85%;
   font-family: 'Libre Franklin', sans-serif;
 }
 
-i{
-  padding-left: 20px;
+.page:hover{
+  background: rgba(255,255,255,0.5);
+}
+
+span{
+  cursor: pointer;
 }
 
 a{
