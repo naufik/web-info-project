@@ -1,65 +1,64 @@
-<body>
-<style>
-  @import url('https://fonts.googleapis.com/css?family='Libre+Baskerville|Libre+Franklin');
-</style>
+<div class="wrapper">
 
-<app-logged-header></app-logged-header>
-<br>
+  <body>
+    <style>
+      @import url('https://fonts.googleapis.com/css?family='Libre+Baskerville|Libre+Franklin');
+    </style>
 
-<div class="main">
-  <div class="tit">
-    <div class="titlename">
-      WHAT'S IN MY FRIDGE  <a (click)="toggleAdd()" class=""><i class="fas fa-edit section-icon"></i></a>
-    </div>
+  <app-logged-header></app-logged-header>
+  <br>
 
-    <div class="btn-group">
-      Sorting
-      <button type="button" class="btn btn-sm btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <span class="sr-only">Toggle Dropdown</span>
-      </button>
-      <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-        <h6 class="dropdown-header">When Added</h6>
-        <li class="dropdown-item">Oldest First</li>
-        <li class="dropdown-item">Newest First</li>
-        <div class="dropdown-divider"></div>
-        <h6 class="dropdown-header">Expiry</h6>
-        <li class="dropdown-item" (click)="sortFridge(compareByExpiry)">Ascending</li>
-        <li class="dropdown-item" (click)="sortFridge(compareByExpiry, true)">Descending</li>
-        <div class="dropdown-divider"></div>
-        <li class="dropdown-item" (click)="sortFridge(compareByAlpha)">Alphabetic</li>
-      </ul>
-    </div>
+  <div class="main">
+    <div class="tit">
+      <div class="titlename">
+        WHAT'S IN MY FRIDGE  <a (click)="toggleAdd()" class=""><i class="fas fa-edit section-icon"></i></a>
+      </div>
 
-    <div class="btn-group2">
-      Show
-      <button type="button" class="btn btn-sm btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <span class="sr-only">Toggle Dropdown</span>
-      </button>
-      <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-        <h6 class="dropdown-header">Expired In</h6>
-        <li class="dropdown-item">Day</li>
-        <li class="dropdown-item">Week</li>
-        <div class="dropdown-divider"></div>
-        <li class="dropdown-item">Food</li>
-        <li class="dropdown-item">Drink</li>
+      <div class="btn-group">
+        Sorting
+        <button type="button" class="btn btn-sm btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <span class="sr-only">Toggle Dropdown</span>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+          <h6 class="dropdown-header">When Added</h6>
+          <li class="dropdown-item">Oldest First</li>
+          <li class="dropdown-item">Newest First</li>
+          <div class="dropdown-divider"></div>
+          <h6 class="dropdown-header">Expiry</h6>
+          <li class="dropdown-item" (click)="sortFridge(compareByExpiry)">Ascending</li>
+          <li class="dropdown-item" (click)="sortFridge(compareByExpiry, true)">Descending</li>
+          <div class="dropdown-divider"></div>
+          <li class="dropdown-item" (click)="sortFridge(compareByAlpha)">Alphabetic</li>
+        </ul>
+      </div>
 
-      </ul>
+      <div class="btn-group2">
+        Show
+        <button type="button" class="btn btn-sm btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <span class="sr-only">Toggle Dropdown</span>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+          <h6 class="dropdown-header">Expired In</h6>
+          <li class="dropdown-item">Day</li>
+          <li class="dropdown-item">Week</li>
+          <div class="dropdown-divider"></div>
+          <li class="dropdown-item">Food</li>
+          <li class="dropdown-item">Drink</li>
+
+        </ul>
+      </div>
     </div>
   </div>
-</div>
 
-<div class="main">
-  <hr>
-</div>
-
-<div class="main">
-  <div class="search">
-    <add-recipe (submit)="addNew($event)" *ngIf="add"></add-recipe>
+  <div class="main">
+    <div class="search">
+      <add-recipe (submit)="addNew($event)" *ngIf="add"></add-recipe>
+    </div>
   </div>
-</div>
 
-<div class="main2" *ngFor="let item of data">
-  <app-fridgeitem (save)="onItemChanged()" [itemsrc]="item"></app-fridgeitem>
-</div>
+  <div class="main2" *ngFor="let item of data">
+    <app-fridgeitem (save)="onItemChanged()" [itemsrc]="item"></app-fridgeitem>
+  </div>
 
-</body>
+  </body>
+</div>
