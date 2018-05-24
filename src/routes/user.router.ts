@@ -36,7 +36,7 @@ UserRouter.post("/update", (req: Request, res: Response) => {
 });
 
 UserRouter.post("/add.list", (req: Request, res: Response) => {
-    if (!req.body.listData || !req.body.userEmail || !req.user) {
+    if (!req.body.listData || !req.body.userEmail) {
         res.status(400).send("Broken Request");
     } else {
         if (!req.user) {
