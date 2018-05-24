@@ -5,8 +5,13 @@ label{
 
 
 .page{
+  background: rgba(255,255,255,0.75);
   font-size: 85%;
   font-family: 'Libre Franklin', sans-serif;
+}
+
+.page:hover{
+  background: rgba(255,255,255,0.5);
 }
 
 span{
