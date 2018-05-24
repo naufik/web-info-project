@@ -4,60 +4,56 @@
 
 <app-logged-header></app-logged-header>
 
-<div class="main1">
-  <div class="tit">
-    <div class="titlename">
-      MY LISTS <a [routerLink]="['/lists']" (click)="toggleAdd()"><i class="fas fa-edit section-icon"></i></a>
+<div class="wrapper">
+  <nav></nav>
+  <div class="main">
+      <div class="tit">
+        <div class="titlename">
+          MY LISTS <a [routerLink]="['/lists']" (click)="toggleAdd()"><i class="fas fa-edit section-icon"></i></a>
+        </div>
+        <div class="btn-group">
+          Sorting
+          <button type="button" class="btn btn-sm btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span class="sr-only">Toggle Dropdown</span>
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+            <h6 class="dropdown-header">When Created</h6>
+            <a class="dropdown-item" href="#">Newest First</a>
+            <a class="dropdown-item" href="#">Oldest First</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Alphabetic</a>
+          </ul>
+        </div>
+
+        <div class="btn-group2">
+          Show
+          <button type="button" class="btn btn-sm btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span class="sr-only">Toggle Dropdown</span>
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+            <a class="dropdown-item" href="#">My Groceries</a>
+            <a class="dropdown-item" href="#">Recipes</a>
+            <a class="dropdown-item" href="#">Lists</a>
+          </ul>
+        </div>
+      </div>
+
+    <div class="search">
+      <add-recipe (submit)="addList($event)" *ngIf="add"></add-recipe>
     </div>
-    <div class="btn-group">
-      Sorting
-      <button type="button" class="btn btn-sm btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <span class="sr-only">Toggle Dropdown</span>
-      </button>
-      <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-        <h6 class="dropdown-header">When Created</h6>
-        <a class="dropdown-item" href="#">Newest First</a>
-        <a class="dropdown-item" href="#">Oldest First</a>
-        <div class="dropdown-divider"></div>
-        <a class="dropdown-item" href="#">Alphabetic</a>
-      </ul>
+    <!--[(ngModel)]="formData.lastName" name="lastName"-->
+
+    <div class="main2">
+      <a href="">
+        <img class="img" src="assets/grocery.jpg">
+      </a>
+      <h1><a [routerLink]="['/groceries']" >My Groceries</a></h1>
     </div>
 
-    <div class="btn-group2">
-      Show
-      <button type="button" class="btn btn-sm btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <span class="sr-only">Toggle Dropdown</span>
-      </button>
-      <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-        <a class="dropdown-item" href="#">My Groceries</a>
-        <a class="dropdown-item" href="#">Recipes</a>
-        <a class="dropdown-item" href="#">Lists</a>
-      </ul>
+    <div class="item" *ngFor="let recipe of allLists">
+      <app-recipe [data]="recipe"></app-recipe>
     </div>
   </div>
-</div>
 
-<div class="main">
-  <hr>
-</div>
-
-<div class="main">
-  <div class="search">
-    <add-recipe (submit)="addList($event)" *ngIf="add"></add-recipe>
-  </div>
-</div>
-
-<!--[(ngModel)]="formData.lastName" name="lastName"-->
-
-<div class="main">
-  <div class="main2">
-    <a href="">
-      <img class="img" src="assets/grocery.jpg">
-    </a>
-    <h1><a [routerLink]="['/groceries']" >My Groceries</a></h1>
-  </div>
-</div>
-
-<div class="main" *ngFor="let recipe of allLists">
-  <app-recipe [data]="recipe"></app-recipe>
+  <aside></aside>
 </div>

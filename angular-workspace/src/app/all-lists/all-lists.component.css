@@ -1,16 +1,39 @@
-.main{
-  display: grid;
-  grid-template-columns: 29% 42% 29%;
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding-top: 20px;
 }
 
-.main1{
+@media (min-width: 768px) {
+  .wrapper {
+    display: grid;
+    grid-template-columns: 29% 1fr 29%;
+    grid-template-rows: auto 1fr auto;
+  }
+}
+
+.main{
+  flex: 1;
+}
+
+
+.tit{
+  font-family: 'Libre Franklin', sans-serif;
+  border-bottom: 1px solid black;
+  padding-bottom: 3px;
   display: grid;
-  grid-template-columns: 29% 42% 29%;
-  margin-top: 10px;
+  grid-template-columns: fit-content(300px) auto fit-content(300px) fit-content(300px);
+}
+
+nav {
+}
+
+aside {
 }
 
 .search{
-  grid-column: 2/3;
+  flex: 1;
   padding-top: 10px;
   padding-right: 20px;
 }
@@ -23,20 +46,6 @@
   border: 1px solid #2e3038;
   border-radius: 10px;
 }
-
-.tit{
-  grid-column: 2/3;
-  grid-row: 1/2;
-  font-family: 'Libre Franklin', sans-serif;
-  display: grid;
-  grid-template-columns: 40% 35% 14% 13%;
-}
-
-app-recipe{
-  grid-column: 2/3;
-  margin-top: 5px;
-}
-
 
 h1{
   grid-column: 2/3;
@@ -65,11 +74,6 @@ img{
 
 .section-icon{
   margin-bottom: 1px;
-}
-
-hr{
-  margin: 2px;
-  grid-column: 2/3;
 }
 
 .btn-group{

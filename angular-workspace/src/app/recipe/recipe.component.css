@@ -3,6 +3,7 @@
   grid-template-columns: 20% auto;
   border: 1px solid #2e3038;
   border-radius: 10px;
+  margin-top: 5px;
 }
 
 h1{
