@@ -1,7 +1,8 @@
 <app-logged-header></app-logged-header>
 
-<div class="row">
-  <div class="col-4 usuals">
+ <div class="wrapper">
+  
+  <div class="lists">
     <h1>Saved Lists</h1>
     <li class="list-group-item"><h5>Previously made list templates</h5></li>
     <ul class="list-group" *ngFor="let item of appendableLists">
@@ -15,22 +16,16 @@
   </div>
 
 
-  <div class="col-7 large">
+  <div class="groceries">
     <h1>Grocery List  <span><i class="fas fa-edit"></i></span></h1>
     <ul class="list-group translucent-list" *ngFor="let item of shoppingList">
       <li class="list-group-item">{{ item.name }}
         <span><input type="checkbox" class="checks"></span>
       </li>
     </ul>
-
-
     <button type="button" (click)="toFridge()" class="btn btn-primary btn-lg addfridge">Add to Fridge</button>
-
     <div class="col-1"></div>
   </div>
-
-
-
 
 </div>
 
