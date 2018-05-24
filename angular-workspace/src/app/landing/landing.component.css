@@ -5,9 +5,7 @@
   grid-template-areas:
     "header"
     "content"
-    "sidebar"
-    "ad"
-    "footer";
+    "sidebar";
 }
 
 /*.left-content{*/
@@ -16,12 +14,22 @@
   /*color: green;*/
 /*}*/
 
+.empty{
+  grid-area: empty;
+}
+.empty2{
+  grid-area: empty2;
+}
+.empty3{
+  grid-area: empty3;
+}
+
 @media (min-width: 700px) {
   .wrapper {
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 5% 60% 5% 25% 5%;
     grid-template-areas:
-      "empty header header  sidebar"
-      "empty content content sidebar"
+      "empty header empty2 sidebar empty3"
+      "empty content empty2 sidebar empty3"
   }
   nav ul {
     flex-direction: column;
@@ -35,7 +43,6 @@
 
 .login{
   margin-top: 2px;
-  background: rgba(255,255,255,0.75);
   grid-area: sidebar;
 }
 
@@ -63,8 +70,6 @@
   padding-left: 15px;
   grid-area: content;
 }
-
-
 
 .section-icon{
   margin-right: 5px;
