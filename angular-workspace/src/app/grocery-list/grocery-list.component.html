@@ -1,7 +1,7 @@
 <app-logged-header></app-logged-header>
 
  <div class="wrapper">
-  
+
   <div class="lists">
     <h1>Saved Lists</h1>
     <li class="list-group-item"><h5>Previously made list templates</h5></li>
@@ -10,22 +10,21 @@
         <span><input type="checkbox" class="checks" (click)="checks[item._id] = !checks[item._id]"></span>
       </li>
     </ul>
-
     <a class="btn btn-primary btn- active addbutton" role="button" aria-pressed="true" (click)="appendLists()">Add to List</a>
-
   </div>
 
 
   <div class="groceries">
-    <h1>Grocery List  <span><i class="fas fa-edit"></i></span></h1>
+    <h1>Grocery List</h1>
     <ul class="list-group translucent-list" *ngFor="let item of shoppingList">
       <li class="list-group-item">{{ item.name }}
         <span><input type="checkbox" class="checks"></span>
       </li>
     </ul>
-    <button type="button" (click)="toFridge()" class="btn btn-primary btn-lg addfridge">Add to Fridge</button>
-    <div class="col-1"></div>
   </div>
+
+  <button type="button" (click)="toFridge()" class="btn btn-primary btn-lg addfridge">Add to Fridge</button>
+
 
 </div>
 
