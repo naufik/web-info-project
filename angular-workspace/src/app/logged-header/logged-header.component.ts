@@ -18,6 +18,7 @@ export class LoggedHeaderComponent implements OnInit {
 
   ngOnInit() {
     this.dataRetriever.getSessionData().then((data) => {
+      console.log(data);
       this.user = data;
     });
   }
