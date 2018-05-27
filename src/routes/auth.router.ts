@@ -24,7 +24,7 @@ AuthRouter.post('/', (req, res, next) => {
 	})(req, res, next);
 });
 
-AuthRouter.post('logout/', (req, res, next) => {
+AuthRouter.post('/logout', (req, res, next) => {
 	req.logOut();
 	return res.status(200).json({
 		success: true,
