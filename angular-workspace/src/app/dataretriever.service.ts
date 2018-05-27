@@ -165,6 +165,7 @@ export class DataRetrieverService {
     return new Promise((resolve, reject) => {
       this.http.get(API_URL + "user/session").subscribe((data) => {
         if (data) {
+          console.log(data);
           resolve(data)
         } else {
           reject(new Error("Unknown Error"))
