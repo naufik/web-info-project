@@ -19,6 +19,7 @@ UserRouter.post("/", (req: Request, res: Response) => {
 });
 
 UserRouter.post("/update", (req: Request, res: Response) => {
+    
     if (!req.body.userData || !req.body.email || !req.user) {
         res.status(400).send("Broken request!");
     } else {
@@ -33,9 +34,11 @@ UserRouter.post("/update", (req: Request, res: Response) => {
             res.status(200).json(data);
         });
     }
+
 });
 
 UserRouter.post("/add.list", (req: Request, res: Response) => {
+    
     if (!req.body.listData || !req.body.userEmail) {
         res.status(400).send("Broken Request");
     } else {
@@ -51,9 +54,11 @@ UserRouter.post("/add.list", (req: Request, res: Response) => {
                 res.status(200).json(status);
             });
     }
+
 });
 
 UserRouter.post("/list", (req:Request, res: Response) => {
+    
     if (!req.body.listData || !req.body.userEmail || !req.user) {
         res.status(400).send("Broken request.");
     } else {
@@ -68,35 +73,41 @@ UserRouter.post("/list", (req:Request, res: Response) => {
             res.status(200).json(data);
         });
     }
+
 });
 
 UserRouter.get("/list/:listId", (req: Request, res: Response) => {
-    // if (!req.user){
-    //     res.status(403).send("Forbidden.");
-    // } else {
+
+    if (!req.user){
+        res.status(403).send("Forbidden.");
+    } else {
         ListController.getList(req.params.listId).then((data) => {
             res.status(200).json(data);
         }).catch((err: Error) => {
             res.send(500).send(err.message);
         });
-    // }
+    }
+
 })
 
 UserRouter.get("/:em", (req: Request, res: Response) => {
     
     if (!req.user) {
         res.status(403).send("Forbidden");
+        return;
     }
 
     UserController.getUserData(req.user.email).then((data) => {
         res.status(200).json(data);
     });
+
 });
 
 UserRouter.get("/:em/lists", (req: Request, res: Response) => {
 
     if (!req.user) {
         res.status(403).send("Forbidden");
+        return;
     }
 
     ListController.getListsForUser(req.user.email).then((data) => {
