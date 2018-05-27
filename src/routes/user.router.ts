@@ -148,5 +148,5 @@ UserRouter.get('/session', (req: Request, res: Response) => {
     } else {
         res.status(200).json(req.user);
     }
-})
+});
 export default UserRouter;

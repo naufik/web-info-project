@@ -10,7 +10,7 @@ import { DataRetrieverService } from '../dataretriever.service';
 export class LoggedHeaderComponent implements OnInit {
 
   private dataRetriever: DataRetrieverService;
-  private user: any;
+  public user: any;
 
   constructor(ds: DataRetrieverService) {
     this.dataRetriever = ds;
