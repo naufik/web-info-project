@@ -144,7 +144,7 @@ UserRouter.post("/:em/:stash", (req: Request, res: Response) => {
 
 UserRouter.get('/session', (req: Request, res: Response) => {
     if (!req.user) {
-        res.status(403).send("Forbidden.")
+        res.status(403).send("Forbidden.");
     } else {
         res.status(200).json(req.user);
     }
