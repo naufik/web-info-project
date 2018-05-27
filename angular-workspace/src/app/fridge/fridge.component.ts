@@ -85,4 +85,11 @@ export class FridgeComponent implements OnInit {
       return -1;
     }
   }
+
+  deleteItem(item: FridgeFood) {
+    this.data = this.data.filter((thing) => {
+      return thing._id !== item._id;
+    });
+    this.onItemChanged();
+  }
 }

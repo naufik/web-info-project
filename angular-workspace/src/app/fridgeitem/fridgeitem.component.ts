@@ -15,6 +15,9 @@ export class FridgeitemComponent implements OnInit {
   @Output()
   save: EventEmitter<null>;
 
+  @Output()
+  delete: EventEmitter<FridgeFood>;
+
   shownQty: string = "0";
   dateString: string;
   daysLeft: string;
@@ -69,4 +72,8 @@ export class FridgeitemComponent implements OnInit {
     this.dateString = this.getDateDisplay();
     this.save.emit();
   }
+
+  deleteItem() {
+    this.delete.emit(this.itemsrc);
+  }  
 }
