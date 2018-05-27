@@ -83,65 +83,35 @@ UserRouter.get("/list/:listId", (req: Request, res: Response) => {
 })
 
 UserRouter.get("/:em", (req: Request, res: Response) => {
-    if (req.params.em) {
-
-        // if (req.params.em !== req.user.email) {
-        //     res.status(403).send({
-        //         success: false,
-        //         error: new Error("Forbidden")
-        //     });
-        //     return;
-        // }
-
-        if (req.user) {
-            UserController.getUserData(req.user.email).then((data) => {
-                res.status(200).json(data);
-            });
-        } else {
-            UserController.getUserData(req.params.em).then((data) => {
-                res.status(200).json(data);
-            });
-        }
-    } else {
+    
+    if (!req.user) {
         res.status(403).send("Forbidden");
     }
+
+    UserController.getUserData(req.user.email).then((data) => {
+        res.status(200).json(data);
+    });
 });
 
 UserRouter.get("/:em/lists", (req: Request, res: Response) => {
-    if (req.params.em) {
 
-        // if (req.params.em !== req.user.email) {
-        //     res.status(403).send({
-        //         success: false,
-        //         error: new Error("Forbidden")
-        //     });
-        //     return;
-        // }
-
-        if (req.user) {
-            ListController.getListsForUser(req.user.email).then((data) => {
-                res.status(200).json(data);
-            });
-        } else {
-            ListController.getListsForUser(req.params.em).then((data) => {
-                res.status(200).json(data);
-            });
-        }
-    } else {
-        res.status(400).send("Broken request.");
+    if (!req.user) {
+        res.status(403).send("Forbidden");
     }
+
+    ListController.getListsForUser(req.user.email).then((data) => {
+        res.status(200).json(data);
+    });
+
 });
 
 UserRouter.post("/:em/:stash", (req: Request, res: Response) => {
     if (req.params.em && req.params.stash && req.body.contents) {
 
-        // if (req.user.email !== req.params.em) {
-        //     res.status(403).send({
-        //         success: false,
-        //         error: new Error("Forbidden")
-        //     });
-        //     return;
-        // }
+        if (!req.user || req.user.email !== req.params.em) {
+            res.status(403).send("Forbidden.")
+            return;
+        }
 
         switch (req.params.stash) {
             case "groceries":
@@ -155,8 +125,9 @@ UserRouter.post("/:em/:stash", (req: Request, res: Response) => {
             default:
                 break;
         }
+
     } else {
-        res.status(403).send("Forbidden.");
+        res.status(400).send("Broken request.");
     }
 });
 
