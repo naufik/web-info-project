@@ -60,4 +60,16 @@ export class AuthService {
       })
     })
   }
+
+  public logout() {
+    return new Promise((resolve, reject) => {
+      this.http.post(API_LOGIN + "logout", {}).subscribe((data: any) => {
+        if (data.success) {
+          resolve(true);
+        } else {
+          reject(new Error("Log out was unsuccessful"));
+        }
+      })
+    })
+  }
 }
