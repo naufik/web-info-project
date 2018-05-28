@@ -23,7 +23,7 @@ UserRouter.post("/update", (req: Request, res: Response) => {
     if (!req.body.userData || !req.body.email || !req.user) {
         res.status(400).send("Broken request!");
     } else {
-        if (req.user.email !== req.body.email) {
+        if (!req.user) {
             res.status(403).send({
                 success: false,
                 error: new Error("Forbidden")
@@ -119,7 +119,7 @@ UserRouter.get("/:em/lists", (req: Request, res: Response) => {
 UserRouter.post("/:em/:stash", (req: Request, res: Response) => {
     if (req.params.em && req.params.stash && req.body.contents) {
 
-        if (!req.user || req.user.email !== req.params.em) {
+        if (!req.user) {
             res.status(403).send("Forbidden.")
             return;
         }

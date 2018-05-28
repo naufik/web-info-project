@@ -29,6 +29,7 @@ export class FridgeComponent implements OnInit {
 
   refresh() {
     this.fridgeService.getUserData(this.userEmail).then((data: any) => {
+      console.log(data.fridge);
       this.data = data.fridge;
     });
   }
