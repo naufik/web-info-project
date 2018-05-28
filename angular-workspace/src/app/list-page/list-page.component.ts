@@ -59,9 +59,13 @@ export class ListPageComponent implements OnInit {
   }
 
   deleteList(item: any) {
+    console.log(item);
+
     this.list.contents = this.list.contents.filter((thing) => 
       thing._id !== item._id
     );
+
+    console.log(this.list);
 
     this.service.saveList(this.userEmail, this.list).then((result) => {
       this.refresh();
