@@ -54,7 +54,7 @@
       </div>
 
     <div class="item" *ngFor="let item of data">
-        <app-fridgeitem (save)="onItemChanged()" (delete)="deleteItem($event)" [itemsrc]="item"></app-fridgeitem>
+        <app-fridgeitem (save)="onItemChanged()" [itemsrc]="item"></app-fridgeitem>
       </div>
     </div>
 
