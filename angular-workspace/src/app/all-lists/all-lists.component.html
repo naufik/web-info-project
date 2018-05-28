@@ -50,8 +50,8 @@
       <h1><a [routerLink]="['/groceries']" >My Groceries</a></h1>
     </div>
 
-    <div class="item" *ngFor="let recipe of allLists" (delete)="deleteList($event)">
-      <app-recipe [data]="recipe"></app-recipe>
+    <div class="item" *ngFor="let recipe of allLists" >
+      <app-recipe [data]="recipe" (delete)="deleteList($event)"></app-recipe>
     </div>
   </div>
 
