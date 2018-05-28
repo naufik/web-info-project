@@ -103,10 +103,11 @@ export class UserController {
     public static saveUser(userEmail: string, userData: any) {
         if (userData.email === userEmail) {
             return User.findOne({
-                email: userEmail
-            }).then((user) => {
+                email: userData.email
+            }).then((user: any) => {
                 if (user) {
-                    return new User(userData).save();
+                    delete userData._id;
+                    return user.set(userData);
                 } else {
                     return Bluebird.reject(new Error("Cannot find user"));
                 }

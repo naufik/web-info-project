@@ -78,6 +78,7 @@ export class AllListsComponent implements OnInit {
     this.allLists = this.allLists.filter((thing) => thing._id !== list._id);
     this.service.getUserData(this.email).then((data: any) => {
       data.lists = this.allLists;
+      console.log(data);
       return this.service.saveUser(data, this.email);
     }).then(() => {
       this.refresh();
