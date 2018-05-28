@@ -3,11 +3,11 @@
 </style>
 
 <div class="main">
-  <a [routerLink]="['/singlelist']">
+  <a [routerLink]="['/lists/' + data._id]">
     <img class="img" src="assets/list.jpg">
   </a>
   <div class="caption">
-    <h1><a [routerLink]="['/lists/' + data._id]">{{ data.name }}</a><i class="fas fa-trash-alt"></i></h1>
+    <h1><a [routerLink]="['/lists/' + data._id]">{{ data.name }}</a><a (click)="deleteList()"><i class="fas fa-trash-alt"></i></a></h1>
     <p>{{ getDisplayedContents() }}</p>
   </div>
 </div>
