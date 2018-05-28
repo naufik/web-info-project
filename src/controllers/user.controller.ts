@@ -107,7 +107,8 @@ export class UserController {
             }).then((user: any) => {
                 if (user) {
                     delete userData._id;
-                    return user.set(userData);
+                    user.set(userData);
+                    return user.save();
                 } else {
                     return Bluebird.reject(new Error("Cannot find user"));
                 }
