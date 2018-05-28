@@ -62,6 +62,9 @@ export class ListPageComponent implements OnInit {
     this.list.contents = this.list.contents.filter((thing) => 
       thing._id !== item._id
     );
-    this.refresh();
+
+    this.service.saveList(this.userEmail, this.list).then((result) => {
+      this.refresh();
+    });
   }
 }
