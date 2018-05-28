@@ -75,9 +75,13 @@ export class AllListsComponent implements OnInit {
 
   deleteList(list: List) {
     console.log(list);
-    this.allLists = this.allLists.filter((thing) => thing !== list._id);
+    this.allLists = this.allLists.filter((thing) => thing._id !== list._id);
     this.service.getUserData(this.email).then((data: any) => {
+      console.log("before")
+      console.log(data);
       data.lists = this.allLists.map(x => x._id);
+      console.log("after")
+      console.log(data);
       return this.service.saveUser(data, this.email);
     }).then(() => {
       this.refresh();
