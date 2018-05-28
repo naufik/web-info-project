@@ -78,7 +78,7 @@ export class DataRetrieverService {
 
   public saveUser(userData: any, userEmail: string) {
     return new Promise((resolve, reject) => {
-      this.http.post(API_URL, {
+      this.http.post(API_URL + "users/update", {
         email: userEmail,
         data: userData
       }).subscribe((data: any) => {

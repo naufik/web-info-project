@@ -20,7 +20,7 @@ UserRouter.post("/", (req: Request, res: Response) => {
 
 UserRouter.post("/update", (req: Request, res: Response) => {
     
-    if (!req.body.userData || !req.body.email || !req.user) {
+    if (!req.body.data || !req.body.email || !req.user) {
         res.status(400).send("Broken request!");
     } else {
         if (!req.user) {
@@ -30,7 +30,7 @@ UserRouter.post("/update", (req: Request, res: Response) => {
             });
             return;
         }
-        UserController.saveUser(req.user.email, req.body.userData).then((data) => {
+        UserController.saveUser(req.user.email, req.body.data).then((data) => {
             res.status(200).json(data);
         });
     }
