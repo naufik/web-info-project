@@ -27,7 +27,7 @@ export class ListPageComponent implements OnInit {
   collapsed = true;
   add = false;
 
-  constructor(private activatedRoute: ActivatedRoute, private service: DataRetrieverService) {}
+  constructor(private router: Router, private activatedRoute: ActivatedRoute, private service: DataRetrieverService) {}
 
   ngOnInit() {
     this.activatedRoute.params.subscribe((params: Params) => {
@@ -66,5 +66,15 @@ export class ListPageComponent implements OnInit {
     this.service.saveList(this.userEmail, this.list).then((result) => {
       this.refresh();
     });
+  }
+
+  groceries() {
+    this.service.getSessionData().then((data: {data: { email: string, groceries: any[] }}) => {
+      let user = data.data;
+      let newList = user.groceries.concat(this.list);
+      this.service.saveGroceries(user.email, newList).then((stuff) => {
+        this.router.navigate(['/groceries']);
+      });
+    })
   }
 }
