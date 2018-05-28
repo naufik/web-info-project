@@ -24,6 +24,7 @@ export class FridgeitemComponent implements OnInit {
 
   constructor() {
     this.save = new EventEmitter<null>();
+    this.delete = new EventEmitter<FridgeFood>();
   }
 
   ngOnInit() {
