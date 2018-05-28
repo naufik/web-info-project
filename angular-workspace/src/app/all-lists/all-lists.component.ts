@@ -72,4 +72,14 @@ export class AllListsComponent implements OnInit {
       this.allLists = listOfLists;
     });
   }
+
+  deleteList(list: List) {
+    this.allLists = this.allLists.filter((thing) => thing._id !== list._id);
+    this.service.getUserData(this.email).then((data: any) => {
+      data.lists = this.allLists;
+      this.service.saveUser(data, this.email);
+    }).then(() => {
+      this.refresh();
+    })
+  }
 }
