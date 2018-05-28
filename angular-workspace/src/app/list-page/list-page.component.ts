@@ -53,7 +53,7 @@ export class ListPageComponent implements OnInit {
     });
 
     this.service.saveList(this.userEmail, this.list).then((result) => {
-
+      this.refresh();
     });
     this.toggleAdd();
   }
