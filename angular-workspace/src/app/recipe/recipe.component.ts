@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import { DataRetrieverService, List } from '../dataretriever.service';
 
 @Component({
@@ -10,8 +10,13 @@ export class RecipeComponent implements OnInit {
 
   @Input()
   data: List;
+  
+  @Output()
+  delete: EventEmitter<List>;
 
-  constructor() { }
+  constructor() {
+    this.delete = new EventEmitter<List>();
+  }
 
   ngOnInit() {
 
@@ -36,6 +41,10 @@ export class RecipeComponent implements OnInit {
     }
     return contents;
 
+  }
+
+  deleteList() {
+    this.delete.emit(this.data);
   }
 
 }
