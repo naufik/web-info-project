@@ -24,23 +24,23 @@
             <a class="dropdown-item" href="#">Alphabetic</a>
           </ul>
         </div>
-        
-    <div class="search">
-      <add-recipe (submit)="addList($event)" *ngIf="add"></add-recipe>
-    </div>
-    <!--[(ngModel)]="formData.lastName" name="lastName"-->
+      </div>
 
-    <div class="main2">
-      <a href="">
-        <img class="img" src="assets/grocery.jpg">
-      </a>
-      <h1><a [routerLink]="['/groceries']" >My Groceries</a></h1>
-    </div>
+      <div class="search">
+        <add-recipe (submit)="addList($event)" *ngIf="add"></add-recipe>
+      </div>
+      <!--[(ngModel)]="formData.lastName" name="lastName"-->
 
-    <div class="item" *ngFor="let recipe of allLists" >
-      <app-recipe [data]="recipe" (delete)="deleteList($event)"></app-recipe>
-    </div>
-  </div>
+      <div class="main2">
+        <a href="">
+          <img class="img" src="assets/grocery.jpg">
+        </a>
+        <h1><a [routerLink]="['/groceries']" >My Groceries</a></h1>
+      </div>
 
+      <div class="item" *ngFor="let recipe of allLists" >
+        <app-recipe [data]="recipe" (delete)="deleteList($event)"></app-recipe>
+      </div>
+    </div>
   <aside></aside>
 </div>
